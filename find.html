@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Mikias Lema" content="author">
+    <title>CollegeStudio</title>
+    <!-- normalize.css for cross-browser stuff -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+
+    <!-- Connected  jquery and popper -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <!-- Connected Bootstrap css and js -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/find.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+
+    <!-- FavIcon -->
+    <link rel="shortcut icon" type="ico" href='/imgs/favicon.ico'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Barlow:300,400,500,600,700" rel="stylesheet">
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar fixed-top navbar-expand-lg sidebarNavigation" data-sidebarClass="navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+                <h3 class="navBrand">CollegeStudio</h3>
+            </a>
+            <button class="navbar-toggler leftNavbarToggler" type="button" data-toggle="collapse" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse flex-grow-1 text-left">
+
+                <ul class="navbar-nav ml-auto flex-nowrap NavLinkz">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link active" href="find.html">Find<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+
+                </ul>
+              
+            </div>
+        </nav>
+    </header>
+
+    <div class="findWrapper ">
+
+
+        <div class="leftWrapper">
+
+            <div class="container-fluid">
+               
+                <div class="input-group mb-3" id="form">
+                        <label for="searchQuery" class="mr-2" id="searchLabel"><br>Welcome.<br><br> For finding a specific
+                            school, please include the full school name
+                            and campus name. Or search away and select from related results.</label>
+                        <hr>
+                       
+                    <input type="text" class="form-control" id="searchQuery" placeholder="Your school.." aria-label="School Name"
+                        aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" id="searchButton" type="button">Search</button>
+                    </div>
+                </div>
+
+                <div class="input-group mb-3" id="form">
+                        <label for="searchQuery" class="mr-2" id="searchLabel">Enter school name to visualize its demographics using a pie chart.Include the full school name
+                                and campus name for specific school.</label>
+                        <hr>
+                      
+                    <input type="text" class="form-control" id="searchQueryDemo" placeholder="Your school.." aria-label="School Name"
+                        aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" id="searchButton2" type="button">Search</button>
+                    </div>
+                </div>
+
+                <br>
+                <hr>
+                <a href="https://www2.ed.gov/rschstat/landing.jhtml?src=pn" class=" DataFrom badge " target="_blank">Data
+                    from U.S. Department of Education.</a>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="rightWrapper">
+
+            <div class="row searchResultsWrap2" id="searchResultsWrap">
+
+              
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.1.1/es6-promise.auto.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <script src="js/find.js"></script>
+    <script src="js/Nav.js"></script>
+</body>
+
+</html>

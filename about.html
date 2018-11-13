@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="Mikias Lema" content="author">
     <meta discription="Home Page design and layout">
-    <title>SpyRecipe</title>
+    <title>CollegeStudio</title>
     <!-- normalize.css for cross-browser stuff -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
 
@@ -24,108 +24,135 @@
         crossorigin="anonymous"></script>
     <script src="js/Nav.js"></script>
     <!-- FavIcon -->
-    <link rel="shortcut icon" type="ico" href='/imgs/favicon.ico' <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" type="ico" href='/imgs/favicon.ico'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Barlow:300,400,500,600,700" rel="stylesheet">
 
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg sticky-top sidebarNavigation" data-sidebarClass="navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-            <h3 class="navBrand">SpyRecipe</h3>
-        </a>
-        <button class="navbar-toggler leftNavbarToggler" type="button" data-toggle="collapse" aria-controls=" navbarNav"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse flex-grow-1 text-left">
+    <header>
+        <nav class="navbar fixed-top navbar-expand-lg  sidebarNavigation" data-sidebarClass="navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+                <h3 class="navBrand">CollegeStudio</h3>
+            </a>
+            <button class="navbar-toggler leftNavbarToggler" type="button" data-toggle="collapse" aria-controls=" navbarNav"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse flex-grow-1 text-left">
 
-            <ul class="navbar-nav ml-auto flex-nowrap NavLinkz">
-                <li class="nav-item ">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Find</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link active" href="#">About<span class="sr-only">(current)</span></a>
-                </li>
+                <ul class="navbar-nav ml-auto flex-nowrap NavLinkz">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="find.html">Find</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link active" href="about.html"><span class="sr-only">(current)</span>About</a>
+                    </li>
 
-            </ul>
+                </ul>
 
-            <h4 class="navBrandSide">SpyRecipe</h4>
-        </div>
-    </nav>
-
-    <header class="container">
-        <h1 class="page-header">
-            About
-        </h1>
-
+            </div>
+        </nav>
     </header>
 
     <div class="container">
 
-        <section>
+        <section id="SectionAbout">
+            <h1>About</h1>
             <p class="lead">
-                As we all know there are many delicious world food recipes out there and one doesn’t always need to go
-                to
-                that specific country to taste the ultimate dish. We’re afraid to try other cultures’ food because we
-                have
-                no idea what goes inside to make it and of course what it tastes like. But what if we did, what if we
-                knew
-                the exact ingredients and even try to make it ourselves at home? This web app hovers over the idea of
-                accessibility of food recipes. I believe food is the most important thing people gather around for,
-                whether
-                that’s with family or friends. And at the interpersonal level It’ll open a new possibility to form
-                relationships and communication between people.
+                We know that there’re many amazing colleges and universities in the united states. Although finding the
+                right one might be tiring, we hope to be a support on this amazing journey. Lorem ipsum dolor sit amet
+                consectetur adipisicing elit. Quaerat sequi esse, nam beatae ducimus rerum aperiam eaque iusto
+                inventore debitis reprehenderit pariatur voluptas tempora laborum ullam, in, ipsa vitae doloremque!.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae mollitia et, assumenda modi odio
+                quo fugiat, optio recusandae voluptate illum amet quae ad non dolores eligendi exercitationem quod iure
+                consequatur.
                 <br>
                 <br>
-                The creation of this web app in this space is to simply<br> address the inaccessibility of food
-                recipes
-                and to
-                present it with beautiful UI elements that will make the <br>user experience a lot better than what we
-                experience on the web today. I believe it’ll be highly useful to people:
-                <ul>
-                    <li>
-                        Who want to try out new recipes
-                    </li>
-                    <li>
-                        Who are not a very good cook or not at all
-                    </li>
-                    <li>
-                        Who want to have a general knowledge of where the recipes originate from
-                    </li>
-                </ul>
+                The creation of this web app in this space is to simply
+                address the inaccessibility of colleges information and to present it with beautiful UI elements that
+                will make the user experience a lot better than what we experience on the web today. Tailored for:</p>
 
-            </p>
+            <ul>
+                <li>
+                    High school Gradates
+                </li>
+                <li>
+                    Transferring students
+                </li>
+                <li>
+                    And simply for anyone who’s interested in finding out more about a college.
+                </li>
+            </ul>
 
         </section>
+    </div>
+    <section id="team">
+        <div class="container">
+            <h2 id="TeamH1">Our Team</h2>
+            <div class="card-deck">
+                <div class="card">
+                    <img class="card-img-top cardImg" src='/imgs/alex-iby-343837-unsplash.jpg' alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Mikias Lema</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex hic, debitis,
+                            nulla incidunt est earum perspiciatis fugit rerum ipsam dolorem exercitationem vitae.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top cardImg" src='/imgs/eric-froehling-311481-unsplash.jpg' alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Eric Forehling</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex hic, debitis,
+                                nulla incidunt est earum perspiciatis fugit rerum ipsam dolorem exercitationem vitae.</p>
 
-        <section id="team">
-            <h2>Team</h2>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top cardImg" src='/imgs/albert-dera-397063-unsplash.jpg' alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Albert Dera</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex hic, debitis,
+                                nulla incidunt est earum perspiciatis fugit rerum ipsam dolorem exercitationem vitae.</p>
 
-        </section>
-
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container">
         <section>
             <h3>
                 Usage
             </h3>
+            <P>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quia a, velit sint dignissimos labore, odit sed, sunt
+                similique nihil voluptatibus maxime rem eius id
+                necessitatibus minima nobis unde ipsum sapiente.Lorem ipsum dolor sit amet consectetur adipisicing
+                elit.
+                Quia a, velit sint dignissimos labore, odit sed, sunt
+                similique nihil voluptatibus maxime rem eius id
+                necessitatibus minima nobis unde ipsum sapiente.Lorem ipsum dolor sit amet consectetur adipisicing
+                elit.
+                Quia a, velit sint dignissimos labore, odit sed, sunt
+                similique nihil voluptatibus maxime rem eius id
+                necessitatibus minima nobis unde ipsum sapiente.</P>
             <p>
                 <ol>
                     <li>
-                        Provides a recipe based on specific ingredients
-                        <ul>
-                            <li>The user will input specific ingredients they have, and the app will try give them a
-                                recipe. If not, it will suggest a close match.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        Suggests weekly complete meals with a detailed instruction on how to make it and
-                        infrom the origin of recipe.
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio voluptatibus quisquam
+                        dignissimos dolor sed inventore officiis praesentium omnis, nobis nihil eveniet magni nisi non
+                        natus. Sint nemo asperiores in eveniet. </li>
 
-                    </li>
+                    <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam aliquid tempore eligendi
+                        suscipit modi! Rerum harum consequatur nisi. Sit temporibus voluptatibus, fuga illo repudiandae
+                        eius sapiente aperiam deleniti dolore quod!</li>
+
                 </ol>
             </p>
 
@@ -146,9 +173,9 @@
 
             <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                 <!-- Links -->
-                <h6 class="text-uppercase font-weight-bold">SpyRecipe</h6>
+                <h6 class="text-uppercase font-weight-bold">CollegeStudio</h6>
                 <hr class="line">
-                <p>Home for your favorite dishes. Enjoy the making, conversations and cultures of food.</p>
+                <p>Home for your future school.This is how you find the perfect college—or colleges—for you</p>
 
             </div>
 
@@ -160,17 +187,15 @@
                 <h6 class="text-uppercase font-weight-bold">Sources</h6>
                 <hr class="line">
                 <p>
-                    <a href="https://www.programmableweb.com/category/food/api">API</a>
+                    <a class="fotterLinks" href="https://www.programmableweb.com/category/food/api">API</a>
                 </p>
                 <p>
-                    <a href="http://api2.bigoven.com/web/documentation/recipes">API 2</a>
+                    <a class="fotterLinks" href="http://api2.bigoven.com/web/documentation/recipes">API 2</a>
                 </p>
                 <p>
-                    <a href="http://openaccess.thecvf.com/content_cvpr_2017/papers/Salvador_Learning_Cross-Modal_Embeddings_CVPR_2017_paper.pdf">Background</a>
+                    <a class="fotterLinks" href="http://openaccess.thecvf.com/content_cvpr_2017/papers/Salvador_Learning_Cross-Modal_Embeddings_CVPR_2017_paper.pdf">Background</a>
                 </p>
-                <p>
-                    <a href="#!">Place Holder</a>
-                </p>
+
 
             </div>
 

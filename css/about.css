@@ -1,10 +1,11 @@
 /* Global ------------------------------------*/
 
 :root {
-    --darkred: #7D1F1D;
+    --darkgreyT: #7D1F1D;
     --darkgrey: #141414;
     --offwhite: #f7f7f7;
     --puregrey: #c5c5c5;
+    
 }
 
 html {
@@ -12,15 +13,13 @@ html {
 }
 
 body {
+    font-family: 'Barlow', sans-serif;
+    margin: 0px;
+    padding: 0px;
     width: 100%;
-    height: 100vh;
-    background-color: var(--darkgrey);
-    position: relative
+    height: 100%;
 }
 
-header {
-    margin-top: 2em;
-}
 
 /* SideNav *************************************/
 
@@ -41,7 +40,7 @@ header {
 
 .overlay.open {
     left: 0;
-    right: 0
+    right: 0;
 }
 
 .sidebarNavigation {
@@ -57,7 +56,7 @@ header {
 
 .sideMenu {
     left: -100%;
-    top: 55px;
+    top: 63px;
     transition: all ease-in-out 0.5s;
     overflow: hidden;
     width: 30%;
@@ -77,126 +76,132 @@ header {
 .sideMenu ul {
     margin: 0;
     padding: 0 15px;
-    color: var(--puregrey);
+    color: black;
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .navbar {
-    background-color: var(--offwhite);
+    background-color: var(--darkgrey);
 }
 
-.navBrandSide {
-    color: var(--darkred);
-    margin-top: 23em;
-    font-size: 20px;
-    font-weight: 700;
-}
+
 
 .navbar-toggler-icon {
-    background-image: url('../imgs/HamMenu@2x.png');
-    background-size: contain;
+    background-image: url('../imgs/HamMenu.svg');
+    background-size: cover;
+    
 }
 
 .navbar-brand .navBrand {
     margin-left: 20px;
-    color: var(--darkred);
-    font-size: 30px;
+    color: var(--offwhite);
+    font-size: 24px;
     font-weight: 700;
 }
 
 nav .navbar-nav li a {
+    text-transform: none;
+    text-decoration: none;
     color: var(--puregrey);
-    font-size: 20px;
-    font-weight: 600;
-    margin-left: 2em;
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 1em;
+}
+
+nav .navbar-nav li a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: var(--offwhite);
+    transition: width .3s;
 }
 
 .navbar-nav>li.nav-item.active>a.nav-link {
     text-decoration: none;
-    color: var(--darkgrey);
+    color: var(--offwhite);
 }
 
-.navbar-nav>li.nav-item>a.nav-link:hover {
-    border-bottom: var(--darkred) solid
+nav .NavLinkz {
+    margin-right: 4em;
 }
 
-.navbar-nav .navbar-toggle .navbar-toggler-icon {
-    background-color: var(--darkgrey);
+.navbar-nav>li.nav-item>a.nav-link:hover::after {
+    width: 100%;
 }
 
 /*Body Elements********************************/
 
-h1,h2,h3,h4,h5,h6 {
+h1,h2,h3,h4,h5,h6,ul,ol,p {
+    color: var(--darkgrey);
+}
+
+a{
+    text-decoration: none;
+}
+a{
+    text-decoration: none;
+}
+footer p .fotterLinks{
+    text-decoration: none;
+    text-decoration-color: none;
+}
+
+p{
+    margin-top: 2em;
+}
+
+#SectionAbout {
+    margin-top: 8em;
+}
+.cardImg {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+#TeamH1 {
     color: var(--offwhite);
-}
-ul {
-    color: var(--puregrey);
-}
-ol{
-    color: var(--puregrey);
-}
-p {
-    color: var(--puregrey);
+    margin-bottom: 2em;
 }
 #team {
+    width: 100%;
+    height: auto;
     margin-top: 5em;
-    margin-bottom: 20em;
+    margin-bottom: 5em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    background-color: var(--darkgrey)
 }
-p a{
-    text-decoration: none;
-    color: var(--puregrey);
-}
-.line {
-    border-color: #EEEEEE ;
-   border-style: solid none;
-  border-width: 1px 10px;
-    
-}
+
+
 footer {
     margin-top: 10rem;
 }
 
 /*Responsive***********************/
 
-@media(max-width:960px) {
-    /*Tables and smaller*/
-    .navbar-brand {
-        display: none;
-    }
+@media (min-width: 300px) and (max-width: 960px) {
+
+
+    
 }
 
 /*add Phone Landscape*/
 
 @media (min-width: 768px) and (max-width: 960px) {
     /*Tables Portrait*/
-    .sideMenu ul {
-        margin: 0;
-        padding: 0 15px;
-        color: var(--puregrey);
-        font-size: 30px;
-        font-weight: 600;
-    }
-    .navBrandSide {
-        color: var(--darkred);
-        margin-top: 23em;
-        font-size: 30px;
-        font-weight: 700;
-    }
+    
+ 
 }
 
 /*add tablet Landscape*/
 
 @media (min-width: 960px) and (max-width: 1280px) {
     /*laptop and larger*/
-    .navBrandSide {
-        display: none;
-    }
 }
 
 @media(min-width: 1281px) {
     /*desktop and larger*/
-    .navBrandSide {
-        display: none;
-    }
 }

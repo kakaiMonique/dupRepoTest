@@ -1,7 +1,7 @@
 /* Global ------------------------------------*/
 
 :root {
-    --darkred: #7D1F1D;
+    --darkgreyT: #7D1F1D;
     --darkgrey: #141414;
     --offwhite: #f7f7f7;
     --puregrey: #c5c5c5;
@@ -12,15 +12,18 @@ html {
 }
 
 body {
+    font-family: 'Barlow', sans-serif;
+    margin: 0px;
+    padding: 0px;
     width: 100%;
     height: 100vh;
-    background-color: var(--darkgrey);
-    background-image: url('../imgs/BodyBkg_Phone@2x.png');
-    background-size: cover;
+    background-color: white;
+    background-image: url('../imgs/HomeBottombkg.svg');
     background-repeat: no-repeat;
-    background-position: bottom right;
-    position: relative
+	background-position: bottom ;
+    background-size: cover;
 }
+
 
 /* SideNav *************************************/
 
@@ -41,7 +44,7 @@ body {
 
 .overlay.open {
     left: 0;
-    right: 0
+    right: 0;
 }
 
 .sidebarNavigation {
@@ -57,7 +60,7 @@ body {
 
 .sideMenu {
     left: -100%;
-    top: 55px;
+    top: 63px;
     transition: all ease-in-out 0.5s;
     overflow: hidden;
     width: 30%;
@@ -77,209 +80,207 @@ body {
 .sideMenu ul {
     margin: 0;
     padding: 0 15px;
-    color: var(--puregrey);
+    color: black;
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .navbar {
-    background-color: var(--offwhite);
+    background-color: var(--darkgrey);
 }
 
-.navBrandSide {
-    color: var(--darkred);
-    margin-top: 23em;
-    font-size: 20px;
-    font-weight: 700;
-}
+
+
 .navbar-toggler-icon {
-    background-image: url('../imgs/HamMenu@2x.png');
-    background-size: contain;
-  }
+    background-image: url('../imgs/HamMenu.svg');
+    background-size: cover;
+    
+}
 
 .navbar-brand .navBrand {
     margin-left: 20px;
-    color: var(--darkred);
-    font-size: 30px;
+    color: var(--offwhite);
+    font-size: 24px;
     font-weight: 700;
 }
 
 nav .navbar-nav li a {
+    text-transform: none;
+    text-decoration: none;
     color: var(--puregrey);
-    font-size: 20px;
-    font-weight: 600;
-    margin-left: 2em;
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 1em;
+}
+
+nav .navbar-nav li a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: var(--offwhite);
+    transition: width .3s;
 }
 
 .navbar-nav>li.nav-item.active>a.nav-link {
     text-decoration: none;
-    color: var(--darkgrey);
-}
-
-.navbar-nav>li.nav-item>a.nav-link:hover {
-    border-bottom: var(--darkred) solid 
-}
-
-.navbar-nav .navbar-toggle .navbar-toggler-icon {
-    background-color: var(--darkgrey);
-}
-
-.HomeH1 {
     color: var(--offwhite);
-    font-weight: 700;
-    font-size: 35px;
-    margin: 0;
 }
 
-.IntroP {
-    margin-top: .5em;
-    color: var(--puregrey);
-    font-weight: 400;
-    font-size: 20px;
+nav .NavLinkz {
+    margin-right: 4em;
 }
 
-.HomeP {
-    color: var(--puregrey);
-    font-weight: 300;
-    font-size: 20px;
-    line-height: 24px;
+.navbar-nav>li.nav-item>a.nav-link:hover::after {
+    width: 100%;
+}
+
+
+
+/*Body Elements********************************/
+
+.Home {
+    width: 100%;
+    height: 100vh;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
 .HomeContainer {
-    background-color: var(--darkgrey);
-    border-radius: 5px;
-    box-shadow: 2px 1px 20px #000;
-    padding: 1em;
-    margin-top: 2em;
-    margin-bottom: 2em;
+    display: flex;
+    flex-direction: row;
 }
 
+#HomeLeft {
+    width: 55%;
+    height: 100vh;
+    
+}
+
+#HomeRight {
+    width: 45%;
+    height: 100vh;
+    padding: 5em;
+}
+
+#HRcontainer {
+    margin-top: 7em;
+    padding: 3em;
+}
+
+#HomeILL {
+
+    width: 85%;
+    height: 85%;
+    margin: auto;
+    background-image: url('../imgs/homebgResponsive.svg');
+    background-repeat: no-repeat;
+	background-position: center center;
+    background-size: contain;
+
+}
+
+.HomeH1 {
+    color: var(--darkgrey);
+    font-weight: 700;
+    font-size: 40px;
+    margin: 0;
+}
+
+.HomeH2 {
+    color: var(--darkgrey);
+    font-weight: 300;
+    font-size: 40px;
+    margin: 0;
+}
+
+.HomeP {
+    margin-top: 1.5em;
+    color: var(--darkgrey);
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 24px;
+}
 .HomeBtn {
-    color: var(--offwhite);
-    background: linear-gradient(135deg, #c31432 0%, #fbb52d 100%);
-    border: none;
-    width: 120px;
+    width: 110px;
     height: 40px;
-    box-shadow: 0px 3px 6px #000;
+    margin-top: 1em;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.40);
 }
 
-.HomeLeftWrapper {
-    padding-bottom: 2em;
-}
 
 /*Responsive***********************/
 
-@media(max-width:960px) {
-    /*Tables and smaller*/
-    .navbar-brand {
-        display: none;
-    }
-}
-
-/*add Phone Landscape*/
-
-@media (min-width: 768px) and (max-width: 960px) {
-    /*Tables Portrait*/
-    body {
-        width: 100%;
-        height: 100vh;
-        background-image: url('../imgs/BodyBkg_Tablet@2x.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: bottom right;
-    }
-    .HomeLeftWrapper .IntroP {
-        margin-top: 2em;
+@media (min-width: 300px) and (max-width: 768px) {
+     /*phone - tablet*/
+     .navbar-brand .navBrand {
+        margin-left: 8em;
         font-size: 20px;
-    }
-    .HomeLeftWrapper .HomeH1 {
-        font-size: 35px;
-        font-weight: 700;
-    }
-    .HomeLeftWrapper .HomeP {
-        font-size: 20px;
-        line-height: 27px;
-    }
-    .sideMenu ul {
-        margin: 0;
-        padding: 0 15px;
-        color: var(--puregrey);
-        font-size: 30px;
         font-weight: 600;
     }
-    .navBrandSide {
-        color: var(--darkred);
-        margin-top: 23em;
-        font-size: 30px;
-        font-weight: 700;
+
+    .Home {
+        width: 100%;
+        height: auto;
+        padding-top: 3em;
+        padding-bottom: 3em;
     }
+    .HomeContainer {
+        display: block;
+        
+    }
+    #HomeLeft {
+        margin-top: 1em;
+        width: 100%;
+        height: 100%;
+        
+    }
+    #HomeILL {
+        width: 400px;
+        height: 400px;
+        margin: auto;
+        background-image: url('../imgs/homebgResponsive.svg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 100%
+    
+    }
+
+    #HomeRight {
+        width: 100%;
+        height: 100%;
+    }
+    #HRcontainer {
+        margin-top: 0;
+        padding: 0;
+    }
+   
+    .navbar-nav>li.nav-item.active>a.nav-link {
+        text-decoration: none;
+        color: var(--darkgrey);
+    }
+    body {
+       
+        background-image: none;
+       
+    }
+   
 }
 
-/*add tablet Landscape*/
+
+@media (min-width: 768px) and (max-width: 960px) {
+    /*tablet - laptop*/
+
+
+}
 
 @media (min-width: 960px) and (max-width: 1280px) {
-    /*laptop and larger*/
-    body {
-        width: 100%;
-        height: 100vh;
-        background-image: url('../imgs/BodyBkg_Laptop@2x.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: bottom right;
-    }
-    .HomeLeftWrapper {
-        margin-left: 2em;
-        margin-right: 2em;
-    }
-    .HomeLeftWrapper .IntroP {
-        margin-top: 2em;
-        font-size: 20px;
-    }
-    .HomeLeftWrapper .HomeH1 {
-        font-size: 35px;
-        font-weight: 700;
-    }
-    .HomeLeftWrapper .HomeP {
-        font-size: 20px;
-        line-height: 27px;
-    }
-    .navBrandSide {
-        display: none;
-    }
+    /*laptop - desktop*/
+    
+   
 }
 
 @media(min-width: 1281px) {
-    /*desktop and larger*/
-    body {
-        width: 100%;
-        height: 100vh;
-        background-image: url('../imgs/BodyBkg_Desktop@2x.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: bottom right;
-    }
-    .HomeLeftWrapper {
-        margin-left: 2em;
-        margin-right: 2em;
-    }
-    .HomeLeftWrapper .IntroP {
-        margin-top: 2em;
-        font-size: 25px;
-    }
-    .HomeLeftWrapper .HomeH1 {
-        font-size: 45px;
-        font-weight: 700;
-    }
-    .HomeLeftWrapper .HomeP {
-        font-size: 25px;
-        line-height: 35px;
-    }
-    .HomeBtn {
-        width: 150px;
-        height: 50px;
-    }
-    .navBrandSide {
-        display: none;
-    }
+    /*desktop - larger*/
    
 }

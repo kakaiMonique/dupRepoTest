@@ -1,0 +1,273 @@
+/* Global ------------------------------------*/
+
+:root {
+    --darkred: #7D1F1D;
+    --darkgrey: #141414;
+    --offwhite: #f7f7f7;
+    --puregrey: #c5c5c5;
+}
+
+html {
+    font-family: 'Barlow', sans-serif;
+}
+
+body {
+    font-family: 'Barlow', sans-serif;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: var(--offwhite);
+    position: relative;
+}
+
+/* SideNav *************************************/
+
+.overlay, .sideMenu {
+    position: fixed;
+    bottom: 0
+}
+
+.overlay {
+    top: 0;
+    left: -100%;
+    right: 100%;
+    margin: auto;
+    background-color: rgba(255, 255, 255, .5);
+    z-index: 998;
+    transition: all ease 0.2s
+}
+
+.overlay.open {
+    left: 0;
+    right: 0
+}
+
+.sidebarNavigation {
+    margin-bottom: 0;
+    z-index: 999;
+    justify-content: flex-start
+}
+
+.sidebarNavigation .leftNavbarToggler {
+    margin-right: 10px;
+    order: -1
+}
+
+.sideMenu {
+    left: -100%;
+    top: 58px;
+    transition: all ease-in-out 0.5s;
+    overflow: hidden;
+    width: 30%;
+    z-index: 999;
+    max-width: 80%;
+    margin-bottom: 0;
+    padding: 1rem;
+    border-bottom-right-radius: 5px;
+}
+
+.sideMenu.open {
+    left: 0;
+    display: block;
+    overflow-y: auto
+}
+
+.sideMenu ul {
+    margin: 0;
+    padding: 0 15px;
+    color: var(--puregrey);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.navbar {
+    background-color: var(--darkgrey);
+}
+
+.navbar-toggler-icon {
+    background-image: url('../imgs/HamMenu.svg');
+    background-size: cover;
+}
+
+.navbar-brand .navBrand {
+    margin-left: 20px;
+    color: var(--offwhite);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+nav .navbar-nav li a {
+    text-transform: none;
+    text-decoration: none;
+    color: var(--puregrey);
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 1em;
+}
+
+nav .navbar-nav li a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: var(--offwhite);
+    transition: width .3s;
+}
+
+.navbar-nav>li.nav-item.active>a.nav-link {
+    text-decoration: none;
+    color: var(--offwhite);
+}
+
+nav .NavLinkz {
+    margin-right: 4em;
+}
+
+.navbar-nav>li.nav-item>a.nav-link:hover::after {
+    width: 100%;
+}
+
+/*Body Elements********************************/
+
+/**** find css */
+
+.findWrapper {
+    display: flex;
+    overflow: hidden;
+}
+
+.leftWrapper {
+    order: 1;
+    width: 23%;
+    height: 100vh;
+    background: linear-gradient(135deg, #434343, #000000);
+}
+
+.rightWrapper {
+    order: 2;
+    width: 100%;
+    height: auto;
+    background-color: #FFFFFF
+}
+
+#form {
+    align-items: center;
+    margin-top: 3em;
+}
+
+#searchLabel {
+    color: var(--offwhite);
+   
+}
+
+.DataFrom{
+    margin-top: 40em;
+    text-decoration: none;
+    color: var(--puregrey)
+}
+
+#searchResultsWrap {
+    padding: 5em;
+}
+
+.searchResultsWrap2 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#card-header-blue {
+    color: #FFFFFF;
+    background: linear-gradient(135deg, #434343, #000000);
+}
+
+.card {
+    transition: all 0.2s ease;
+    box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card:hover {
+    transform: scale(0.98);
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+svg {
+    margin: 2em;
+    
+}
+
+footer {
+    margin-top: 10rem;
+}
+
+/*Responsive***********************/
+
+@media (min-width: 300px) and (max-width: 960px) {
+
+    /*Tables and smaller*/
+    .navbar-brand .navBrand {
+        margin-left: 8em;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    .findWrapper {
+        display: block;
+        overflow: hidden;
+    }
+    .leftWrapper {
+        width: 100%;
+        height: 40%;
+    }
+    .card:hover {
+        transform: none;
+    }
+    .navbar-nav>li.nav-item.active>a.nav-link {
+        text-decoration: none;
+        color: var(--darkgrey);
+    }
+    #searchResultsWrap {
+        padding: 2em;
+    }
+    svg {
+        margin: 0;
+        
+    }
+    .DataFrom{
+        margin-top: 0
+    }
+    
+}
+
+/*add Phone Landscape*/
+
+@media (min-width: 768px) and (max-width: 960px) {
+    /*Tables Portrait*/
+    .findWrapper {
+        display: block;
+        overflow: hidden;
+    }
+    .card:hover {
+        transform: none;
+    }
+    .DataFrom{
+        margin-top: 0
+    }
+}
+
+/*add tablet Landscape*/
+
+@media (min-width: 960px) and (max-width: 1280px) {
+    /*laptop and larger*/
+}
+
+@media(min-width: 1281px) {
+    /*desktop and larger*/
+}
