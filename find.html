@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="Mikias Lema" content="author">
+    <meta name="author" content="Mikias Lema">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript,Fetch,Bootstrap,jquery">
+    <meta name="discription" content="Home Page design and layout">
     <title>CollegeStudio</title>
     <!-- normalize.css for cross-browser stuff -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
@@ -26,7 +28,7 @@
     <!-- FavIcon -->
     <link rel="shortcut icon" type="ico" href='/imgs/favicon.ico'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Barlow:300,400,500,600,700" rel="stylesheet">
 
@@ -35,7 +37,7 @@
 <body>
     <header>
         <nav class="navbar fixed-top navbar-expand-lg sidebarNavigation" data-sidebarClass="navbar-light bg-light">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index.html">
                 <h3 class="navBrand">CollegeStudio</h3>
             </a>
             <button class="navbar-toggler leftNavbarToggler" type="button" data-toggle="collapse" aria-expanded="false"
@@ -56,7 +58,7 @@
                     </li>
 
                 </ul>
-              
+
             </div>
         </nav>
     </header>
@@ -67,13 +69,13 @@
         <div class="leftWrapper">
 
             <div class="container-fluid">
-               
+
                 <div class="input-group mb-3" id="form">
-                        <label for="searchQuery" class="mr-2" id="searchLabel"><br>Welcome.<br><br> For finding a specific
-                            school, please include the full school name
-                            and campus name. Or search away and select from related results.</label>
-                        <hr>
-                       
+                    <label for="searchQuery" class="mr-2" id="searchLabel"><br>Welcome.<br><br> For finding a specific
+                        school, please include the full school name
+                        and campus name. Or search away and select from related results.</label>
+                    <hr>
+
                     <input type="text" class="form-control" id="searchQuery" placeholder="Your school.." aria-label="School Name"
                         aria-describedby="basic-addon2">
                     <div class="input-group-append">
@@ -82,10 +84,11 @@
                 </div>
 
                 <div class="input-group mb-3" id="form">
-                        <label for="searchQuery" class="mr-2" id="searchLabel">Enter school name to visualize its demographics using a pie chart.Include the full school name
-                                and campus name for specific school.</label>
-                        <hr>
-                      
+                    <label for="searchQuery" class="mr-2" id="searchLabel">Enter school name to visualize its
+                        demographics using a pie chart.Include the full school name
+                        and campus name for specific school.</label>
+                    <hr>
+
                     <input type="text" class="form-control" id="searchQueryDemo" placeholder="Your school.." aria-label="School Name"
                         aria-describedby="basic-addon2">
                     <div class="input-group-append">
@@ -107,13 +110,78 @@
         <div class="rightWrapper">
 
             <div class="row searchResultsWrap2" id="searchResultsWrap">
+                <div class="searchTextPH">
+                    <h4>Featured schools</h4>
+                </div>
 
-              
+                <div class='cards' style="width: 25em;">
+                    <!-- Card1 -->
+                    <div class="card mb-4">
+                        <div class="card-header" id="card-header-blue">University of Washington-Seattle Campus
+                            <br>
+                            <h7 class="card-subtitle mb-6 text-muted ">Seattle, WA</h7>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Acceptance Rate: <strong>45%</strong></p>
+                            <p class="card-text">Average SAT Score: <strong>1266</strong></p>
+                            <p class="card-text">Out of state tuition: <strong>$34791</strong></p>
+                            <p class="card-text">In state tuition: <strong>$10753</strong></p>
+                            <p class="card-text">Students with any loan: <strong>71%</strong></p>
+                            <p class="card-text">Students Size: <strong>29831</strong></p>
+                            <hr>
+                            <a href="https://www.washington.edu" target="_blank" class="btn btn-dark  btn-md">Website</a>
 
+                        </div>
+                    </div>
+                </div>
+                <!-- Card2 -->
+                <div class='cards' style="width: 25rem;">
+                    <div class="card mb-4">
+                        <div class="card-header" id="card-header-blue">Yale University
+                            <br>
+                            <h7 class="card-subtitle mb-6 text-muted ">New Haven, CT</h7>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Acceptance Rate: <strong>6%</strong></p>
+                            <p class="card-text">Average SAT Score: <strong>1502</strong></p>
+                            <p class="card-text">Out of state tuition: <strong>$49480</strong></p>
+                            <p class="card-text">In state tuition: <strong>$50480</strong></p>
+                            <p class="card-text">Students with any loan: <strong>45%</strong></p>
+                            <p class="card-text">Students Size: <strong>5471</strong></p>
+                            <hr>
+                            <a href="https://www.yale.edu" target="_blank" class="btn btn-dark  btn-md">Website</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card2 -->
+                <div class='cards' style="width: 25rem;">
+                    <div class="card mb-4">
+                        <div class="card-header" id="card-header-blue">Seattle Central College
+                            <br>
+                            <h7 class="card-subtitle mb-6 text-muted ">Seattle, WA</h7>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Acceptance Rate: <strong>Unreported</strong></p>
+                            <p class="card-text">Average SAT Score: <strong>Unreported</strong></p>
+                            <p class="card-text">Out of state tuition: <strong>$4332</strong></p>
+                            <p class="card-text">In state tuition: <strong>$39253</strong></p>
+                            <p class="card-text">Students with any loan: <strong>27%</strong></p>
+                            <p class="card-text">Students Size: <strong>3398</strong></p>
+                            <hr>
+                            <a href="https://seattlecentral.edu" target="_blank" class="btn btn-dark  btn-md">Website</a>
+                        </div>
+                    </div>
+                </div>
 
+                
             </div>
 
+
         </div>
+
+
+
+    </div>
 
 
     </div>

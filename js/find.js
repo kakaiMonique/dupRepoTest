@@ -8,6 +8,7 @@ document.getElementById('searchButton').addEventListener('click', function (e) {
 
 
     var searchQuery = $('#searchQuery').val();
+  
 
     fetchSchool(searchQuery);
 
@@ -26,6 +27,7 @@ function fetchSchool(searchQuery) {
 
         .then(function (res) {
             return res.json()
+            
 
         })
         .then(function (data) {
@@ -33,7 +35,7 @@ function fetchSchool(searchQuery) {
             // document.getElementById("loading").style.display = 'none';
 
             renderSearchResults(data)
-
+          
 
         })
 
@@ -51,10 +53,12 @@ function renderSearchResults(schoolObjs) {
     document.getElementById('searchResultsWrap').innerHTML = `
 
     ${schoolObjs.results.map(schoolCard).join('')}`
+  
 }
 
-function schoolCard(school) {
 
+
+function schoolCard(school) {
 
 
 
@@ -72,29 +76,30 @@ function schoolCard(school) {
         school["latest.admissions.sat_scores.average.overall"] = "Unreported"
     }
 
+   
 
-    var singleCard = `<div class=" col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4  d-flex">
-
-                <div class='cards'>
+    var singleCard =  `
+    
+                <div class='cards' style="width: 25em;">
 
                     <div class="card mb-4">
                             <div class="card-header" id= "card-header-blue">${school["school.name"]}
                             <br><h7 class="card-subtitle mb-6 text-muted ">${school["school.city"] + "," + " " + school["school.state"]}</h7>
                             </div>
                         <div class="card-body">
-                            <p class="card-text">Acceptance Rate:  ${schoolAcceptanceRate * 100 + "%"}</p>
-                            <p class="card-text">Average SAT Score:  ${school["latest.admissions.sat_scores.average.overall"]}</p>
-                            <p class="card-text">Out of state tuition:  $${school["latest.cost.tuition.out_of_state"]}</p>
-                            <p class="card-text">In state tuition:  $${school["latest.cost.tuition.in_state"]}</p>
-                            <p class="card-text">Students with any loan:  ${studentLoan * 100 + "%"}</p>
-                            <p class="card-text">Students Size:  ${school["latest.student.size"]}</p>
+                            <p class="card-text">Acceptance Rate:  <strong>${schoolAcceptanceRate * 100 + "%"}</strong></p>
+                            <p class="card-text">Average SAT Score:  <strong>${school["latest.admissions.sat_scores.average.overall"]}</strong></p>
+                            <p class="card-text">Out of state tuition:  <strong>$${school["latest.cost.tuition.out_of_state"]}</strong></p>
+                            <p class="card-text">In state tuition:  <strong>$${school["latest.cost.tuition.in_state"]}</p></strong>
+                            <p class="card-text">Students with any loan:  <strong>${studentLoan * 100 + "%"}</p></strong>
+                            <p class="card-text">Students Size:  <strong>${school["latest.student.size"]}</p></strong>
                             <hr>
                             <a href="https://${school["school.school_url"]}" target="_blank" class="btn btn-dark  btn-md">Website</a>
                         </div>
                     </div>
                     </div>
-            </div>`
-
+            `
+        
     return singleCard
 }
 

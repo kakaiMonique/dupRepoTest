@@ -20,7 +20,7 @@ body {
     background-color: white;
     background-image: url('../imgs/HomeBottombkg.svg');
     background-repeat: no-repeat;
-	background-position: bottom ;
+	background-position: bottom;
     background-size: cover;
 }
 
@@ -160,11 +160,10 @@ nav .NavLinkz {
 #HomeRight {
     width: 45%;
     height: 100vh;
-    padding: 5em;
 }
 
 #HRcontainer {
-    margin-top: 7em;
+    margin-top: 6em;
     padding: 3em;
 }
 
@@ -183,14 +182,14 @@ nav .NavLinkz {
 .HomeH1 {
     color: var(--darkgrey);
     font-weight: 700;
-    font-size: 40px;
+    font-size: 60px;
     margin: 0;
 }
 
 .HomeH2 {
     color: var(--darkgrey);
     font-weight: 300;
-    font-size: 40px;
+    font-size: 50px;
     margin: 0;
 }
 
@@ -199,7 +198,7 @@ nav .NavLinkz {
     color: var(--darkgrey);
     font-weight: 300;
     font-size: 25px;
-    line-height: 24px;
+    line-height: 30px;
 }
 .HomeBtn {
     width: 110px;
@@ -207,7 +206,14 @@ nav .NavLinkz {
     margin-top: 1em;
     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.40);
 }
-
+.fotterLinks {
+    text-decoration: none;
+    color: var(--darkgrey)
+}
+.contact {
+    text-decoration: none;
+    color: var(--darkgrey)
+}
 
 /*Responsive***********************/
 

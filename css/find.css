@@ -162,19 +162,29 @@ nav .NavLinkz {
 }
 
 .DataFrom{
-    margin-top: 40em;
+    margin-top: 20em;
     text-decoration: none;
     color: var(--puregrey)
 }
 
 #searchResultsWrap {
+    
     padding: 5em;
 }
 
 .searchResultsWrap2 {
     display: flex;
     flex-wrap: wrap;
+   justify-content: center;
+   
 }
+.searchTextPH {
+    text-align: center;
+    flex: 0 0 100%;
+   
+
+}
+
 
 #card-header-blue {
     color: #FFFFFF;
@@ -182,22 +192,17 @@ nav .NavLinkz {
 }
 
 .card {
+    margin: 2em;
     transition: all 0.2s ease;
     box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.15);
 }
 
+
 .card:hover {
-    transform: scale(0.98);
+    transform: scale(0.99);
 }
 
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
+
 
 svg {
     margin: 2em;
