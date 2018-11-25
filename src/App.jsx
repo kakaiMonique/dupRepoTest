@@ -114,7 +114,7 @@ class App extends Component {
                     type="text"
                     className="form-control"
                     id="searchQuery"
-                    placeholder="Your school.."
+                    placeholder="Search by school name.."
                     aria-label="School Name"
                     aria-describedby="basic-addon2"
                     onChange={this.handleUserInput.bind(this)}
@@ -131,33 +131,33 @@ class App extends Component {
                       </button>
                   </div>
                 </div>
+
+
                 <div className="input-group mb-3" id="form">
                   <label htmlFor="searchQuery" className="mr-2" id="searchLabel">
-                    Enter state/city to get information on university and colleges within your selected area.
-                 </label>
+                  Otherwise, if you are unsure of what specific school too look at, then enter a state to get information on university and colleges within your selected area.
+                  </label>
                   <hr />
 
                   <input
                     type="text"
                     className="form-control"
                     id="searchQueryDemo"
-                    placeholder="Your school.."
-                    aria-label="School Name"
+                    placeholder="Search by state.."
+                    aria-label="State Name"
                     aria-describedby="basic-addon2"
-
                   />
+
                   <div className="input-group-append">
                     <button
                       className="btn btn-outline-secondary"
                       id="searchButton2"
                       type="button"
-
                     >
                       Search
-            </button>
+                    </button>
                   </div>
                 </div>
-
                 <br />
                 <hr />
                 <a
@@ -166,7 +166,7 @@ class App extends Component {
                   target="_blank" rel="noopener noreferrer"
                 >
                   Data from U.S. Department of Education.
-        </a>
+                </a>
               </div>
             </div>
 
