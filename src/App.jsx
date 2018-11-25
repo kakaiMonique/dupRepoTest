@@ -139,7 +139,8 @@ class App extends Component {
 
                 <div className="input-group mb-3" id="form">
                   <label htmlFor="searchQuery" className="mr-2" id="searchLabel">
-                  Otherwise, if you are unsure of what specific school too look at, then enter a state to get information on university and colleges within your selected area.
+                  Otherwise, if you are unsure of what specific school too look at, then please enter 
+                  a state to get information on university and colleges within your selected area.
                   </label>
                   <hr />
 
