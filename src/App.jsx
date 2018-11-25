@@ -6,7 +6,8 @@ class App extends Component {
     super(props);
     this.state = {
       schools: [],
-      input: null
+      schoolName:'',
+      schoolState:''
     };
   }
   componentDidMount() {
@@ -14,7 +15,9 @@ class App extends Component {
   }
 
   handleUserInput(e) {
-    this.setState({ input: e.target.value });
+    console.log("this is index name: " + e.target.name)
+    this.setState({[e.target.name]: e.target.value});
+    // this.setState({ input: e.target.value });
   }
   handleSubmit(e) {
     e.preventDefault();
@@ -115,6 +118,7 @@ class App extends Component {
                     className="form-control"
                     id="searchQuery"
                     placeholder="Search by school name.."
+                    name="schoolName"
                     aria-label="School Name"
                     aria-describedby="basic-addon2"
                     onChange={this.handleUserInput.bind(this)}
@@ -144,16 +148,17 @@ class App extends Component {
                     className="form-control"
                     id="searchQueryDemo"
                     placeholder="Search by state.."
+                    name="schoolState"
                     aria-label="State Name"
                     aria-describedby="basic-addon2"
-                  />
+                    onChange={this.handleUserInput.bind(this)}/>
 
                   <div className="input-group-append">
                     <button
                       className="btn btn-outline-secondary"
                       id="searchButton2"
                       type="button"
-                    >
+                      onClick={this.handleSubmit.bind(this)}>
                       Search
                     </button>
                   </div>
@@ -166,6 +171,7 @@ class App extends Component {
                   target="_blank" rel="noopener noreferrer"
                 >
                   Data from U.S. Department of Education.
+                  
                 </a>
               </div>
             </div>
