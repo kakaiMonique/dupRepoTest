@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import "./css/App.css";
 
-// State is working and does not clip user input
-// Resutls are in sync with input search! need to search by state too...
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       schools: [],
-
+      schoolName:'',
+      schoolState:''
     };
   }
   componentDidMount() {
