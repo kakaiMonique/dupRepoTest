@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import "./css/App.css";
 
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       schools: [],
-      input: null
+      input: ''
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,17 +18,18 @@ class App extends Component {
 
   handleUserInput(e) {
     this.setState({ input: (e.target.value).toUpperCase() });
+    this.fetchData(this.state.input);
   }
+
   handleSubmit(e) {
     e.preventDefault();
+
     this.fetchData(this.state.input)
   }
 
   fetchData(SearchQuery) {
-    console.log(SearchQuery);
 
-
-    var states = ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC",
+    let states = ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC",
       "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA",
       "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE",
       "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC",
@@ -39,20 +41,20 @@ class App extends Component {
     if (states.includes(SearchQuery)) {
 
       fetchThis = `https://api.data.gov/ed/collegescorecard/v1/schools?school.state=${SearchQuery}&_fields=school.name,school.city,school.state,school.school_url,latest.admissions.admission_rate.overall,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state,latest.cost.tuition.in_state,latest.aid.students_with_any_loan,latest.student.size&api_key=TH798jh0Un4LIFZvxWD5iyBwYKSDCpRLVZEWDdR5`;
-      console.log(fetchThis);
+      console.log(fetchThis + "school state");
 
     }
     else {
       fetchThis = `https://api.data.gov/ed/collegescorecard/v1/schools?school.name=${SearchQuery}&_fields=school.name,school.city,school.state,school.school_url,latest.admissions.admission_rate.overall,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state,latest.cost.tuition.in_state,latest.aid.students_with_any_loan,latest.student.size&api_key=TH798jh0Un4LIFZvxWD5iyBwYKSDCpRLVZEWDdR5`;
+      console.log(fetchThis + "school name");
     }
-    //console.log(fetchThis);
 
     fetch(fetchThis)
       .then(res => {
         return res.json();
       })
-      .then(data => data.results.map(school => (
-        {
+      .then(
+        data => data.results.map(school => ({
           name: `${school["school.name"]}`,
           location: `${school["school.city"]},${school["school.state"]}`,
           AcceptanceRate: `${parseFloat(school["latest.admissions.admission_rate.overall"]).toFixed(2)}`,
@@ -62,20 +64,18 @@ class App extends Component {
           StudentsWithAnyLoan: `${parseFloat(school["latest.aid.students_with_any_loan"]).toFixed(2)}`,
           StudentsSize: `${school["latest.student.size"]}`,
           SchoolWebsite: `${school["school.school_url"]}`
-        }
-
-      )))
-
-      .then(schools => this.setState({
-        schools: schools
-      }))
-
+        }))
+      )
+      .then(schoolResults => {
+        this.setState({ schools: schoolResults })
+      })
       .catch(error => {
         alert(error);
       });
   }
 
   render() {
+
     return (
       <div>
         <Navigation />
@@ -89,7 +89,7 @@ class App extends Component {
               <div className="leftWrapper">
                 <div className="container-fluid">
 
-                  <SideBar handleUserInput={this.handleUserInput} handleSubmit={this.handleSubmit} />
+                  <SchoolFilterSection handleUserInput={this.handleUserInput} handleSubmit={this.handleSubmit} />
 
                 </div>
 
@@ -181,7 +181,7 @@ class Navigation extends Component {
   render() {
     return (
       <header>
-        <div class="container">
+        <div className="container">
           <nav className="navbar fixed-top navbar-expand-lg">
 
             <a className="navbar-brand" href="index.html">
@@ -268,38 +268,39 @@ class Home extends Component {
   }
 }
 
-
-class SideBar extends Component {
+class SchoolFilterSection extends Component {
   render() {
     return (
       <div>
+
         <div className="input-group mb-3" id="form">
           <label htmlFor="searchQuery" className="mr-2" id="searchLabel">
             <br />
             Welcome.
-            <br />
+          <br />
             <br /> For finding a specific school, please include the full school
             name and campus name. Or search away and select from related
             results.
           </label>
           <hr />
 
+
           <input
             type="text"
             className="form-control"
             id="searchQuery"
-            placeholder="Your school.."
+            placeholder="School name.."
+            name="schoolName"
             aria-label="School Name"
             aria-describedby="basic-addon2"
-            onChange={this.props.handleUserInput.bind(this)}
-          />
+            onChange={this.props.handleUserInput.bind(this)} />
+
           <div className="input-group-append">
             <button
               className="btn btn-outline-secondary"
               id="searchButton"
               type="button"
-              onClick={this.props.handleSubmit.bind(this)}
-            >
+              onClick={this.props.handleSubmit.bind(this)}>
               Search
             </button>
           </div>
@@ -307,7 +308,8 @@ class SideBar extends Component {
 
         <div className="input-group mb-3" id="form">
           <label htmlFor="searchQuery" className="mr-2" id="searchLabel">
-            Enter state/city to get information on university and colleges within your selected area.
+            Otherwise, if you are unsure of what specific school too look at, then please enter
+            a state to get information on university and colleges within your selected area.
           </label>
           <hr />
 
@@ -315,20 +317,20 @@ class SideBar extends Component {
             type="text"
             className="form-control"
             id="searchQueryDemo"
-            placeholder="Your school.."
-            aria-label="School Name"
+            placeholder="School state.."
+            name="schoolState"
+            aria-label="State Name"
             aria-describedby="basic-addon2"
-            onChange={this.props.handleUserInput.bind(this)}
-          />
+            onChange={this.props.handleUserInput.bind(this)} />
+
           <div className="input-group-append">
             <button
               className="btn btn-outline-secondary"
               id="searchButton2"
               type="button"
-              onClick={this.props.handleSubmit.bind(this)}
-            >
+              onClick={this.props.handleSubmit.bind(this)}>
               Search
-            </button>
+          </button>
           </div>
         </div>
 
@@ -337,15 +339,14 @@ class SideBar extends Component {
         <a
           href="https://www2.ed.gov/rschstat/landing.jhtml?src=pn"
           className=" DataFrom badge "
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+          target="_blank" rel="noopener noreferrer">
           Data from U.S. Department of Education.
-        </a>
+      </a>
       </div>
-    );
+    )
   }
 }
+
 
 class SchoolCardSection extends Component {
 
@@ -364,7 +365,7 @@ class SchoolCard extends Component {
     const { Schooldetails } = this.props;
     return (
       <div>
-        <div className='cards' style={{ width: 26 + 'em' }}>
+        <div className='cards' style={{ width: 24 + 'em' }}>
           <div className="card mb-4">
             <div className="card-header" id="card-header-blue">
               <strong>{Schooldetails.name}</strong>
