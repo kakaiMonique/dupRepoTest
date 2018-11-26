@@ -1,4 +1,4 @@
-document.getElementById("searchButton").addEventListener("click", function(e) {
+document.getElementById("searchButton").addEventListener("click", function (e) {
   e.preventDefault();
 
   var searchQuery = $("#searchQuery").val();
@@ -14,16 +14,16 @@ function fetchSchool(searchQuery) {
     "&_fields=school.name,school.city,school.state,school.school_url,latest.admissions.admission_rate.overall,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state,latest.cost.tuition.in_state,latest.aid.students_with_any_loan,latest.student.size&api_key=TH798jh0Un4LIFZvxWD5iyBwYKSDCpRLVZEWDdR5";
 
   fetch(fetchThis)
-    .then(function(res) {
+    .then(function (res) {
       return res.json();
     })
-    .then(function(data) {
+    .then(function (data) {
       // document.getElementById("loading").style.display = 'none';
 
       renderSearchResults(data);
     })
 
-    .catch(function(error) {
+    .catch(function (error) {
       alert(error);
     });
 }
@@ -35,6 +35,9 @@ function renderSearchResults(schoolObjs) {
     ${schoolObjs.results.map(schoolCard).join("")}`;
 }
 
+if (Schooldetails.AverageSATScore === null) {
+  Schooldetails.AverageSATScore = "Unreported";
+}
 function schoolCard(school) {
   var schoolAcceptanceRate = parseFloat(
     school["latest.admissions.admission_rate.overall"]
@@ -59,40 +62,38 @@ function schoolCard(school) {
 
                     <div class="card mb-4">
                             <div class="card-header" id= "card-header-blue">${
-                              school["school.name"]
-                            }
+    school["school.name"]
+    }
                             <br><h7 class="card-subtitle mb-6 text-muted ">${school[
-                              "school.city"
-                            ] +
-                              "," +
-                              " " +
-                              school["school.state"]}</h7>
+    "school.city"
+    ] +
+    "," +
+    " " +
+    school["school.state"]}</h7>
                             </div>
                         <div class="card-body">
                             <p class="card-text">Acceptance Rate:  <strong>${schoolAcceptanceRate *
-                              100 +
-                              "%"}</strong></p>
+    100 +
+    "%"}</strong></p>
                             <p class="card-text">Average SAT Score:  <strong>${
-                              school[
-                                "latest.admissions.sat_scores.average.overall"
-                              ]
-                            }</strong></p>
+    school[
+    "latest.admissions.sat_scores.average.overall"
+    ]
+    }</strong></p>
                             <p class="card-text">Out of state tuition:  <strong>$${
-                              school["latest.cost.tuition.out_of_state"]
-                            }</strong></p>
+    school["latest.cost.tuition.out_of_state"]
+    }</strong></p>
                             <p class="card-text">In state tuition:  <strong>$${
-                              school["latest.cost.tuition.in_state"]
-                            }</p></strong>
+    school["latest.cost.tuition.in_state"]
+    }</p></strong>
                             <p class="card-text">Students with any loan:  <strong>${studentLoan *
-                              100 +
-                              "%"}</p></strong>
+    100 +
+    "%"}</p></strong>
                             <p class="card-text">Students Size:  <strong>${
-                              school["latest.student.size"]
-                            }</p></strong>
+    school["latest.student.size"]
+    }</p></strong>
                             <hr>
-                            <a href="https://${
-                              school["school.school_url"]
-                            }" target="_blank" class="btn btn-dark  btn-md">Website</a>
+                            <a href="https://${school["school.school_url"]}" target="_blank" class="btn btn-dark  btn-md">Website</a>
                         </div>
                     </div>
                     </div>
@@ -103,7 +104,7 @@ function schoolCard(school) {
 
 /**********************************************/
 
-document.getElementById("searchButton2").addEventListener("click", function(e) {
+document.getElementById("searchButton2").addEventListener("click", function (e) {
   e.preventDefault();
 
   var searchQueryDemo = $("#searchQueryDemo").val();
@@ -130,16 +131,16 @@ function fetchSchoolDemo(searchQueryDemo) {
   ].join("");
 
   fetch(fetchThisDemo)
-    .then(function(res) {
+    .then(function (res) {
       return res.json();
     })
-    .then(function(data) {
+    .then(function (data) {
       // document.getElementById("loading").style.display = 'none';
 
       renderSearchResultsDemo(data);
     })
 
-    .catch(function(error) {
+    .catch(function (error) {
       alert(error);
     });
 }
@@ -167,7 +168,7 @@ function schoolDemo(school) {
       race: "Non-Resident",
       number: (
         school[
-          "latest.student.demographics.race_ethnicity.non_resident_alien"
+        "latest.student.demographics.race_ethnicity.non_resident_alien"
         ] * 100
       ).toFixed(2)
     },
@@ -249,7 +250,7 @@ function schoolDemo(school) {
     .innerRadius(radius * 0.9)
     .outerRadius(radius * 0.9);
   // make a pie constructor
-  var pie = d3.pie().value(function(d) {
+  var pie = d3.pie().value(function (d) {
     return d.number;
   });
   var stencil = pie(dataset);
@@ -286,18 +287,18 @@ function schoolDemo(school) {
     .attr("stroke", "white")
     .attr("stroke-width", 3)
     .attr("d", arc)
-    .attr("fill", function(d, i) {
+    .attr("fill", function (d, i) {
       return color(i);
     });
 
   g.append("text")
-    .attr("transform", function(d) {
+    .attr("transform", function (d) {
       return "translate(" + label.centroid(d) + ")";
     })
     .style("font-size", "12px")
     .attr("dy", "0.8em")
     .attr("text-anchor", "middle")
-    .text(function(d, i) {
+    .text(function (d, i) {
       return singleSchoolDemo[i].race;
     });
 
@@ -306,7 +307,8 @@ function schoolDemo(school) {
     .attr("fill", "#000")
     .style("font-size", "16px")
     .style("font-weight", "300")
-    .text(function(d, i) {
+    .text(function (d, i) {
       return singleSchoolDemo[i].school;
     });
 } //function schoolDemo ends
+

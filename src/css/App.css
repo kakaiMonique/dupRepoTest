@@ -23,64 +23,6 @@ body {
 
 /* SideNav *************************************/
 
-.overlay, .sideMenu {
-    position: fixed;
-    bottom: 0
-}
-
-.overlay {
-    top: 0;
-    left: -100%;
-    right: 100%;
-    margin: auto;
-    background-color: rgba(255, 255, 255, .5);
-    z-index: 998;
-    transition: all ease 0.2s
-}
-
-.overlay.open {
-    left: 0;
-    right: 0
-}
-
-.sidebarNavigation {
-    margin-bottom: 0;
-    z-index: 999;
-    justify-content: flex-start
-}
-
-.sidebarNavigation .leftNavbarToggler {
-    margin-right: 10px;
-    order: -1
-}
-
-.sideMenu {
-    left: -100%;
-    top: 58px;
-    transition: all ease-in-out 0.5s;
-    overflow: hidden;
-    width: 30%;
-    z-index: 999;
-    max-width: 80%;
-    margin-bottom: 0;
-    padding: 1rem;
-    border-bottom-right-radius: 5px;
-}
-
-.sideMenu.open {
-    left: 0;
-    display: block;
-    overflow-y: auto
-}
-
-.sideMenu ul {
-    margin: 0;
-    padding: 0 15px;
-    color: var(--puregrey);
-    font-size: 20px;
-    font-weight: 600;
-}
-
 .navbar {
     background-color: var(--darkgrey);
 }
@@ -128,6 +70,74 @@ nav .NavLinkz {
     width: 100%;
 }
 
+/**** Home */
+
+.Home {
+    width: 100%;
+    height: 100vh;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.HomeContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+#HomeLeft {
+    width: 55%;
+    height: 100vh;
+}
+
+#HomeRight {
+    width: 45%;
+    height: 100vh;
+}
+
+#HRcontainer {
+    margin-top: 6em;
+    padding: 3em;
+}
+
+#HomeILL {
+    width: 85%;
+    height: 85%;
+    margin: auto;
+    background-image: url('../imgs/homebgResponsive.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+
+.HomeH1 {
+    color: var(--darkgrey);
+    font-weight: 700;
+    font-size: 60px;
+    margin: 0;
+}
+
+.HomeH2 {
+    color: var(--darkgrey);
+    font-weight: 300;
+    font-size: 50px;
+    margin: 0;
+}
+
+.HomeP {
+    margin-top: 1.5em;
+    color: var(--darkgrey);
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 30px;
+}
+
+.HomeBtn {
+    width: 110px;
+    height: 40px;
+    margin-top: 1em;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.40);
+}
+
 /*Body Elements********************************/
 
 /**** find css */
@@ -161,7 +171,7 @@ nav .NavLinkz {
 }
 
 .DataFrom {
-    margin-top: 20em;
+    margin-top: 10em;
     text-decoration: none;
     color: var(--puregrey)
 }
@@ -208,11 +218,6 @@ footer {
 
 @media (min-width: 300px) and (max-width: 960px) {
     /*Tables and smaller*/
-    .navbar-brand .navBrand {
-        margin-left: 8em;
-        font-size: 20px;
-        font-weight: 600;
-    }
     .findWrapper {
         display: block;
         overflow: hidden;
@@ -223,10 +228,6 @@ footer {
     }
     .card:hover {
         transform: none;
-    }
-    .navbar-nav>li.nav-item.active>a.nav-link {
-        text-decoration: none;
-        color: var(--darkgrey);
     }
     #searchResultsWrap {
         padding: 2em;
@@ -257,9 +258,7 @@ footer {
 
 /*add tablet Landscape*/
 
-@media (min-width: 960px) and (max-width: 1280px) {
-    /*laptop and larger*/
-}
+@media (min-width: 960px) and (max-width: 1280px) {}
 
 @media(min-width: 1281px) {
     /*desktop and larger*/
