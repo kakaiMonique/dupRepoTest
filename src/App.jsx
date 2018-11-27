@@ -7,7 +7,7 @@ class App extends Component {
     super(props);
     this.state = {
       schools: [],
-      input: ''
+      input: null
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,8 +23,6 @@ class App extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
-    this.fetchData(this.state.input)
   }
 
   fetchData(SearchQuery) {
@@ -40,14 +38,17 @@ class App extends Component {
 
     if (states.includes(SearchQuery)) {
 
+
       fetchThis = `https://api.data.gov/ed/collegescorecard/v1/schools?school.state=${SearchQuery}&_fields=school.name,school.city,school.state,school.school_url,latest.admissions.admission_rate.overall,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state,latest.cost.tuition.in_state,latest.aid.students_with_any_loan,latest.student.size&api_key=TH798jh0Un4LIFZvxWD5iyBwYKSDCpRLVZEWDdR5`;
       console.log(fetchThis + "school state");
+
 
     }
     else {
       fetchThis = `https://api.data.gov/ed/collegescorecard/v1/schools?school.name=${SearchQuery}&_fields=school.name,school.city,school.state,school.school_url,latest.admissions.admission_rate.overall,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state,latest.cost.tuition.in_state,latest.aid.students_with_any_loan,latest.student.size&api_key=TH798jh0Un4LIFZvxWD5iyBwYKSDCpRLVZEWDdR5`;
       console.log(fetchThis + "school name");
     }
+
 
     fetch(fetchThis)
       .then(res => {
@@ -85,7 +86,7 @@ class App extends Component {
           </section>
 
           <section>
-            <div className="findWrapper ">
+            <div className="findWrapper " id="SchoolFilterSection">
               <div className="leftWrapper">
                 <div className="container-fluid">
 
@@ -96,11 +97,11 @@ class App extends Component {
               </div>
 
               <div className="rightWrapper">
-                <div className="row searchResultsWrap2" id="searchResultsWrap">
 
-                  <SchoolCardSection schoolData={this.state.schools} />
 
-                </div>
+                <SchoolCardSection schoolData={this.state.schools} />
+
+
               </div>
             </div>
 
@@ -175,7 +176,6 @@ class Footer extends Component {
   }
 }
 
-
 class Navigation extends Component {
 
   render() {
@@ -202,13 +202,13 @@ class Navigation extends Component {
               </ul>
               <ul className="nav navbar-nav NavLinkz">
                 <li className="nav-item ">
-                  <a className="nav-link" href="index.html">
+                  <a className="nav-link" href="#Home">
                     Home
               </a>
                 </li>
-                <li className="nav-item active">
-                  <a className="nav-link active" href="find.html">
-                    Find<span className="sr-only">(current)</span>
+                <li className="nav-item ">
+                  <a className="nav-link " href="#SchoolFilterSection">
+                    Find
                   </a>
                 </li>
                 <li className="nav-item">
@@ -228,7 +228,7 @@ class Navigation extends Component {
 class Home extends Component {
   render() {
     return (
-      <section className="Home">
+      <section className="Home" id="Home">
 
         <div className="HomeContainer">
 
@@ -256,7 +256,7 @@ class Home extends Component {
                   to search and visualze.</p>
 
 
-              <a href="find.html" className=" btn btn-dark HomeBtn">Find</a>
+              <a href="#SchoolFilterSection" className=" btn btn-dark HomeBtn">Find</a>
             </div>
 
           </div>
@@ -271,16 +271,13 @@ class Home extends Component {
 class SchoolFilterSection extends Component {
   render() {
     return (
-      <div>
-
+      <div >
         <div className="input-group mb-3" id="form">
           <label htmlFor="searchQuery" className="mr-2" id="searchLabel">
             <br />
             Welcome.
           <br />
-            <br /> For finding a specific school, please include the full school
-            name and campus name. Or search away and select from related
-            results.
+            <br /> Search for schools by school name. Results will update as typed in.
           </label>
           <hr />
 
@@ -336,12 +333,15 @@ class SchoolFilterSection extends Component {
 
         <br />
         <hr />
-        <a
-          href="https://www2.ed.gov/rschstat/landing.jhtml?src=pn"
-          className=" DataFrom badge "
-          target="_blank" rel="noopener noreferrer">
-          Data from U.S. Department of Education.
+        <div className="container">
+          <a
+            href="https://www2.ed.gov/rschstat/landing.jhtml?src=pn"
+            className=" DataFrom badge "
+            target="_blank" rel="noopener noreferrer">
+            Data from U.S. Department of Education.
       </a>
+        </div>
+
       </div>
     )
   }
@@ -352,10 +352,85 @@ class SchoolCardSection extends Component {
 
   render() {
     const { schoolData } = this.props;
+
+
     return (
-      Object.keys(schoolData).map(key => (
-        <SchoolCard key={key} Schooldetails={schoolData[key]} />
-      ))
+
+      <div className="row searchResultsWrap2" id="searchResultsWrap">
+
+        {
+
+          Object.keys(schoolData).map(key => (
+            <SchoolCard key={key} Schooldetails={schoolData[key]} />
+          ))
+        }
+        <h3 className="searchTextPH">Featured schools</h3>
+
+        <div className='cards' style={{ width: 25 + 'em' }}>
+
+          <div className="card mb-4">
+            <div className="card-header" id="card-header-blue">University of Washington-Seattle Campus
+              <br />
+              <br />
+              <h6 className="card-subtitle mb-6 text-muted ">Seattle, WA</h6>
+            </div>
+            <div className="card-body">
+              <p className="card-text">Acceptance Rate: <strong>45%</strong></p>
+              <p className="card-text">Average SAT Score: <strong>1266</strong></p>
+              <p className="card-text">Out of state tuition: <strong>$34791</strong></p>
+              <p className="card-text">In state tuition: <strong>$10753</strong></p>
+              <p className="card-text">Students with any loan: <strong>71%</strong></p>
+              <p className="card-text">Students Size: <strong>29831</strong></p>
+              <hr />
+              <a href="https://www.washington.edu" target="_blank" className="btn btn-dark  btn-md">Website</a>
+
+            </div>
+          </div>
+        </div>
+
+        <div className='cards' style={{ width: 25 + 'em' }}>
+          <div className="card mb-4">
+            <div className="card-header" id="card-header-blue">Yale University
+              <br />
+              <br />
+              <h6 className="card-subtitle mb-6 text-muted ">New Haven, CT</h6>
+            </div>
+            <div className="card-body">
+              <p className="card-text">Acceptance Rate: <strong>6%</strong></p>
+              <p className="card-text">Average SAT Score: <strong>1502</strong></p>
+              <p className="card-text">Out of state tuition: <strong>$49480</strong></p>
+              <p className="card-text">In state tuition: <strong>$50480</strong></p>
+              <p className="card-text">Students with any loan: <strong>45%</strong></p>
+              <p className="card-text">Students Size: <strong>5471</strong></p>
+              <hr />
+              <a href="https://www.yale.edu" target="_blank" className="btn btn-dark  btn-md">Website</a>
+            </div>
+          </div>
+        </div>
+
+        <div className='cards' style={{ width: 25 + 'em' }}>
+          <div className="card mb-4">
+            <div className="card-header" id="card-header-blue">Seattle Central College
+              <br />
+              <br />
+              <h6 className="card-subtitle mb-6 text-muted ">Seattle, WA</h6>
+            </div>
+            <div className="card-body">
+              <p className="card-text">Acceptance Rate: <strong>Unreported</strong></p>
+              <p className="card-text">Average SAT Score: <strong>Unreported</strong></p>
+              <p className="card-text">Out of state tuition: <strong>$4332</strong></p>
+              <p className="card-text">In state tuition: <strong>$39253</strong></p>
+              <p className="card-text">Students with any loan: <strong>27%</strong></p>
+              <p className="card-text">Students Size: <strong>3398</strong></p>
+              <hr />
+              <a href="https://seattlecentral.edu" target="_blank" className="btn btn-dark  btn-md">Website</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
     )
   }
 }
@@ -365,7 +440,7 @@ class SchoolCard extends Component {
     const { Schooldetails } = this.props;
     return (
       <div>
-        <div className='cards' style={{ width: 24 + 'em' }}>
+        <div className='cards' style={{ width: 25 + 'em' }}>
           <div className="card mb-4">
             <div className="card-header" id="card-header-blue">
               <strong>{Schooldetails.name}</strong>
