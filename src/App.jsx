@@ -17,13 +17,13 @@ class App extends Component {
   }
 
   handleUserInput(e) {
+    
     this.setState({ input: (e.target.value).toUpperCase() });
     this.fetchData(this.state.input);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-
     this.fetchData(this.state.input)
   }
 
@@ -36,9 +36,9 @@ class App extends Component {
       "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"]
 
     let fetchThis;
-
-
-    if (states.includes(SearchQuery)) {
+    console.log("This is searchQuery: " + SearchQuery)
+    // states.includes(SearchQuery)
+    if (states.indexOf(SearchQuery) > -1) {
 
       fetchThis = `https://api.data.gov/ed/collegescorecard/v1/schools?school.state=${SearchQuery}&_fields=school.name,school.city,school.state,school.school_url,latest.admissions.admission_rate.overall,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state,latest.cost.tuition.in_state,latest.aid.students_with_any_loan,latest.student.size&api_key=TH798jh0Un4LIFZvxWD5iyBwYKSDCpRLVZEWDdR5`;
       console.log(fetchThis + "school state");
