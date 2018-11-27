@@ -17,10 +17,9 @@ class App extends Component {
   }
 
   handleUserInput(e) {
-    console.log("handle User Input: " + e.target.value)
-    this.setState({ input: (e.target.value).toUpperCase() });
-
-    this.fetchData(this.state.input);
+    this.setState({ input: (e.target.value).toUpperCase() }, () => {
+      this.fetchData(this.state.input);
+    });
   }
 
   handleSubmit(e) {
@@ -41,15 +40,17 @@ class App extends Component {
     // states.includes(SearchQuery)
     if (states.indexOf(SearchQuery) > -1) {
 
+      console.log(SearchQuery.length);
+
 
       fetchThis = `https://api.data.gov/ed/collegescorecard/v1/schools?school.state=${SearchQuery}&_fields=school.name,school.city,school.state,school.school_url,latest.admissions.admission_rate.overall,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state,latest.cost.tuition.in_state,latest.aid.students_with_any_loan,latest.student.size&api_key=TH798jh0Un4LIFZvxWD5iyBwYKSDCpRLVZEWDdR5`;
-      console.log(fetchThis + "school state");
+      console.log(fetchThis)
 
 
     }
     else {
       fetchThis = `https://api.data.gov/ed/collegescorecard/v1/schools?school.name=${SearchQuery}&_fields=school.name,school.city,school.state,school.school_url,latest.admissions.admission_rate.overall,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state,latest.cost.tuition.in_state,latest.aid.students_with_any_loan,latest.student.size&api_key=TH798jh0Un4LIFZvxWD5iyBwYKSDCpRLVZEWDdR5`;
-      console.log(fetchThis + "school name");
+      console.log(fetchThis)
     }
 
 
@@ -184,45 +185,45 @@ class Navigation extends Component {
   render() {
     return (
       <header>
-        <div className="container">
-          <nav className="navbar fixed-top navbar-expand-lg">
 
-            <a className="navbar-brand" href="index.html">
-              <h3 className="navBrand">CollegeStudio</h3>
-            </a>
-            <button
-              className="navbar-toggler collapsed"
-              type="button" data-toggle="collapse"
-              data-target="#navbarNavDropdown"
-              aria-controls="navbarNavDropdown"
-              aria-expanded="false"
-              aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-            </button>
+        <nav className="navbar fixed-top navbar-expand-lg">
 
-            <div id="navbarNavDropdown" className="navbar-collapse collapse">
-              <ul className="navbar-nav mr-auto">
-              </ul>
-              <ul className="nav navbar-nav NavLinkz">
-                <li className="nav-item ">
-                  <a className="nav-link" href="#Home">
-                    Home
+          <a className="navbar-brand" href="index.html">
+            <h3 className="navBrand">CollegeStudio</h3>
+          </a>
+          <button
+            className="navbar-toggler collapsed"
+            type="button" data-toggle="collapse"
+            data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+
+          <div id="navbarNavDropdown" className="navbar-collapse collapse">
+            <ul className="navbar-nav mr-auto">
+            </ul>
+            <ul className="nav navbar-nav NavLinkz">
+              <li className="nav-item ">
+                <a className="nav-link" href="#Home">
+                  Home
               </a>
-                </li>
-                <li className="nav-item ">
-                  <a className="nav-link " href="#SchoolFilterSection">
-                    Find
+              </li>
+              <li className="nav-item ">
+                <a className="nav-link " href="#SchoolFilterSection">
+                  Find
                   </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="about.html">
-                    About
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="about.html">
+                  About
               </a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
       </header>
     );
   }
@@ -368,7 +369,7 @@ class SchoolCardSection extends Component {
             <SchoolCard key={key} Schooldetails={schoolData[key]} />
           ))
         }
-        <h3 className="searchTextPH">Featured schools</h3>
+        <h2 className="searchTextPH">Featured schools</h2>
 
         <div className='cards' style={{ width: 25 + 'em' }}>
 
@@ -386,7 +387,7 @@ class SchoolCardSection extends Component {
               <p className="card-text">Students with any loan: <strong>71%</strong></p>
               <p className="card-text">Students Size: <strong>29831</strong></p>
               <hr />
-              <a href="https://www.washington.edu" target="_blank" className="btn btn-dark  btn-md">Website</a>
+              <a href="https://www.washington.edu" target="_blank" rel="noopener noreferrer" className="btn btn-dark  btn-md">Website</a>
 
             </div>
           </div>
@@ -407,7 +408,7 @@ class SchoolCardSection extends Component {
               <p className="card-text">Students with any loan: <strong>45%</strong></p>
               <p className="card-text">Students Size: <strong>5471</strong></p>
               <hr />
-              <a href="https://www.yale.edu" target="_blank" className="btn btn-dark  btn-md">Website</a>
+              <a href="https://www.yale.edu" target="_blank" rel="noopener noreferrer" className="btn btn-dark  btn-md">Website</a>
             </div>
           </div>
         </div>
@@ -427,7 +428,7 @@ class SchoolCardSection extends Component {
               <p className="card-text">Students with any loan: <strong>27%</strong></p>
               <p className="card-text">Students Size: <strong>3398</strong></p>
               <hr />
-              <a href="https://seattlecentral.edu" target="_blank" className="btn btn-dark  btn-md">Website</a>
+              <a href="https://seattlecentral.edu" target="_blank" rel="noopener noreferrer" className="btn btn-dark  btn-md">Website</a>
             </div>
           </div>
         </div>
@@ -444,7 +445,7 @@ class SchoolCard extends Component {
     const { Schooldetails } = this.props;
     return (
       <div>
-        <div className='cards' style={{ width: 25 + 'em' }}>
+        <div className='cards' style={{ width: 26 + 'em' }}>
           <div className="card mb-4">
             <div className="card-header" id="card-header-blue">
               <strong>{Schooldetails.name}</strong>
