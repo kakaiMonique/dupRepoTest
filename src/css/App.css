@@ -96,7 +96,7 @@ nav .NavLinkz {
 }
 
 #HRcontainer {
-    margin-top: 6em;
+    margin-top: 10em;
     padding: 3em;
 }
 
@@ -159,7 +159,7 @@ nav .NavLinkz {
     order: 2;
     width: 100%;
     height: auto;
-    background-color: var(--darkgrey)
+    background-color: white;
 }
 
 #form {
@@ -188,7 +188,7 @@ nav .NavLinkz {
 }
 
 .searchTextPH {
-    color: var(--offwhite);
+    color: var(--darkgrey);
     text-align: center;
     flex: 0 0 100%;
 }
@@ -231,6 +231,9 @@ footer {
 
 @media (min-width: 300px) and (max-width: 960px) {
     /*Tables and smaller*/
+    nav .navbar-nav li a::after {
+        display: none;
+    }
     .findWrapper {
         display: block;
         overflow: hidden;
@@ -289,6 +292,9 @@ footer {
 
 @media (min-width: 768px) and (max-width: 960px) {
     /*Tables Portrait*/
+    nav .navbar-nav li a::after {
+        display: none;
+    }
     .findWrapper {
         display: block;
         overflow: hidden;
