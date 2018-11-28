@@ -59,6 +59,7 @@ class App extends Component {
         return res.json();
       })
       .then(
+
         data => data.results.map(school => ({
           name: `${school["school.name"]}`,
           location: `${school["school.city"]},${school["school.state"]}`,

@@ -4,7 +4,7 @@ This repository contains code for an interactive web app, created for the _Clien
 
 The site can be viewed at <https://info340-au18.github.io/project-yourusername/>
 
-https://info340a-au18.github.io/react-3ickey/
+https://info340c-au18.github.io/react-3ickey/
 
 College studio is a college finding web app created by Mickey Lema and Kyra Bautista.
 With this app, users can search potential schools based on school name or school state.
