@@ -17,12 +17,19 @@ body {
     padding: 0px;
     width: 100%;
     height: 100%;
+    background-color: var(--offwhite)
 }
 
 /*Body Elements********************************/
 
-h1, h2, h3, h4, h5, h6, ul, ol, p {
+h1, h2, h3, h4, h5, h6, p {
     color: var(--darkgrey);
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    margin-left: 10px;
 }
 
 a {
@@ -44,6 +51,13 @@ p {
 
 #SectionAbout {
     margin-top: 8em;
+    padding-top: 1em;
+    padding-bottom: 5em;
+}
+
+#Usage {
+    padding-top: 4em;
+    padding-bottom: 4em;
 }
 
 .cardImg {
@@ -60,10 +74,8 @@ p {
 #team {
     width: 100%;
     height: auto;
-    margin-top: 5em;
-    margin-bottom: 5em;
     padding-top: 1em;
-    padding-bottom: 1em;
+    padding-bottom: 5em;
     background-color: var(--darkgrey)
 }
 

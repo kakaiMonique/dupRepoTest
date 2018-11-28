@@ -1,13 +1,8 @@
 import React, { Component } from "react";
 import "./css/App.css";
 import About from "./About";
-import {
-  BrowserRouter,
-  Route,
-  Link,
-  Switch,
-  NavLink
-} from 'react-router-dom'
+import { Route, Switch, NavLink } from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
 
 class App extends Component {
   constructor(props) {
@@ -74,7 +69,7 @@ class App extends Component {
       .catch(error => {
         alert(error);
       });
-    }
+  }
 
   render() {
     return (
@@ -82,21 +77,16 @@ class App extends Component {
         <Navigation />
         <main>
           <Switch>
-            <Route exact path='/home' render={(routerProps) => {
-              return <SearchPage {...routerProps} schoolData={this.state.schools} handleUserInput={this.handleUserInput} handleSubmit={this.handleSubmit}/>
+            <Route exact path='/' render={(routerProps) => {
+              return <SearchPage {...routerProps} schoolData={this.state.schools} handleUserInput={this.handleUserInput} handleSubmit={this.handleSubmit} />
             }} />
             <Route path="/about" component={About} />
           </Switch>
-          <section>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js" />
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.1.1/es6-promise.auto.js" />
-          </section>
-        </main>
 
-        <section>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js" />
           <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.1.1/es6-promise.auto.js" />
-        </section>
+
+        </main>
 
         <footer className="page-footer font-small unique-color-dark">
           <Footer />
@@ -134,7 +124,7 @@ class Navigation extends Component {
       <header>
         <nav className="navbar fixed-top navbar-expand-lg">
           <a className="navbar-brand" href="index.html">
-            <Link to="/home"><h3 className="navBrand">CollegeStudio</h3></Link>
+            <Link to="/#Home"><h3 className="navBrand">CollegeStudio</h3></Link>
           </a>
           <button
             className="navbar-toggler collapsed"
@@ -150,7 +140,7 @@ class Navigation extends Component {
             <ul className="navbar-nav mr-auto"></ul>
             <ul className="nav navbar-nav NavLinkz">
               <li className="nav-item ">
-                <NavLink to="/home" className="nav-link">Home</NavLink>
+                <Link to="/#Home" className="nav-link">Home</Link>
               </li>
               <li className="nav-item ">
                 <a className="nav-link " href="#SideBar">
@@ -204,14 +194,14 @@ class SideBar extends Component {
       <div >
         <div className="input-group mb-3" id="form">
           <label htmlFor="searchQuery" className="mr-2" id="searchLabel">
-          <br />
+            <br />
             Welcome.
           <br />
-          <br /> 
-            Search for the perfect school by entering the name of the university, community college, 
+            <br />
+            Search for the perfect school by entering the name of the university, community college,
             or grad school. Results will update as partial or complete names.
           <br />
-          <br />
+            <br />
 
           </label>
           <hr />
@@ -223,7 +213,7 @@ class SideBar extends Component {
             name="schoolName"
             aria-label="School Name"
             aria-describedby="basic-addon2"
-            onChange={this.props.handleUserInput.bind(this)} 
+            onChange={this.props.handleUserInput.bind(this)}
           />
 
           <div className="input-group-append">
@@ -293,8 +283,9 @@ class SchoolCardSection extends Component {
             <SchoolCard key={key} Schooldetails={schoolData[key]} />
           ))
         }
+
         <h2 className="searchTextPH">Featured schools</h2>
-        <div className='cards' style={{ width: 25 + 'em' }}>
+        <div className='cards' style={{ width: 26 + 'em' }}>
           <div className="card mb-4">
             <div className="card-header" id="card-header-blue">University of Washington-Seattle Campus
               <br />
@@ -314,7 +305,7 @@ class SchoolCardSection extends Component {
           </div>
         </div>
 
-        <div className='cards' style={{ width: 25 + 'em' }}>
+        <div className='cards' style={{ width: 26 + 'em' }}>
           <div className="card mb-4">
             <div className="card-header" id="card-header-blue">Yale University
               <br />
@@ -334,7 +325,7 @@ class SchoolCardSection extends Component {
           </div>
         </div>
 
-        <div className='cards' style={{ width: 25 + 'em' }}>
+        <div className='cards' style={{ width: 26 + 'em' }}>
           <div className="card mb-4">
             <div className="card-header" id="card-header-blue">Seattle Central College
               <br />
@@ -424,5 +415,3 @@ class Footer extends Component {
 }
 
 export default App
-
-export { Navigation, Footer }
