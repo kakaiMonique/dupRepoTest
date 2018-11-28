@@ -6,9 +6,7 @@ class About extends Component {
     render() {
         return (
             <div>
-
                 <div className="container">
-
                     <section id="SectionAbout">
                         <h1>About</h1>
                         <p className="lead">
@@ -19,24 +17,16 @@ class About extends Component {
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae mollitia et, assumenda modi odio
                             quo fugiat, optio recusandae voluptate illum amet quae ad non dolores eligendi exercitationem quod iure
                             consequatur.
-                                <br />
+                            <br />
                             <br />
                             The creation of this web app in this space is to simply
                             address the inaccessibility of colleges information and to present it with beautiful UI elements that
-                                will make the user experience a lot better than what we experience on the web today. Tailored for:</p>
-
+                            will make the user experience a lot better than what we experience on the web today. Tailored for:</p>
                         <ul>
-                            <li>
-                                High school Gradates
-                                </li>
-                            <li>
-                                Transferring students
-                                 </li>
-                            <li>
-                                And simply for anyone who’s interested in finding out more about a college.
-                                 </li>
+                            <li>High school Gradates</li>
+                            <li>Transferring students</li>
+                            <li>And simply for anyone who’s interested in finding out more about a college.</li>
                         </ul>
-
                     </section>
                 </div>
 
@@ -48,26 +38,30 @@ class About extends Component {
                                 <img className="card-img-top cardImg" src='/imgs/alex-iby-343837-unsplash.jpg' alt="Team member one" />
                                 <div className="card-body">
                                     <h5 className="card-title">Mikias Lema</h5>
-                                    <p className="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex hic, debitis,
-                                                             nulla incidunt est earum perspiciatis fugit rerum ipsam dolorem exercitationem vitae.</p>
+                                    <p className="card-text">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex hic, debitis,
+                                        nulla incidunt est earum perspiciatis fugit rerum ipsam dolorem exercitationem vitae.
+                                    </p>
                                 </div>
                             </div>
                             <div className="card">
                                 <img className="card-img-top cardImg" src='/imgs/eric-froehling-311481-unsplash.jpg' alt="Team member two" />
                                 <div className="card-body">
-                                    <h5 className="card-title">Eric Forehling</h5>
-                                    <p className="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex hic, debitis,
-                                                             nulla incidunt est earum perspiciatis fugit rerum ipsam dolorem exercitationem vitae.</p>
-
+                                    <h5 className="card-title">Kyra Bautista</h5>
+                                    <p className="card-text">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex hic, debitis,
+                                        nulla incidunt est earum perspiciatis fugit rerum ipsam dolorem exercitationem vitae.
+                                    </p>
                                 </div>
                             </div>
                             <div className="card">
                                 <img className="card-img-top cardImg" src='/imgs/albert-dera-397063-unsplash.jpg' alt="Team member three" />
                                 <div className="card-body">
-                                    <h5 className="card-title">Albert Dera</h5>
-                                    <p className="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex hic, debitis,
-                                                             nulla incidunt est earum perspiciatis fugit rerum ipsam dolorem exercitationem vitae.</p>
-
+                                    <h5 className="card-title">Ebi fry no shippo</h5>
+                                    <p className="card-text">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex hic, debitis,
+                                        nulla incidunt est earum perspiciatis fugit rerum ipsam dolorem exercitationem vitae.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -75,9 +69,7 @@ class About extends Component {
                 </section>
                 <div className="container">
                     <section>
-                        <h3>
-                            Usage
-                            </h3>
+                        <h3>Usage</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
                             Quia a, velit sint dignissimos labore, odit sed, sunt
                             similique nihil voluptatibus maxime rem eius id
@@ -89,27 +81,22 @@ class About extends Component {
                             elit.
                             Quia a, velit sint dignissimos labore, odit sed, sunt
                             similique nihil voluptatibus maxime rem eius id
-                                necessitatibus minima nobis unde ipsum sapiente.</p>
-
+                            necessitatibus minima nobis unde ipsum sapiente.
+                        </p>
                         <ol>
                             <li>
                                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio voluptatibus quisquam
                                 dignissimos dolor sed inventore officiis praesentium omnis, nobis nihil eveniet magni nisi non
-                                        natus. Sint nemo asperiores in eveniet. </li>
-
-                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam aliquid tempore eligendi
+                                natus. Sint nemo asperiores in eveniet. 
+                            </li>
+                            <li>
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam aliquid tempore eligendi
                                 suscipit modi! Rerum harum consequatur nisi. Sit temporibus voluptatibus, fuga illo repudiandae
-                                        eius sapiente aperiam deleniti dolore quod!</li>
-
+                                eius sapiente aperiam deleniti dolore quod!
+                            </li>
                         </ol>
-
-
                     </section>
-
                 </div>
-
-
-
             </div>
         );
     }
