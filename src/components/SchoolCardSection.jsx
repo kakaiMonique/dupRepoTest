@@ -4,14 +4,13 @@ import SchoolCard from "./SchoolCard"
  class SchoolCardSection extends Component {
     render() {
       const { schoolData } = this.props;
-      return (
+      let content = (
         <div className="row searchResultsWrap2" id="searchResultsWrap">
           {
             Object.keys(schoolData).map(key => (
               <SchoolCard key={key} Schooldetails={schoolData[key]} />
             ))
           }
-  
           <h2 className="searchTextPH">Featured schools</h2>
           <div className='cards' style={{ width: 26 + 'em' }}>
             <div className="card mb-4">
@@ -73,6 +72,18 @@ import SchoolCard from "./SchoolCard"
             </div>
           </div>
         </div>
+      )
+
+      let favorites = null;
+      if(this.props.currentUser) {
+        favorites = <p>You are logged in!</p>;
+      }
+
+      return (
+        <React.Fragment>
+          {favorites}
+          {content}
+        </React.Fragment>
       )
     }
   }

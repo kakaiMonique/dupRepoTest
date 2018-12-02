@@ -1,5 +1,6 @@
 import React, { Component } from "react";
  class SideBar extends Component {
+ 
     render() {
       return (
         <div >
@@ -24,7 +25,7 @@ import React, { Component } from "react";
               name="schoolName"
               aria-label="School Name"
               aria-describedby="basic-addon2"
-              onChange={this.props.handleUserInput.bind(this)}
+              onChange={this.props.handleUserInput}
             />
   
             <div className="input-group-append">
@@ -32,7 +33,7 @@ import React, { Component } from "react";
                 className="btn btn-outline-secondary"
                 id="searchButton"
                 type="button"
-                onClick={this.props.handleSubmit.bind(this)}>
+                onClick={this.props.handleSubmit}>
                 Search
               </button>
             </div>
@@ -56,14 +57,14 @@ import React, { Component } from "react";
               name="schoolState"
               aria-label="State Name"
               aria-describedby="basic-addon2"
-              onChange={this.props.handleUserInput.bind(this)} />
+              onChange={this.props.handleUserInput} />
   
             <div className="input-group-append">
               <button
                 className="btn btn-outline-secondary"
                 id="searchButton2"
                 type="button"
-                onClick={this.props.handleSubmit.bind(this)}>
+                onClick={this.props.handleSubmit}>
                 Search
             </button>
             </div>

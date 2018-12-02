@@ -24,12 +24,12 @@ class About extends Component {
                             will make the user experience a lot better than what we experience on the web today. Tailored for:
                             <br />
                             <br />
+                            </p>
                             <ul>
                                 <li>High school Gradates</li>
                                 <li>Transferring students</li>
                                 <li>And simply for anyone who’s interested in finding out more about a college.</li>
                             </ul>
-                        </p>
 
                     </section>
                 </div>
@@ -88,6 +88,7 @@ class About extends Component {
                             necessitatibus minima nobis unde ipsum sapiente.
                             <br />
                             <br />
+                            </p>
                             <ul>
                                 <li>
                                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio voluptatibus quisquam
@@ -100,8 +101,6 @@ class About extends Component {
                                     eius sapiente aperiam deleniti dolore quod!
                             </li>
                             </ul>
-                        </p>
-
                     </section>
                 </div>
             </div>

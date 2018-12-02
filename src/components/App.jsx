@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import "../css/App.css";
 import About from "./About";
 import SearchPage from "./SearchPage"
+import SignUpForm from "./SignUpForm.jsx"
+import firebase from 'firebase/app'
 
 
-import { Route, Switch, NavLink } from 'react-router-dom';
+import { Route, Switch} from 'react-router-dom';
 import { HashLink as Link } from 'react-router-hash-link';
 
 class App extends Component {
@@ -12,15 +14,86 @@ class App extends Component {
     super(props);
     this.state = {
       schools: [],
-      input: null
+      input: null,
+      user: null
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   componentDidMount() {
     this.fetchData();
+    this.authUnSubFunction = firebase.auth().onAuthStateChanged((firebaseUser) => {
+
+      if (firebaseUser) {
+        this.setState(
+          {
+            user: firebaseUser
+          }
+        )
+      }
+      else {
+        this.setState({ user: null })
+      }
+
+    })
+  }
+  componentWillUnmount() {
+    this.authUnSubFunction()
   }
 
+
+  handleSignUp = (email, password, name) => {
+    this.setState({ errorMessage: null }); //clear any old errors
+
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then((userCredentials) => {
+
+        let firebaseUser = userCredentials.user
+        let updatePromise = firebaseUser.updateProfile(
+          {
+            name: name
+          })
+        return updatePromise
+      })
+
+      .catch((err) => {
+        this.setState(
+          { errorMessage: err.message }
+        )
+      })
+  }
+
+  //A callback function for logging in existing users
+  handleSignIn = (email, password) => {
+    this.setState({ errorMessage: null }); //clear any old errors
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .catch((err) => {
+        this.setState(
+          { errorMessage: err.message }
+        )
+      })
+
+  }
+
+  //A callback function for logging out the current user
+  handleSignOut = () => {
+    this.setState({ errorMessage: null }); //clear any old errors
+    firebase.auth().signOut()
+      .catch((err) => {
+        this.setState(
+          { errorMessage: err.message }
+        )
+      })
+  }
+
+
+
+
+
+
+  /***************************** Form Stuff*/
   handleUserInput(e) {
     this.setState({ input: (e.target.value).toUpperCase() }, () => {
       this.fetchData(this.state.input);
@@ -81,10 +154,13 @@ class App extends Component {
         <main>
           <Switch>
             <Route exact path='/' render={(routerProps) => {
-              return <SearchPage {...routerProps} schoolData={this.state.schools} handleUserInput={this.handleUserInput} handleSubmit={this.handleSubmit} />
+              return <SearchPage {...routerProps} currentUser={this.state.user} schoolData={this.state.schools} handleUserInput={this.handleUserInput} handleSubmit={this.handleSubmit} />
             }} />
             <Route path="/about" component={About} />
-          </Switch>
+            <Route path='/SignUpForm' render={(routerProps) => {
+              return <SignUpForm {...routerProps} signUpCallback={this.handleSignUp} signInCallback={this.handleSignIn} />
+            }} />
+            </Switch>
 
           <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js" />
           <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.1.1/es6-promise.auto.js" />
@@ -105,9 +181,7 @@ class Navigation extends Component {
     return (
       <header>
         <nav className="navbar fixed-top navbar-expand-lg">
-          <a className="navbar-brand" href="index.html">
-            <Link to="/#Home"><h3 className="navBrand">CollegeStudio</h3></Link>
-          </a>
+            <Link className="navbar-brand" to="/#Home"><h3 className="navBrand">CollegeStudio</h3></Link>
           <button
             className="navbar-toggler collapsed"
             type="button" data-toggle="collapse"
@@ -119,10 +193,11 @@ class Navigation extends Component {
           </button>
 
           <div id="navbarNavDropdown" className="navbar-collapse collapse">
-            <ul className="navbar-nav mr-auto"></ul>
+            <ul className="navbar-nav mr-auto">
+            </ul>
             <ul className="nav navbar-nav NavLinkz">
               <li className="nav-item ">
-                <Link exact to="/#Home" className="nav-link">Home</Link>
+                <Link to="/#Home" className="nav-link">Home</Link>
               </li>
               <li className="nav-item ">
                 <a className="nav-link " href="/#SideBar">
@@ -133,6 +208,9 @@ class Navigation extends Component {
               <li className="nav-item">
                 <Link to="/about" className="nav-link">About</Link>
               </li>
+                <li className="n">
+                <Link to="/SignUpForm" className="nav-link">Sign Up</Link>
+                </li>
             </ul>
           </div>
         </nav>

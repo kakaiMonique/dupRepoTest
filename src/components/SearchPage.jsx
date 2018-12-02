@@ -18,7 +18,7 @@ export class SearchPage extends Component {
               </div>
             </div>
             <div className="rightWrapper">
-              <SchoolCardSection schoolData={this.props.schoolData} />
+              <SchoolCardSection currentUser={this.props.currentUser} schoolData={this.props.schoolData} />
             </div>
           </div>
         </div>
