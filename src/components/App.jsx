@@ -65,7 +65,8 @@ class App extends Component {
           StudentsSize: `${school["latest.student.size"]}`,
           SchoolWebsite: `${school["school.school_url"]}`,
           Lat: `${school['location.lat']}`,
-          Long: `${school['location.lon']}`
+          Long: `${school['location.lon']}`,
+          Favorited: false
         }))
       )
       .then(schoolResults => {
