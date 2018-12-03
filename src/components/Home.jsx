@@ -20,6 +20,7 @@ class Home extends Component {
                 fall into place: your chances of being accepted, your
                 financial aid, your happiness.Head over to the find tab
                 to search and visualze.</p>
+                <br/>
   
                 <a href="#SideBar" className=" btn btn-dark HomeBtn">Find</a>
               </div>

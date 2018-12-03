@@ -6,7 +6,7 @@ import SignUpForm from "./SignUpForm.jsx"
 import firebase from 'firebase/app'
 
 
-import { Route, Switch} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { HashLink as Link } from 'react-router-hash-link';
 import Favorites from "./Favorites";
 
@@ -156,7 +156,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navigation currentUser={this.state.user} handleSignOut={this.handleSignOut}/>
+        <Navigation currentUser={this.state.user} handleSignOut={this.handleSignOut} />
         <main>
           <Switch>
             <Route exact path='/' render={(routerProps) => {
@@ -169,14 +169,14 @@ class App extends Component {
             <Route path='/SignUpForm' render={(routerProps) => {
               return <SignUpForm {...routerProps} signUpCallback={this.handleSignUp} signInCallback={this.handleSignIn} />
             }} />
-            </Switch>
+          </Switch>
 
           <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js" />
           <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.1.1/es6-promise.auto.js" />
 
         </main>
 
-        <footer className="page-footer font-small unique-color-dark">
+        <footer className="page-footer font-small sticky-bottom">
           <Footer />
         </footer>
       </div>
@@ -189,7 +189,7 @@ class Navigation extends Component {
   render() {
     let loginLink = null
 
-    if(this.props.currentUser) {
+    if (this.props.currentUser) {
       loginLink = <Link onClick={this.props.handleSignOut} to="/#Home" className="nav-link">Sign Out</Link>
     } else {
       loginLink = <Link to="/SignUpForm" className="nav-link">Sign In</Link>
@@ -198,7 +198,7 @@ class Navigation extends Component {
     return (
       <header>
         <nav className="navbar fixed-top navbar-expand-lg">
-            <Link className="navbar-brand" to="/#Home"><h3 className="navBrand">CollegeStudio</h3></Link>
+          <Link className="navbar-brand" to="/#Home"><h3 className="navBrand">CollegeStudio</h3></Link>
           <button
             className="navbar-toggler collapsed"
             type="button" data-toggle="collapse"
@@ -225,10 +225,10 @@ class Navigation extends Component {
               <li className="nav-item">
                 <Link to="/about" className="nav-link">About</Link>
               </li>
-              
-                <li className="nav-item">
+
+              <li className="nav-item">
                 {loginLink}
-                </li>
+              </li>
             </ul>
           </div>
         </nav>
@@ -246,27 +246,26 @@ class Footer extends Component {
             <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
               <h6 className="text-uppercase font-weight-bold">CollegeStudio</h6>
               <hr className="line" />
-              <p>Home for your future school.This is how you find the perfect college—or colleges—for you</p>
+              <p>Home for your future school.This is how you find the perfect college—or colleges—for you.</p>
             </div>
             <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
               <h6 className="text-uppercase font-weight-bold">Sources</h6>
               <hr className="line" />
               <p>
-                <a className="fotterLinks" href="https://collegescorecard.ed.gov/data/documentation/">API</a>
+                <a href="https://collegescorecard.ed.gov/data/documentation/">API</a>
               </p>
             </div>
             <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
               <h6 className="text-uppercase font-weight-bold">Contact</h6>
               <hr className="line" />
               <p><i className="fa fa-home mr-3"></i> Seattle, WA 98027, US</p>
-              <p><i className="fa fa-envelope mr-3"></i> <a className="contact" href="mailto: info@example.com">info@example.com</a></p>
-              <p><i className="fa fa-phone mr-3"></i> <a className="contact" href="tel: 01 234 567 88">+ 01 234 567 88</a></p>
+              <p><i className="fa fa-envelope mr-3"></i> <a href="mailto: info@example.com">info@example.com</a></p>
+              <p><i className="fa fa-phone mr-3"></i> <a href="tel: 01 234 567 88">+ 01 234 567 88</a></p>
 
             </div>
           </div>
         </div>
-        <div className="footer-copyright text-center py-3">© 2018 Copyright
-    </div>
+        <div className="footer-copyright text-center py-3">© 2018 Copyright</div>
       </div>
     );
   }

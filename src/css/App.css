@@ -214,18 +214,25 @@ svg {
 }
 
 footer {
-    background-color: var(--offwhite);
+
+    background-color: black;
     padding: 1em;
 }
 
-.fotterLinks {
-    text-decoration: none;
-    color: var(--darkgrey)
+footer p {
+    color: var(--puregrey)
+}
+footer h6 {
+    color: white
+}
+footer .line {
+    border-color: white
 }
 
-.contact {
+
+footer p a {
     text-decoration: none;
-    color: var(--darkgrey)
+    color: var(--puregrey)
 }
 
 /*Responsive***********************/

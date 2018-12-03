@@ -38,7 +38,7 @@ class About extends Component {
                     <div className="container">
                         <h2 id="TeamH1">Our Team</h2>
                         <div className="card-deck">
-                            <div className="card">
+                            <div className="card" >
                                 <img className="card-img-top cardImg" src='../imgs/alex-iby-343837-unsplash.jpg' alt="Team member one" />
                                 <div className="card-body">
                                     <h5 className="card-title">Mikias Lema</h5>
@@ -52,6 +52,16 @@ class About extends Component {
                                 <img className="card-img-top cardImg" src='../imgs/eric-froehling-311481-unsplash.jpg' alt="Team member two" />
                                 <div className="card-body">
                                     <h5 className="card-title">Kyra Bautista</h5>
+                                    <p className="card-text">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex hic, debitis,
+                                        nulla incidunt est earum perspiciatis fugit rerum ipsam dolorem exercitationem vitae.
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="card">
+                                <img className="card-img-top cardImg" src='../imgs/albert-dera-397063-unsplash.jpg' alt="Team member three" />
+                                <div className="card-body">
+                                    <h5 className="card-title">Ebi fry no shippo</h5>
                                     <p className="card-text">
                                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex hic, debitis,
                                         nulla incidunt est earum perspiciatis fugit rerum ipsam dolorem exercitationem vitae.
