@@ -8,6 +8,7 @@ import firebase from 'firebase/app'
 
 import { Route, Switch} from 'react-router-dom';
 import { HashLink as Link } from 'react-router-hash-link';
+import Favorites from "./Favorites";
 
 class App extends Component {
   constructor(props) {
@@ -17,8 +18,10 @@ class App extends Component {
       input: null,
       user: null
     };
+
     this.handleUserInput = this.handleUserInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSignOut = this.handleSignOut.bind(this)
   }
 
   componentDidMount() {
@@ -153,13 +156,16 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navigation />
+        <Navigation currentUser={this.state.user} handleSignOut={this.handleSignOut}/>
         <main>
           <Switch>
             <Route exact path='/' render={(routerProps) => {
               return <SearchPage {...routerProps} currentUser={this.state.user} schoolData={this.state.schools} handleUserInput={this.handleUserInput} handleSubmit={this.handleSubmit} />
             }} />
             <Route path="/about" component={About} />
+            <Route path='/favorites' render={(routerProps) => {
+              return <Favorites {...routerProps} currentUser={this.state.user} />
+            }} />
             <Route path='/SignUpForm' render={(routerProps) => {
               return <SignUpForm {...routerProps} signUpCallback={this.handleSignUp} signInCallback={this.handleSignIn} />
             }} />
@@ -181,6 +187,14 @@ class App extends Component {
 
 class Navigation extends Component {
   render() {
+    let loginLink = null
+
+    if(this.props.currentUser) {
+      loginLink = <Link onClick={this.props.handleSignOut} to="/#Home" className="nav-link">Sign Out</Link>
+    } else {
+      loginLink = <Link to="/SignUpForm" className="nav-link">Sign In</Link>
+    }
+
     return (
       <header>
         <nav className="navbar fixed-top navbar-expand-lg">
@@ -203,16 +217,17 @@ class Navigation extends Component {
                 <Link to="/#Home" className="nav-link">Home</Link>
               </li>
               <li className="nav-item ">
-                <a className="nav-link " href="/#SideBar">
-                  Find
-                </a>
-                
+                <a className="nav-link " href="/#SideBar">Find</a>
+              </li>
+              <li className="nav-item">
+                <Link to="/favorites" className="nav-link">Favorites</Link>
               </li>
               <li className="nav-item">
                 <Link to="/about" className="nav-link">About</Link>
               </li>
-                <li className="n">
-                <Link to="/SignUpForm" className="nav-link">Sign Up</Link>
+              
+                <li className="nav-item">
+                {loginLink}
                 </li>
             </ul>
           </div>

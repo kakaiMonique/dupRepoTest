@@ -26,6 +26,7 @@ class SignUpForm extends Component {
   handleSignUp = (event) => {
     event.preventDefault(); //don't submit
     this.props.signUpCallback(this.state.email, this.state.password, this.state.name);
+
   }
 
   //handle signIn button
@@ -77,8 +78,8 @@ class SignUpForm extends Component {
 
               {/* buttons */}
               <div className="form-group">
-                <button className="btn btn-primary mr-2" onClick={this.handleSignUp}>Sign-up</button>
-                <button className="btn btn-primary" onClick={this.handleSignIn}>Sign-in</button>
+                <button className="btn btn-dark mr-2" onClick={this.handleSignUp}>Sign-up</button>
+                <button className="btn btn-dark" onClick={this.handleSignIn}>Sign-in</button>
               </div>
             </form>
           </div>
