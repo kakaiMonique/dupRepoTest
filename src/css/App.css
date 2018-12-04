@@ -21,6 +21,14 @@ body {
     position: relative;
 }
 
+/* map *************************/
+
+.leaflet-container {
+    height: 400px;
+    width: 80%;
+    margin: 80px auto 10px;
+}
+
 /* SideNav *************************************/
 
 .navbar {

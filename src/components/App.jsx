@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "../css/App.css";
 import About from "./About";
-import SearchPage from "./SearchPage"
+import SearchPage from "./SearchPage";
+import SchoolMap from "./SchoolMap";
 
 
 import { Route, Switch, NavLink } from 'react-router-dom';
@@ -82,6 +83,7 @@ class App extends Component {
       <div>
         <Navigation />
         <main>
+        <SchoolMap schoolData={this.state.schools} />
           <Switch>
             <Route exact path='/' render={(routerProps) => {
               return <SearchPage {...routerProps} schoolData={this.state.schools} handleUserInput={this.handleUserInput} handleSubmit={this.handleSubmit} />
