@@ -189,10 +189,10 @@ class Navigation extends Component {
   render() {
     let loginLink = null
 
-    if (this.props.currentUser) {
-      loginLink = <Link onClick={this.props.handleSignOut} to="/#Home" className="nav-link">Sign Out</Link>
-    } else {
+    if (!this.props.currentUser) {
       loginLink = <Link to="/SignUpForm" className="nav-link">Sign In</Link>
+    } else {
+      loginLink = <Link onClick={this.props.handleSignOut} to="/#Home" className="nav-link">Sign Out</Link>
     }
 
     return (
@@ -220,14 +220,14 @@ class Navigation extends Component {
                 <a className="nav-link " href="/#SideBar">Find</a>
               </li>
               <li className="nav-item">
-                <Link to="/favorites" className="nav-link">Favorites</Link>
-              </li>
-              <li className="nav-item">
                 <Link to="/about" className="nav-link">About</Link>
               </li>
-
+              <li className = "navDivider"></li>
               <li className="nav-item">
                 {loginLink}
+              </li>
+              <li className="nav-item">
+                <Link to="/favorites" className="nav-link">Favorites</Link>
               </li>
             </ul>
           </div>
