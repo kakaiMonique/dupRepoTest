@@ -8,11 +8,15 @@
 }
 
 html {
+    font-family: 'Poppins', sans-serif;
+}
+
+header {
     font-family: 'Barlow', sans-serif;
 }
 
 body {
-    font-family: 'Barlow', sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0px;
     padding: 0px;
     width: 100%;
@@ -71,11 +75,20 @@ nav .navbar-nav li a::after {
 } */
 
 nav .NavLinkz {
-    margin-right: 4em;
+    margin-right: 2em;
 }
 
 .navbar-nav>li.nav-item>a.nav-link:hover::after {
     width: 100%;
+}
+
+.navDivider {
+    height: 18px;
+    text-align: center;
+    margin-top: 12.5px;
+    margin-left: 1em;
+   
+    border-left: 1px solid white
 }
 
 /**** Home */
@@ -222,27 +235,32 @@ svg {
 }
 
 footer {
-    background-color: var(--offwhite);
+    background-color: black;
     padding: 1em;
 }
 
-.fotterLinks {
-    text-decoration: none;
-    color: var(--darkgrey)
+footer h6 {
+    color: white
 }
 
-.contact {
+footer .line {
+    border-color: white
+}
+
+footer p,a {
     text-decoration: none;
-    color: var(--darkgrey)
+    color: var(--puregrey)
 }
 
 /*Responsive***********************/
-
+/*From Phone to Tablet*/
 @media (min-width: 300px) and (max-width: 960px) {
-    /*Tables and smaller*/
     nav .navbar-nav li a::after {
         display: none;
     }
+    .navDivider {
+        display: none;
+     }
     .findWrapper {
         display: block;
         overflow: hidden;
@@ -295,12 +313,11 @@ footer {
         margin-top: 0;
         padding: 0;
     }
+    
 }
 
-/*add Phone Landscape*/
-
+/*from tablet to laptop*/
 @media (min-width: 768px) and (max-width: 960px) {
-    /*Tables Portrait*/
     nav .navbar-nav li a::after {
         display: none;
     }
@@ -314,12 +331,15 @@ footer {
     .DataFrom {
         margin-top: 0
     }
+    .navDivider {
+       display: none;
+    }
 }
 
-/*add tablet Landscape*/
-
+/*from laptop to desktop */
 @media (min-width: 960px) and (max-width: 1280px) {}
 
+ /*from desktop to larger*/
 @media(min-width: 1281px) {
-    /*desktop and larger*/
+
 }

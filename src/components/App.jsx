@@ -1,27 +1,103 @@
 import React, { Component } from "react";
 import "../css/App.css";
 import About from "./About";
-import SearchPage from "./SearchPage";
 import SchoolMap from "./SchoolMap";
+import SearchPage from "./SearchPage"
+import SignUpForm from "./SignUpForm.jsx"
+import firebase from 'firebase/app'
 
 
-import { Route, Switch, NavLink } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { HashLink as Link } from 'react-router-hash-link';
+import Favorites from "./Favorites";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       schools: [],
-      input: null
+      input: null,
+      user: null
     };
+
     this.handleUserInput = this.handleUserInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  componentDidMount() {
-    this.fetchData();
+    this.handleSignOut = this.handleSignOut.bind(this)
   }
 
+  componentDidMount() {
+    this.fetchData();
+    this.authUnSubFunction = firebase.auth().onAuthStateChanged((firebaseUser) => {
+
+      if (firebaseUser) {
+        this.setState(
+          {
+            user: firebaseUser
+          }
+        )
+      }
+      else {
+        this.setState({ user: null })
+      }
+
+    })
+  }
+  componentWillUnmount() {
+    this.authUnSubFunction()
+  }
+
+
+  handleSignUp = (email, password, name) => {
+    this.setState({ errorMessage: null }); //clear any old errors
+
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then((userCredentials) => {
+
+        let firebaseUser = userCredentials.user
+        let updatePromise = firebaseUser.updateProfile(
+          {
+            name: name
+          })
+        return updatePromise
+      })
+
+      .catch((err) => {
+        this.setState(
+          { errorMessage: err.message }
+        )
+      })
+  }
+
+  //A callback function for logging in existing users
+  handleSignIn = (email, password) => {
+    this.setState({ errorMessage: null }); //clear any old errors
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .catch((err) => {
+        this.setState(
+          { errorMessage: err.message }
+        )
+      })
+
+  }
+
+  //A callback function for logging out the current user
+  handleSignOut = () => {
+    this.setState({ errorMessage: null }); //clear any old errors
+    firebase.auth().signOut()
+      .catch((err) => {
+        this.setState(
+          { errorMessage: err.message }
+        )
+      })
+  }
+
+
+
+
+
+
+  /***************************** Form Stuff*/
   handleUserInput(e) {
     this.setState({ input: (e.target.value).toUpperCase() }, () => {
       this.fetchData(this.state.input);
@@ -81,14 +157,20 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navigation />
+        <Navigation currentUser={this.state.user} handleSignOut={this.handleSignOut} />
         <main>
         <SchoolMap schoolData={this.state.schools} />
           <Switch>
             <Route exact path='/' render={(routerProps) => {
-              return <SearchPage {...routerProps} schoolData={this.state.schools} handleUserInput={this.handleUserInput} handleSubmit={this.handleSubmit} />
+              return <SearchPage {...routerProps} currentUser={this.state.user} schoolData={this.state.schools} handleUserInput={this.handleUserInput} handleSubmit={this.handleSubmit} />
             }} />
             <Route path="/about" component={About} />
+            <Route path='/favorites' render={(routerProps) => {
+              return <Favorites {...routerProps} currentUser={this.state.user} />
+            }} />
+            <Route path='/SignUpForm' render={(routerProps) => {
+              return <SignUpForm {...routerProps} signUpCallback={this.handleSignUp} signInCallback={this.handleSignIn} />
+            }} />
           </Switch>
 
           <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js" />
@@ -96,7 +178,7 @@ class App extends Component {
 
         </main>
 
-        <footer className="page-footer font-small unique-color-dark">
+        <footer className="page-footer font-small sticky-bottom">
           <Footer />
         </footer>
       </div>
@@ -107,12 +189,18 @@ class App extends Component {
 
 class Navigation extends Component {
   render() {
+    let loginLink = null
+
+    if (!this.props.currentUser) {
+      loginLink = <Link to="/SignUpForm" className="nav-link">Sign In</Link>
+    } else {
+      loginLink = <Link onClick={this.props.handleSignOut} to="/#Home" className="nav-link">Sign Out</Link>
+    }
+
     return (
       <header>
         <nav className="navbar fixed-top navbar-expand-lg">
-          <a className="navbar-brand" href="index.html">
-            <Link to="/#Home"><h3 className="navBrand">CollegeStudio</h3></Link>
-          </a>
+          <Link className="navbar-brand" to="/#Home"><h3 className="navBrand">CollegeStudio</h3></Link>
           <button
             className="navbar-toggler collapsed"
             type="button" data-toggle="collapse"
@@ -124,19 +212,24 @@ class Navigation extends Component {
           </button>
 
           <div id="navbarNavDropdown" className="navbar-collapse collapse">
-            <ul className="navbar-nav mr-auto"></ul>
+            <ul className="navbar-nav mr-auto">
+            </ul>
             <ul className="nav navbar-nav NavLinkz">
               <li className="nav-item ">
-                <Link exact to="/#Home" className="nav-link">Home</Link>
+                <Link to="/#Home" className="nav-link">Home</Link>
               </li>
               <li className="nav-item ">
-                <a className="nav-link " href="/#SideBar">
-                  Find
-                </a>
-                
+                <a className="nav-link " href="/#SideBar">Find</a>
               </li>
               <li className="nav-item">
                 <Link to="/about" className="nav-link">About</Link>
+              </li>
+              <li className = "navDivider"></li>
+              <li className="nav-item">
+                {loginLink}
+              </li>
+              <li className="nav-item">
+                <Link to="/favorites" className="nav-link">Favorites</Link>
               </li>
             </ul>
           </div>
@@ -155,27 +248,26 @@ class Footer extends Component {
             <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
               <h6 className="text-uppercase font-weight-bold">CollegeStudio</h6>
               <hr className="line" />
-              <p>Home for your future school.This is how you find the perfect college—or colleges—for you</p>
+              <p>Home for your future school.This is how you find the perfect college—or colleges—for you.</p>
             </div>
             <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
               <h6 className="text-uppercase font-weight-bold">Sources</h6>
               <hr className="line" />
               <p>
-                <a className="fotterLinks" href="https://collegescorecard.ed.gov/data/documentation/">API</a>
+                <a href="https://collegescorecard.ed.gov/data/documentation/">API</a>
               </p>
             </div>
             <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
               <h6 className="text-uppercase font-weight-bold">Contact</h6>
               <hr className="line" />
               <p><i className="fa fa-home mr-3"></i> Seattle, WA 98027, US</p>
-              <p><i className="fa fa-envelope mr-3"></i> <a className="contact" href="mailto: info@example.com">info@example.com</a></p>
-              <p><i className="fa fa-phone mr-3"></i> <a className="contact" href="tel: 01 234 567 88">+ 01 234 567 88</a></p>
+              <p><i className="fa fa-envelope mr-3"></i> <a href="mailto: info@example.com">info@example.com</a></p>
+              <p><i className="fa fa-phone mr-3"></i> <a href="tel: 01 234 567 88">+ 01 234 567 88</a></p>
 
             </div>
           </div>
         </div>
-        <div className="footer-copyright text-center py-3">© 2018 Copyright
-    </div>
+        <div className="footer-copyright text-center py-3">© 2018 Copyright</div>
       </div>
     );
   }

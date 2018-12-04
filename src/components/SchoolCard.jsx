@@ -1,7 +1,41 @@
 import React, { Component } from "react";
+import firebase from 'firebase/app';
+
  class SchoolCard extends Component {
+    constructor() {
+      super()
+      this.state = {favorited: false,
+      postKey: null}
+    }
+
+    saveSchool = (event) => {
+        event.preventDefault(); //don't submit
+
+        let postPath = "users/" + this.props.currentUser.uid + "/favorites";
+        if(this.state.favorited === false) {
+          this.setState({favorited: true});
+
+          let key = firebase.database().ref(postPath).push(this.props.Schooldetails).key;
+          firebase.database().ref(postPath + "/" + key).update({Favorited: true});
+          this.setState({postKey: key})
+        
+        } else {
+          firebase.database().ref(postPath + "/" + this.state.postKey).remove();
+          this.setState({favorited: false});
+
+        }
+    }
+   
     render() {
       const { Schooldetails } = this.props;
+
+      let cardDeleteButton = null;
+      if(this.state.favorited === false) {
+        cardDeleteButton = <button onClick={this.saveSchool} className="btn btn-dark btn btn-md ml-2">Favorite</button>;
+      } else {
+        cardDeleteButton = <button onClick={this.saveSchool} className="btn btn-dark btn btn-md ml-2">Delete</button>;
+      }
+
       return (
         <div>
           <div className='cards' style={{ width: 26 + 'em' }}>
@@ -20,7 +54,8 @@ import React, { Component } from "react";
                 <p className="card-text">Students with any loan:  <strong>{Schooldetails.StudentsWithAnyLoan * 100 + '%'}</strong></p>
                 <p className="card-text">Students Size:  <strong>{Schooldetails.StudentsSize}</strong></p>
                 <hr />
-                <a href={"https://" + Schooldetails.SchoolWebsite} target="_blank" rel="noopener noreferrer" className="btn btn-dark btn-block btn-md">Website</a>
+                <a href={"https://" + Schooldetails.SchoolWebsite} target="_blank" rel="noopener noreferrer" className="btn btn-dark btn btn-md">Website</a>
+                {cardDeleteButton}
               </div>
             </div>
           </div>

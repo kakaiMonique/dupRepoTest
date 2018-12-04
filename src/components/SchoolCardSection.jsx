@@ -1,17 +1,20 @@
 import React, { Component } from "react";
 import SchoolCard from "./SchoolCard"
+import firebase from "firebase/app"
 
  class SchoolCardSection extends Component {
+
     render() {
       const { schoolData } = this.props;
-      return (
+    
+
+      let featuredCards = (
         <div className="row searchResultsWrap2" id="searchResultsWrap">
           {
             Object.keys(schoolData).map(key => (
-              <SchoolCard key={key} Schooldetails={schoolData[key]} />
+              <SchoolCard key={key} Schooldetails={schoolData[key]} currentUser={this.props.currentUser} />
             ))
           }
-  
           <h2 className="searchTextPH">Featured schools</h2>
           <div className='cards' style={{ width: 26 + 'em' }}>
             <div className="card mb-4">
@@ -73,6 +76,24 @@ import SchoolCard from "./SchoolCard"
             </div>
           </div>
         </div>
+      );
+
+      let favorites = null;
+      if(this.props.currentUser) {
+        firebase.database().ref('users/' + this.props.currentUser.uid + '/favorites/').on('value', (snapshot) => {
+          let values = snapshot.val();
+          console.log(this.props.currentUser.uid);
+          favorites = (Object.keys(values).map(key => (
+            <SchoolCard key={key} Schooldetails={values[key]} currentUser={this.props.currentUser} />
+          
+            )));    
+        });
+      }
+
+      return (
+        <React.Fragment>
+          {featuredCards}
+        </React.Fragment>
       )
     }
   }
