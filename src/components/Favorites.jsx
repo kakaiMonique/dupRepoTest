@@ -10,9 +10,13 @@ class Favorites extends Component {
             firebase.database().ref('users/' + this.props.currentUser.uid + '/favorites/').on('value', (snapshot) => {
                 let values = snapshot.val();
                 console.log(this.props.currentUser.uid);
-                favorites = (Object.keys(values).map(key => (
-                    <SchoolCard key={key} Schooldetails={values[key]} currentUser={this.props.currentUser} />
-                )));
+                if(values != null) {
+                    favorites = (Object.keys(values).map(key => (
+                        <SchoolCard key={key} Schooldetails={values[key]} currentUser={this.props.currentUser}/>
+                    )));
+                } else {
+                    favorites = (<h1 className= "pt-5">You have no favorite schools!</h1>)
+                }
             });
              heading = (<h1 className= " searchTextPH pt-5">Your favorites schools</h1>)
         } else {

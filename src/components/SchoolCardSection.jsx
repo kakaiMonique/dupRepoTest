@@ -78,18 +78,6 @@ import firebase from "firebase/app"
         </div>
       );
 
-      let favorites = null;
-      if(this.props.currentUser) {
-        firebase.database().ref('users/' + this.props.currentUser.uid + '/favorites/').on('value', (snapshot) => {
-          let values = snapshot.val();
-          console.log(this.props.currentUser.uid);
-          favorites = (Object.keys(values).map(key => (
-            <SchoolCard key={key} Schooldetails={values[key]} currentUser={this.props.currentUser} />
-          
-            )));    
-        });
-      }
-
       return (
         <React.Fragment>
           {featuredCards}
