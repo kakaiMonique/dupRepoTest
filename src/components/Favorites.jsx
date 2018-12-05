@@ -17,7 +17,7 @@ class Favorites extends Component {
                     favorites = (<h1 className= "pt-5">You have no favorite schools!</h1>)
                 }
             });
-             heading = (<h1 className= " searchTextPH pt-5">Your favorites schools</h1>)
+             heading = (<h1 className= " searchTextPH pt-5">Your favorite schools</h1>)
         } else {
             favorites = <h1 className="pt-5">You must be logged in to use this feature!</h1>
         }
