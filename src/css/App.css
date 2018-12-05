@@ -95,7 +95,7 @@ nav .NavLinkz {
 
 .Home {
     width: 100%;
-    height: 100vh;
+    height: 38em;
     padding-left: 1em;
     padding-right: 1em;
     background-color: var(--offwhite);
@@ -107,17 +107,17 @@ nav .NavLinkz {
 }
 
 #HomeLeft {
-    width: 55%;
-    height: 100vh;
-}
-
-#HomeRight {
     width: 45%;
     height: 100vh;
 }
 
+#HomeRight {
+    width: 55%;
+    height: 100vh;
+}
+
 #HRcontainer {
-    margin-top: 10em;
+    margin-top: 3em;
     padding: 3em;
 }
 
@@ -146,17 +146,16 @@ nav .NavLinkz {
 }
 
 .HomeP {
-    margin-top: 1.5em;
+    margin-top: 1em;
     color: var(--darkgrey);
     font-weight: 300;
-    font-size: 25px;
+    font-size: 18px;
     line-height: 30px;
 }
 
 .HomeBtn {
     width: 110px;
     height: 40px;
-    margin-top: 1em;
     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.40);
 }
 
