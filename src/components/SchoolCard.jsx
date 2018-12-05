@@ -9,7 +9,8 @@ class SchoolCard extends Component {
     super()
     this.state = {
       favorited: false,
-      postKey: null
+      postKey: null,
+      unrender: false
     }
   }
 
@@ -26,13 +27,24 @@ class SchoolCard extends Component {
         this.setState({ postKey: key })
 
       } else {
-        firebase.database().ref(postPath + "/" + this.state.postKey).remove();
-        this.setState({ favorited: false });
+        if(this.props.isFavorited === true) {
+            firebase.database().ref(postPath + "/" + this.props.id).remove();
+            this.setState({unrender: true});
+        } else {
+            firebase.database().ref(postPath + "/" + this.state.postKey).remove();
+            this.setState({favorited: false});
+        }
 
       }
     }
     else {
       alert("Please,log in to save your schools")
+    }
+  }
+
+  componentDidMount() {
+    if(this.props.isFavorited === true) {
+      this.setState({favorited: true});
     }
   }
 
@@ -48,31 +60,41 @@ class SchoolCard extends Component {
       cardDeleteButton = <button onClick={this.saveSchool} className="btn btn-dark btn btn-md ml-2">Delete</button>;
     }
 
-    return (
-      <div>
-        <div className='cards' style={{ width: 26 + 'em' }}>
-          <div className="card mb-4">
-            <div className="card-header" id="card-header-blue">
-              <strong>{Schooldetails.name}</strong>
-              <br />
-              <br />
-              <h6 className="card-subtitle mb-6 text-muted ">{Schooldetails.location}</h6>
+    if(this.state.unrender === false) {
+        return (
+            <div>
+                <div className='cards' style={{width: 26 + 'em'}}>
+                    <div className="card mb-4">
+                        <div className="card-header" id="card-header-blue">
+                            <strong>{Schooldetails.name}</strong>
+                            <br/>
+                            <br/>
+                            <h6 className="card-subtitle mb-6 text-muted ">{Schooldetails.location}</h6>
+                        </div>
+                        <div className="card-body">
+                            <p className="card-text">Acceptance
+                                Rate: <strong>{Schooldetails.AcceptanceRate * 100 + '%'}</strong></p>
+                            <p className="card-text">Average SAT Score: <strong>{Schooldetails.AverageSATScore}</strong>
+                            </p>
+                            <p className="card-text">Out of state
+                                tuition: <strong>{Schooldetails.OutOfStateTuition}</strong></p>
+                            <p className="card-text">In state tuition: <strong>{Schooldetails.InStateTuition}</strong>
+                            </p>
+                            <p className="card-text">Students with any
+                                loan: <strong>{Schooldetails.StudentsWithAnyLoan * 100 + '%'}</strong></p>
+                            <p className="card-text">Students Size: <strong>{Schooldetails.StudentsSize}</strong></p>
+                            <hr/>
+                            <a href={"https://" + Schooldetails.SchoolWebsite} target="_blank" rel="noopener noreferrer"
+                               className="btn btn-dark btn btn-md">Website</a>
+                            {cardDeleteButton}
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div className="card-body">
-              <p className="card-text">Acceptance Rate:  <strong>{Schooldetails.AcceptanceRate * 100 + '%'}</strong></p>
-              <p className="card-text">Average SAT Score:  <strong>{Schooldetails.AverageSATScore}</strong></p>
-              <p className="card-text">Out of state tuition:  <strong>{Schooldetails.OutOfStateTuition}</strong></p>
-              <p className="card-text">In state tuition:  <strong>{Schooldetails.InStateTuition}</strong></p>
-              <p className="card-text">Students with any loan:  <strong>{Schooldetails.StudentsWithAnyLoan * 100 + '%'}</strong></p>
-              <p className="card-text">Students Size:  <strong>{Schooldetails.StudentsSize}</strong></p>
-              <hr />
-              <a href={"https://" + Schooldetails.SchoolWebsite} target="_blank" rel="noopener noreferrer" className="btn btn-dark btn btn-md">Website</a>
-              {cardDeleteButton}
-            </div>
-          </div>
-        </div>
-      </div>
-    )
+        )
+    } else {
+      return null;
+    }
   }
 }
 
