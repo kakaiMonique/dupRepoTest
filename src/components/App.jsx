@@ -217,7 +217,7 @@ class Navigation extends Component {
                 <Link to="/#Home" className="nav-link">Home</Link>
               </li>
               <li className="nav-item ">
-                <a className="nav-link " href="/#SideBar">Find</a>
+                  <Link to="/#SideBar" className="nav-link">Find</Link>
               </li>
               <li className="nav-item">
                 <Link to="/about" className="nav-link">About</Link>

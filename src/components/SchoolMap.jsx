@@ -1,11 +1,19 @@
 import React, { Component } from "react";
 import { Map, TileLayer, Marker } from 'react-leaflet';
-// import { L } from 'leaflet';
+import L from "leaflet";
+import firebase from "firebase";
 
 export default class SchoolMap extends Component {
+
     render() {
         const { schoolData } = this.props;
         const UScenter = [39.8283, -98.5795] // center of continental US
+
+        const regIcon = new L.Icon({
+            iconUrl: require('../imgs/bluedot.png'),
+            iconSize: [10, 10],
+        });
+
         return (
             <Map center={UScenter} zoom={4}>
                 <TileLayer
@@ -14,16 +22,8 @@ export default class SchoolMap extends Component {
                 {
                     Object.keys(schoolData).map((key) => {
                         let schoolCenter = [schoolData[key].Lat, schoolData[key].Long]
-                        // figure out later, differentiate icons with favorites and standard
-                        // var regIcon = L.icon({
-                        //     iconUrl: '../imgs/bluedot.png',
-                        //     iconSize: [20, 20],
-                        // });
-                        // var starIcon = L.icon({
-                        //     iconUrl: '../imgs/goldstar.png',
-                        //     iconSize: [20, 20],
-                        // });
-                        return <Marker key={key} position={schoolCenter} />;
+
+                        return <Marker key={key} icon={regIcon} position={schoolCenter} />;
                     })
                 }
             </Map>
