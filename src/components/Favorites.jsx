@@ -21,7 +21,7 @@ class Favorites extends Component {
         return (
             <div className="container pt-5">
                 {heading}
-                <div className = "row searchResultsWrap2">
+                <div className = "row">
                     {favorites}
                 </div>
 

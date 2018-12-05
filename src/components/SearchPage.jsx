@@ -2,6 +2,7 @@ import Home from "./Home"
 import SideBar from "./SideBar"
 import React, { Component } from "react";
 import SchoolCardSection from "./SchoolCardSection"
+import SchoolMap from "./SchoolMap";
 
 export class SearchPage extends Component {
 
@@ -18,6 +19,7 @@ export class SearchPage extends Component {
               </div>
             </div>
             <div className="rightWrapper">
+            <SchoolMap schoolData={this.props.schoolData} />
               <SchoolCardSection currentUser={this.props.currentUser} schoolData={this.props.schoolData} />
             </div>
           </div>

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "../css/App.css";
 import About from "./About";
-import SchoolMap from "./SchoolMap";
 import SearchPage from "./SearchPage"
 import SignUpForm from "./SignUpForm.jsx"
 import firebase from 'firebase/app'
@@ -159,7 +158,6 @@ class App extends Component {
       <div>
         <Navigation currentUser={this.state.user} handleSignOut={this.handleSignOut} />
         <main>
-        <SchoolMap schoolData={this.state.schools} />
           <Switch>
             <Route exact path='/' render={(routerProps) => {
               return <SearchPage {...routerProps} currentUser={this.state.user} schoolData={this.state.schools} handleUserInput={this.handleUserInput} handleSubmit={this.handleSubmit} />
