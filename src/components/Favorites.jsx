@@ -14,12 +14,12 @@ class Favorites extends Component {
                         <SchoolCard key={key} id={key} isFavorited={true} Schooldetails={values[key]} currentUser={this.props.currentUser}/>
                     )));
                 } else {
-                    favorites = (<h1 className= "pt-5">You have no favorite schools!</h1>)
+                    favorites = (<h3 className= "p-4"><em>Add schools to favorites and find them here!</em></h3>)
                 }
             });
-             heading = (<h1 className= " searchTextPH pt-5">Your favorite schools</h1>)
+             heading = (<h1 className= " searchTextPH p-4">Your favorite schools</h1>)
         } else {
-            favorites = <h1 className="pt-5">You must be logged in to use this feature!</h1>
+            favorites = <h1 className="p-5">You must be logged in to use this feature!</h1>
         }
         return (
             <div className="container pt-5">
