@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Map, TileLayer, Marker } from 'react-leaflet';
+import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from "leaflet";
 import firebase from "firebase";
 
@@ -23,7 +23,11 @@ export default class SchoolMap extends Component {
                     Object.keys(schoolData).map((key) => {
                         let schoolCenter = [schoolData[key].Lat, schoolData[key].Long]
 
-                        return <Marker key={key} icon={regIcon} position={schoolCenter} />;
+                        return <Marker key={key} icon={regIcon} position={schoolCenter}>
+                            <Popup>
+                                <b>{schoolData[key].name}</b><br />{schoolData[key].location}
+                            </Popup>
+                        </Marker>;
                     })
                 }
             </Map>
