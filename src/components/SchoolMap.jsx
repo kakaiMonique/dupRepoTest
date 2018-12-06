@@ -15,7 +15,7 @@ export default class SchoolMap extends Component {
         });
 
         return (
-            <Map center={UScenter} zoom={4}>
+            <Map center={UScenter} minZoom={4} zoom={4}>
                 <TileLayer
                     url="https://tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey=b8036ea1bdd04e658ebdde4c8bb56da4"
                 />
