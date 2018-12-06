@@ -15,7 +15,12 @@ export class SearchPage extends Component {
           <div className="findWrapper " id="SideBar">
             <div className="leftWrapper">
               <div className="container-fluid">
-                <SideBar schoolData={this.props.schoolData} currentUser={this.props.currentUser} toggleFav={this.props.toggleFav} handleUserInput={this.props.handleUserInput} handleSubmit={this.props.handleSubmit} />
+                <SideBar handleFilterInput = {this.props.handleFilterInput}
+                         schoolData={this.props.schoolData}
+                         currentUser={this.props.currentUser} toggleFav={this.props.toggleFav} handleUserInput={this.props.handleUserInput} handleSchoolState= {this.props.handleSchoolState}
+                         handleSubmit={this.props.handleSubmit}
+                         UserFilterInput ={this.props.UserFilterInput}
+                         />
               </div>
             </div>
             <div className="rightWrapper">

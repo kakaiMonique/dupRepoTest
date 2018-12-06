@@ -88,7 +88,7 @@ import ToggleButton from 'react-toggle-button'
               name="schoolState"
               aria-label="State Name"
               aria-describedby="basic-addon2"
-              onChange={this.props.handleUserInput} />
+              onChange={this.props.handleSchoolState} />
   
             <div className="input-group-append">
               <button
@@ -99,6 +99,31 @@ import ToggleButton from 'react-toggle-button'
                 Search
             </button>
             </div>
+
+          </div>
+          <div className="input-group mb-3" id="form">
+            <div className='col-12'>
+            <label htmlFor="searchQuery" className="mr-2" id="searchLabel">
+              Filter by Tuition
+            </label>
+            </div>
+            <hr></hr>
+            <label htmlFor="searchQuery" className="mr-2" id="searchLabel">
+              $1000
+            </label>" "
+            <input
+              type="range"
+              className="form-control"
+              id="searchQueryDemo"
+              min="1000"
+              max="50000"
+              aria-label="school tuition"
+              aria-describedby="basic-addon2"
+              onChange={this.props.handleFilterInput} />
+              " "
+              <label htmlFor="searchQuery" className="mr-2" id="searchLabel">
+                     ${this.props.UserFilterInput}
+             </label>
           </div>
   
           <br />

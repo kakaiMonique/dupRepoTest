@@ -55,9 +55,15 @@ export default class SchoolMap extends Component {
         });
 
         return (
+<<<<<<< HEAD
+           
+            <Map className="MapContainer" center={UScenter} zoom={4} minZoom={4} >
+            
+=======
             <Map center={UScenter} minZoom={4} zoom={4}>
+>>>>>>> f27b59078abc0d461372b300a70928dc6e27fc06
                 <TileLayer
-                    url="https://tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey=b8036ea1bdd04e658ebdde4c8bb56da4"
+                    url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.png" //apikey=b8036ea1bdd04e658ebdde4c8bb56da4
                 />
                 {
                     Object.keys(schoolData).map((key) => {
@@ -74,6 +80,7 @@ export default class SchoolMap extends Component {
                     this.state.favSchools
                 }
             </Map>
+         
         )
     }
 }

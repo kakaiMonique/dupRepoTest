@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import firebase from 'firebase/app';
 import Favorites from "./Favorites";
-import { withRouter } from "react-router";
-
 
 class SchoolCard extends Component {
   constructor() {
@@ -38,7 +36,7 @@ class SchoolCard extends Component {
       }
     }
     else {
-      alert("Please,log in to save your schools")
+      alert("Please,sign in to save your schools")
     }
   }
 
