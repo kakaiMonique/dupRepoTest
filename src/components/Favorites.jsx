@@ -38,6 +38,11 @@ class Favorites extends Component {
         });
     }
 
+    componentWillUnmount() {
+        firebase.database().ref('users/' + this.props.currentUser.uid + '/favorites/').off()
+    }
+
+
     render() {
         return (
             <div className="container pt-5">
