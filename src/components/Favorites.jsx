@@ -42,7 +42,7 @@ class Favorites extends Component {
         return (
             <div className="container pt-5">
                 <h1 className= " searchTextPH p-4">Your favorite schools</h1>
-                <div className = "row">
+                <div className = "flex-container">
                     {this.state.favSchools}
                 </div>
 
