@@ -23,7 +23,7 @@ export default class SchoolMap extends Component {
             iconSize: [20, 20],
         });
 
-        firebase.auth().onAuthStateChanged((user) => {
+        this.unAuthSubFunction = firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 firebase.database().ref('users/' + user.uid + '/favorites/').on('value', (snapshot) => {
                     let values = snapshot.val();
@@ -45,6 +45,13 @@ export default class SchoolMap extends Component {
         });
     }
 
+    componentWillUnmount() {
+        if (this.props.currentUser) {
+            firebase.database().ref('users/' + this.props.currentUser.uid + '/favorites/').off()
+        }
+        this.unAuthSubFunction()
+    }
+
     render() {
         const { schoolData } = this.props;
         const UScenter = [39.8283, -98.5795] // center of continental US
@@ -55,13 +62,8 @@ export default class SchoolMap extends Component {
         });
 
         return (
-<<<<<<< HEAD
            
             <Map className="MapContainer" center={UScenter} zoom={4} minZoom={4} >
-            
-=======
-            <Map center={UScenter} minZoom={4} zoom={4}>
->>>>>>> f27b59078abc0d461372b300a70928dc6e27fc06
                 <TileLayer
                     url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.png" //apikey=b8036ea1bdd04e658ebdde4c8bb56da4
                 />

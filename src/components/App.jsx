@@ -101,10 +101,6 @@ class App extends Component {
 
   }
 
-
-
-
-
   /***************************** Form Stuff*/
   handleUserInput(e) {
     this.setState({ schoolName: (e.target.value)}, () => {
@@ -241,12 +237,12 @@ class App extends Component {
 
 class Navigation extends Component {
   render() {
-    let loginLink = null
+    let loginLink = null;
 
-    if (!this.props.currentUser) {
-      loginLink = <Link to="/SignUpForm" className="nav-link">Sign In</Link>
+    if (this.props.currentUser) {
+        loginLink = <Link onClick={this.props.handleSignOut} to="/#Home" className="nav-link">Sign Out</Link>
     } else {
-      loginLink = <Link onClick={this.props.handleSignOut} to="/#Home" className="nav-link">Sign Out</Link>
+        loginLink = <Link to="/SignUpForm" className="nav-link">Sign In</Link>
     }
 
     return (
