@@ -19,17 +19,17 @@ class Favorites extends Component {
                     )));
                     console.log(favorites);
                 } else {
-                    favorites = (<h1 className= "pt-5">You have no favorite schools!</h1>)
+                    favorites = (<h5 className= "pt-5">You have no favorite schools!</h5>)
                 }
             });
-             heading = (<h1 className= " searchTextPH pt-5">Your favorites schools</h1>)
+             heading = (<h3 className= " jumbotron jumbotron-fluid searchTextPH pt-5">Your favorites schools</h3>)
         } else {
-            favorites = <h1 className="pt-5">You must be logged in to use this feature!</h1>
+            favorites = <h1 className="pt-5">Please Sign In to use this feature!</h1>
         }
         return (
             <div className="container pt-5">
                 {heading}
-                <div className = "row">
+                <div className = "row searchResultsWrap2">
                     {favorites}
                 </div>
 

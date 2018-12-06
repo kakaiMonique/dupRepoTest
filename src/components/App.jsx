@@ -15,13 +15,18 @@ class App extends Component {
     super(props);
     this.state = {
       schools: [],
-      input: null,
-      user: null
+      schoolName: '',
+      user: '',
+      schoolTuition:'',
+      schoolState:'',
+      updatedSchools:''
     };
 
     this.handleUserInput = this.handleUserInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSignOut = this.handleSignOut.bind(this)
+    this.handleFilterInput =  this.handleFilterInput.bind(this)
+    this.handleSchoolState = this.handleSchoolState.bind(this)
   }
 
   componentDidMount() {
@@ -34,6 +39,7 @@ class App extends Component {
             user: firebaseUser
           }
         )
+
       }
       else {
         this.setState({ user: null })
@@ -46,7 +52,7 @@ class App extends Component {
   }
 
 
-  handleSignUp = (email, password, name) => {
+  handleSignUp = (name, email, password) => {
     this.setState({ errorMessage: null }); //clear any old errors
 
     firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -92,39 +98,64 @@ class App extends Component {
   }
 
 
-
-
-
-
   /***************************** Form Stuff*/
   handleUserInput(e) {
-    this.setState({ input: (e.target.value).toUpperCase() }, () => {
-      this.fetchData(this.state.input);
+    this.setState({ schoolName: (e.target.value)}, () => {
+      this.fetchData(this.state.schoolName);
     });
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    this.fetchData(this.state.input)
+  handleSchoolState(e) {
+    this.setState({ schoolState: (e.target.value).toUpperCase() }, () => {
+      this.fetchData(this.state.schoolState);
+    });
+  }
+  
+  handleFilterInput(e){
+
+    this.setState({ schoolTuition: (e.target.value)})
+    let tutionOutofState=  Object.keys(this.state.schools).map(schools => {
+    return this.state.schools[schools]  
+    }) 
+
+   let updatedSchools =  tutionOutofState.filter(eachschool => {
+     let school = eachschool.OutOfStateTuition <=  this.state.schoolTuition
+     return school
+      })
+      
+
+      console.log(updatedSchools);
+      // schools - all the schools
+      // updatedSchools - in here
+        this.setState({ updatedSchools : updatedSchools})
+        
   }
 
+  handleSubmit(e) {
+    
+    e.preventDefault();
+    this.fetchData(this.state.input)
+
+  }
+
+
   fetchData(SearchQuery) {
+
+  
     let states = ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC",
       "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA",
       "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE",
       "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC",
       "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"]
-
     let fetchThis;
-    // states.includes(SearchQuery)
+
     if (states.indexOf(SearchQuery) > -1) {
-      fetchThis = `https://api.data.gov/ed/collegescorecard/v1/schools?school.state=${SearchQuery}&_fields=school.name,school.city,school.state,school.school_url,location.lat,location.lon,latest.admissions.admission_rate.overall,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state,latest.cost.tuition.in_state,latest.aid.students_with_any_loan,latest.student.size&api_key=TH798jh0Un4LIFZvxWD5iyBwYKSDCpRLVZEWDdR5`;
+      fetchThis = `https://api.data.gov/ed/collegescorecard/v1/schools?school.state=${SearchQuery}&_fields=school.name,school.city,school.state,school.school_url,location.lat,location.lon,latest.admissions.admission_rate.overall,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state,latest.cost.tuition.in_state,latest.aid.students_with_any_loan,latest.student.size&api_key=kSIC8EZipZTx5YinVli2GJWtCxRRs5NKvtmQwmvg`;
     }
     else {
-      fetchThis = `https://api.data.gov/ed/collegescorecard/v1/schools?school.name=${SearchQuery}&_fields=school.name,school.city,school.state,school.school_url,location.lat,location.lon,latest.admissions.admission_rate.overall,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state,latest.cost.tuition.in_state,latest.aid.students_with_any_loan,latest.student.size&api_key=TH798jh0Un4LIFZvxWD5iyBwYKSDCpRLVZEWDdR5`;
+      fetchThis = `https://api.data.gov/ed/collegescorecard/v1/schools?school.name=${SearchQuery}&_fields=school.name,school.city,school.state,school.school_url,location.lat,location.lon,latest.admissions.admission_rate.overall,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state,latest.cost.tuition.in_state,latest.aid.students_with_any_loan,latest.student.size&api_key=kSIC8EZipZTx5YinVli2GJWtCxRRs5NKvtmQwmvg`
     }
-
-
+   
     fetch(fetchThis)
       .then(res => {
         return res.json();
@@ -154,20 +185,56 @@ class App extends Component {
   }
 
   render() {
+let schools;
+
+if(this.state.updatedSchools.length >= 1) {
+  schools = this.state.updatedSchools
+
+ } else {
+  schools = this.state.schools
+
+ }
+
     return (
       <div>
-        <Navigation currentUser={this.state.user} handleSignOut={this.handleSignOut} />
+        <Navigation currentUser={this.state.user}  handleSignOut={this.handleSignOut} />
         <main>
           <Switch>
             <Route exact path='/' render={(routerProps) => {
-              return <SearchPage {...routerProps} currentUser={this.state.user} schoolData={this.state.schools} handleUserInput={this.handleUserInput} handleSubmit={this.handleSubmit} />
+              return <SearchPage {...routerProps} 
+                      currentUser={this.state.user} 
+                      
+                      schoolData={schools} 
+
+                      handleUserInput={this.handleUserInput} 
+                      handleSchoolState= {this.handleSchoolState}
+                      handleSubmit={this.handleSubmit} 
+                      handleFilterInput= {this.handleFilterInput}
+                      UserFilterInput= {this.state.tuition}
+                      />
             }} />
             <Route path="/about" component={About} />
             <Route path='/favorites' render={(routerProps) => {
               return <Favorites {...routerProps} currentUser={this.state.user} />
             }} />
             <Route path='/SignUpForm' render={(routerProps) => {
-              return <SignUpForm {...routerProps} signUpCallback={this.handleSignUp} signInCallback={this.handleSignIn} />
+              let SignUpFormContent = null
+
+              if (!this.state.user){
+                SignUpFormContent = <SignUpForm {...routerProps} signUpCallback={this.handleSignUp} signInCallback={this.handleSignIn} />
+            
+              }
+              else {
+                SignUpFormContent = <body className="container mb-10"><p>Welcome</p></body>
+              }
+
+              return (
+                  SignUpFormContent
+                
+              )
+
+
+
             }} />
           </Switch>
 

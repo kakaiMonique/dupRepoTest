@@ -40,7 +40,7 @@ class SignUpForm extends Component {
       <div className="container">
         <div className="container">
           <div className="row px-3 headerRow">
-            <h1>Sign In / Sign Up</h1>
+            <h3>Sign In / Sign Up</h3>
           </div>
           
             <form>
