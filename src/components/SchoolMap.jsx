@@ -2,8 +2,48 @@ import React, { Component } from "react";
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from "leaflet";
 import firebase from "firebase";
+import SchoolCard from "./SchoolCard";
 
 export default class SchoolMap extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            favSchools: null
+        }
+        this.changeState = this.changeState.bind(this);
+    }
+
+    changeState(data) {
+        this.setState({favSchools: data})
+    }
+    componentDidMount() {
+        const goldIcon = new L.Icon({
+            iconUrl: require('../imgs/goldstar.png'),
+            iconSize: [20, 20],
+        });
+
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                firebase.database().ref('users/' + user.uid + '/favorites/').on('value', (snapshot) => {
+                    let values = snapshot.val();
+                    let favorites = null;
+                    if(values != null) {
+                        favorites = (Object.keys(values).map(key => {
+                            let schoolCenter = [values[key].Lat, values[key].Long]
+
+                            return(<Marker key={key} icon={goldIcon} position={schoolCenter}>
+                                <Popup>
+                                    <b>{values[key].name}</b><br />{values[key].location}
+                                </Popup>
+                            </Marker>)
+                        }));
+                    }
+                    this.changeState(favorites);
+                });
+            }
+        });
+    }
 
     render() {
         const { schoolData } = this.props;
@@ -29,6 +69,9 @@ export default class SchoolMap extends Component {
                             </Popup>
                         </Marker>;
                     })
+                }
+                {
+                    this.state.favSchools
                 }
             </Map>
         )
