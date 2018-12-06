@@ -153,7 +153,11 @@ class App extends Component {
       fetchThis = `https://api.data.gov/ed/collegescorecard/v1/schools?school.state=${SearchQuery}&_fields=school.name,school.city,school.state,school.school_url,location.lat,location.lon,latest.admissions.admission_rate.overall,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state,latest.cost.tuition.in_state,latest.aid.students_with_any_loan,latest.student.size&api_key=kSIC8EZipZTx5YinVli2GJWtCxRRs5NKvtmQwmvg`;
     }
     else {
+<<<<<<< HEAD
       fetchThis = `https://api.data.gov/ed/collegescorecard/v1/schools?school.name=${SearchQuery}&_fields=school.name,school.city,school.state,school.school_url,location.lat,location.lon,latest.admissions.admission_rate.overall,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state,latest.cost.tuition.in_state,latest.aid.students_with_any_loan,latest.student.size&api_key=kSIC8EZipZTx5YinVli2GJWtCxRRs5NKvtmQwmvg`
+=======
+      fetchThis = `https://api.data.gov/ed/collegescorecard/v1/schools?school.name=${SearchQuery}&_fields=school.name,school.city,school.state,school.school_url,location.lat,location.lon,latest.admissions.admission_rate.overall,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state,latest.cost.tuition.in_state,latest.aid.students_with_any_loan,latest.student.size&api_key=kSIC8EZipZTx5YinVli2GJWtCxRRs5NKvtmQwmvg`;
+>>>>>>> f27b59078abc0d461372b300a70928dc6e27fc06
     }
    
     fetch(fetchThis)
@@ -162,25 +166,25 @@ class App extends Component {
       })
       .then(
         data => data.results.map(school => ({
-          name: `${school["school.name"]}`,
-          location: `${school["school.city"]},${school["school.state"]}`,
-          AcceptanceRate: `${parseFloat(school["latest.admissions.admission_rate.overall"]).toFixed(2)}`,
-          AverageSATScore: `${school["latest.admissions.sat_scores.average.overall"]}`,
-          OutOfStateTuition: `${school["latest.cost.tuition.out_of_state"]}`,
-          InStateTuition: `${school["latest.cost.tuition.in_state"]}`,
-          StudentsWithAnyLoan: `${parseFloat(school["latest.aid.students_with_any_loan"]).toFixed(2)}`,
-          StudentsSize: `${school["latest.student.size"]}`,
-          SchoolWebsite: `${school["school.school_url"]}`,
-          Lat: `${school['location.lat']}`,
-          Long: `${school['location.lon']}`,
-          Favorited: false
+            name: `${school["school.name"]}`,
+            location: `${school["school.city"]},${school["school.state"]}`,
+            AcceptanceRate: `${parseFloat(school["latest.admissions.admission_rate.overall"]).toFixed(2)}`,
+            AverageSATScore: `${school["latest.admissions.sat_scores.average.overall"]}`,
+            OutOfStateTuition: `${school["latest.cost.tuition.out_of_state"]}`,
+            InStateTuition: `${school["latest.cost.tuition.in_state"]}`,
+            StudentsWithAnyLoan: `${parseFloat(school["latest.aid.students_with_any_loan"]).toFixed(2)}`,
+            StudentsSize: `${school["latest.student.size"]}`,
+            SchoolWebsite: `${school["school.school_url"]}`,
+            Lat: `${school['location.lat']}`,
+            Long: `${school['location.lon']}`,
+            Favorited: false
         }))
       )
       .then(schoolResults => {
         this.setState({ schools: schoolResults })
       })
       .catch(error => {
-        alert(error);
+        console.log(error);
       });
   }
 
@@ -284,7 +288,7 @@ class Navigation extends Component {
                 <Link to="/#Home" className="nav-link">Home</Link>
               </li>
               <li className="nav-item ">
-                <a className="nav-link " href="/#SideBar">Find</a>
+                  <Link to="/#SideBar" className="nav-link">Find</Link>
               </li>
               <li className="nav-item">
                 <Link to="/about" className="nav-link">About</Link>

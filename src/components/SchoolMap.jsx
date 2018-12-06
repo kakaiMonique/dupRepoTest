@@ -1,32 +1,83 @@
 import React, { Component } from "react";
-import { Map, TileLayer, Marker } from 'react-leaflet';
-// import { L } from 'leaflet';
+import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import L from "leaflet";
+import firebase from "firebase";
+import SchoolCard from "./SchoolCard";
 
 export default class SchoolMap extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            favSchools: null
+        }
+        this.changeState = this.changeState.bind(this);
+    }
+
+    changeState(data) {
+        this.setState({favSchools: data})
+    }
+    componentDidMount() {
+        const goldIcon = new L.Icon({
+            iconUrl: require('../imgs/goldstar.png'),
+            iconSize: [20, 20],
+        });
+
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                firebase.database().ref('users/' + user.uid + '/favorites/').on('value', (snapshot) => {
+                    let values = snapshot.val();
+                    let favorites = null;
+                    if(values != null) {
+                        favorites = (Object.keys(values).map(key => {
+                            let schoolCenter = [values[key].Lat, values[key].Long]
+
+                            return(<Marker key={key} icon={goldIcon} position={schoolCenter}>
+                                <Popup>
+                                    <b>{values[key].name}</b><br />{values[key].location}
+                                </Popup>
+                            </Marker>)
+                        }));
+                    }
+                    this.changeState(favorites);
+                });
+            }
+        });
+    }
+
     render() {
         const { schoolData } = this.props;
         const UScenter = [39.8283, -98.5795] // center of continental US
+
+        const regIcon = new L.Icon({
+            iconUrl: require('../imgs/bluedot.png'),
+            iconSize: [10, 10],
+        });
+
         return (
+<<<<<<< HEAD
            
             <Map className="MapContainer" center={UScenter} zoom={4} minZoom={4} >
             
+=======
+            <Map center={UScenter} minZoom={4} zoom={4}>
+>>>>>>> f27b59078abc0d461372b300a70928dc6e27fc06
                 <TileLayer
                     url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.png" //apikey=b8036ea1bdd04e658ebdde4c8bb56da4
                 />
                 {
                     Object.keys(schoolData).map((key) => {
                         let schoolCenter = [schoolData[key].Lat, schoolData[key].Long]
-                        // figure out later, differentiate icons with favorites and standard
-                        // var regIcon = L.icon({
-                        //     iconUrl: '../imgs/bluedot.png',
-                        //     iconSize: [20, 20],
-                        // });
-                        // var starIcon = L.icon({
-                        //     iconUrl: '../imgs/goldstar.png',
-                        //     iconSize: [20, 20],
-                        // });
-                        return <Marker key={key} position={schoolCenter} />;
+
+                        return <Marker key={key} icon={regIcon} position={schoolCenter}>
+                            <Popup>
+                                <b>{schoolData[key].name}</b><br />{schoolData[key].location}
+                            </Popup>
+                        </Marker>;
                     })
+                }
+                {
+                    this.state.favSchools
                 }
             </Map>
          
