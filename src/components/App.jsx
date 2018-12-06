@@ -91,6 +91,9 @@ class App extends Component {
       })
   }
 
+  toggleFav = () => {
+
+  }
 
 
 
@@ -160,7 +163,7 @@ class App extends Component {
         <main>
           <Switch>
             <Route exact path='/' render={(routerProps) => {
-              return <SearchPage {...routerProps} currentUser={this.state.user} schoolData={this.state.schools} handleUserInput={this.handleUserInput} handleSubmit={this.handleSubmit} />
+              return <SearchPage {...routerProps} toggleFav={this.toggleFav} currentUser={this.state.user} schoolData={this.state.schools} handleUserInput={this.handleUserInput} handleSubmit={this.handleSubmit} />
             }} />
             <Route path="/about" component={About} />
             <Route path='/favorites' render={(routerProps) => {

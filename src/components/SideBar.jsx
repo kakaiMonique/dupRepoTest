@@ -1,19 +1,50 @@
 import React, { Component } from "react";
+import ToggleButton from 'react-toggle-button'
+
  class SideBar extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            toggle: false
+        }
+
+        this.toggleFavorites = this.toggleFavorites.bind(this)
+    }
+
+    toggleFavorites() {
+        if(this.state.toggle === false) {
+            this.props.toggleFav()
+            this.setState({toggle: true})
+        } else {
+            this.setState({toggle: false})
+        }
+    }
  
     render() {
-      return (
+        const borderRadiusStyle = { borderRadius: 2 }
+        let toggle = null;
+
+        if(this.props.currentUser) {
+            toggle = (
+                <div className="py-3">
+                    <p className="text-white">Toggle showing your favorite schools on the map: </p>
+                    <ToggleButton
+                    value={this.state.toggle}
+                    thumbStyle={borderRadiusStyle}
+                    trackStyle={borderRadiusStyle}
+                    onToggle={this.toggleFavorites} />
+                </div>
+            );
+        }
+        return (
         <div >
           <div className="input-group mb-3" id="form">
+              <p className="text-white">Welcome.</p>
+              {toggle}
             <label htmlFor="searchQuery" className="mr-2" id="searchLabel">
-              <br />
-              Welcome.
-            <br />
-              <br />
-              Search for the perfect school by entering the name of the university, community college,
-              or grad school. Results will update as partial or complete names.
-            <br />
-              <br />
+                Search for the perfect school by entering the name of the university, community college,
+                or grad school. Results will update as partial or complete names.
   
             </label>
             <hr />

@@ -39,7 +39,9 @@ class Favorites extends Component {
     }
 
     componentWillUnmount() {
-        firebase.database().ref('users/' + this.props.currentUser.uid + '/favorites/').off()
+        if (this.props.currentUser) {
+            firebase.database().ref('users/' + this.props.currentUser.uid + '/favorites/').off()
+        }
     }
 
 
