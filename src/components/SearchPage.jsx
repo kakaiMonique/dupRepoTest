@@ -19,7 +19,8 @@ export class SearchPage extends Component {
                 <SideBar 
                   schoolData={this.props.schoolData}
                   currentUser={this.props.currentUser} 
-                  toggleFav={this.props.toggleFav} 
+                  toggleFav={this.props.toggleFav}
+                  filterValue={this.props.filterValue}
                   handleSchoolName={this.props.handleSchoolName} 
                   handleSchoolState={this.props.handleSchoolState}
                   handleFilterInput={this.props.handleFilterInput}

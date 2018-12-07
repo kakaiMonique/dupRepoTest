@@ -8,11 +8,23 @@ import 'react-input-range/lib/css/index.css';
     super(props);
 
     this.state = {
-      value:1000
+      value: 1000,
+        userName: null
     };
   }
- 
+
+  componentDidMount() {
+      if(this.props.filterValue != null) {
+          this.setState({value: this.props.filterValue})
+      }
+      if(this.props.currentUser) {
+          this.setState({userName: this.props.currentUser.displayName})
+      }
+  }
+
+
     render() {
+      console.log(this.state.value)
         const borderRadiusStyle = { borderRadius: 2 }
         let toggle = null;
 
@@ -34,7 +46,7 @@ import 'react-input-range/lib/css/index.css';
         //<strong>{this.props.currentUser}</strong>//
         return (
         <div className ="container">
-        <p className="text-white">Welcome </p>
+        <p className="text-white">Welcome {this.state.userName ? this.state.userName : ""}</p>
         {toggle}
         <form>
             <div className="form-group" id="form">

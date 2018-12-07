@@ -17,7 +17,7 @@ class App extends Component {
       schools: [],
       schoolName: '',
       user: '',
-      schoolTuition:'',
+      schoolTuition: 1000,
       schoolState:'',
       updatedSchools:'',
       displayFavorited: false
@@ -40,7 +40,9 @@ class App extends Component {
             user: firebaseUser
           }
         )
-
+          firebase.database().ref('users/' + firebaseUser.uid + '/filterValue').once('value').then((snapshot) => {
+              this.setState({schoolTuition: parseInt(snapshot.val().filterValue)})
+          });
       }
       else {
         this.setState({ user: null })
@@ -58,10 +60,14 @@ class App extends Component {
       .then((userCredentials) => {
 
         let firebaseUser = userCredentials.user
+
+          firebase.database().ref('users/' + firebaseUser.uid + '/filterValue').set({
+              filterValue: this.state.schoolTuition
+          });
         let updatePromise = firebaseUser.updateProfile(
           {
-            name: name
-          })
+            displayName: name
+          });
         return updatePromise
       })
       .catch((err) => {
@@ -116,9 +122,14 @@ class App extends Component {
   }
 
   handleFilterInput(FilterValue){
-     // console.log(FilterValue);
-      
+
     this.setState({ schoolTuition: FilterValue})
+
+      if(this.state.user) {
+          firebase.database().ref('users/' + this.state.user.uid + '/filterValue').set({
+              filterValue: this.state.schoolTuition
+          });
+      }
 
     let tutionOutofState=  Object.keys(this.state.schools).map(schools => {
     return this.state.schools[schools]
@@ -128,8 +139,7 @@ class App extends Component {
      let school = eachschool.OutOfStateTuition <=  this.state.schoolTuition
      return school
       })
-      //console.log(updatedSchools);
-    
+
     this.setState({updatedSchools})
 
   }
@@ -189,7 +199,6 @@ class App extends Component {
       schools = this.state.schools
 
      }
-
     return (
       <div>
         <Navigation currentUser={this.state.user}  handleSignOut={this.handleSignOut} />
@@ -205,6 +214,7 @@ class App extends Component {
                       handleFilterInput= {this.handleFilterInput}
                       UserFilterInput= {this.state.tuition}
                       displayFavorited={this.state.displayFavorited}
+                      filterValue={this.state.schoolTuition}
                       />
             }} />
             <Route path="/about" component={About} />
