@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/stage-0-topic-proposal-3ickey/precache-manifest.dee44933253d9ea35df0b5b9f2f1c69d.js"
+  "/CollegeStudio/precache-manifest.d38d1462074931dbae6bbe57b17fc3af.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/stage-0-topic-proposal-3ickey/index.html", {
+workbox.routing.registerNavigationRoute("/CollegeStudio/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
