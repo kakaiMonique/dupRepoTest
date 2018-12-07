@@ -50,8 +50,8 @@ class About extends Component {
                                 <div className="card-body">
                                     <h5 className="card-title">Mikias Lema</h5>
                                     <p className="card-text">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex hic, debitis,
-                                        nulla incidunt est earum perspiciatis fugit rerum ipsam dolorem exercitationem vitae.
+                                    Mickey is a Junior studying Informatics at UW and specializing in HIC. 
+                                    He was born in Addis Ababa, Ethiopia and enjoys the watching and playing soccer.
                                     </p>
                                 </div>
                             </div>
@@ -61,7 +61,7 @@ class About extends Component {
                                     <h5 className="card-title">Kyra Bautista</h5>
                                     <p className="card-text">
                                         Kyra is senior studying Informatics at UW. She is from Monroe, WA and enjoys
-                                        spending time her with cats and making 3D animated films. 
+                                        spending time with her cats and making 3D animated films. 
                                     </p>
                                 </div>
                             </div>
