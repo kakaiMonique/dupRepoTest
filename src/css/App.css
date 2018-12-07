@@ -95,7 +95,7 @@ nav .NavLinkz {
 
 .Home {
     width: 100%;
-    height: 38em;
+    height: 100vh;
     padding-left: 1em;
     padding-right: 1em;
     background-color: var(--offwhite);
