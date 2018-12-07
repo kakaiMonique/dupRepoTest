@@ -46,7 +46,7 @@ import 'react-input-range/lib/css/index.css';
         //<strong>{this.props.currentUser}</strong>//
         return (
         <div className ="container">
-        <p className="text-white">Welcome {this.state.userName ? this.state.userName : ""}</p>
+        <p className="text-white">Welcome <strong>{this.state.userName ? this.state.userName : ""}</strong></p>
         {toggle}
         <form>
             <div className="form-group" id="form">
