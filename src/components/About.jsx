@@ -70,8 +70,8 @@ class About extends Component {
                                 <div className="card-body">
                                     <h5 className="card-title">Tyler Van Brocklin</h5>
                                     <p className="card-text">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex hic, debitis,
-                                        nulla incidunt est earum perspiciatis fugit rerum ipsam dolorem exercitationem vitae.
+                                        Tyler is a Junior studying Informatics at UW. He is from Lake Stevens, WA and
+                                        enjoys listening to music and running in his free time.
                                     </p>
                                 </div>
                             </div>
