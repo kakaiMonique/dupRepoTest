@@ -22,7 +22,6 @@ import 'react-input-range/lib/css/index.css';
       }
   }
 
-
     render() {
         const borderRadiusStyle = { borderRadius: 2 }
         let toggle = null;
@@ -40,9 +39,7 @@ import 'react-input-range/lib/css/index.css';
                 </div>
             );
         }
-        // { Search for the perfect school by entering the name of the university, community college,
-        //   or grad school. Results will update as partial or complete names.}
-        //<strong>{this.props.currentUser}</strong>//
+
         return (
         <div className ="container">
         <p className="text-white">Welcome {this.state.userName ? this.state.userName : ""}</p>

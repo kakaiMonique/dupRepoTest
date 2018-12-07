@@ -117,7 +117,9 @@ class About extends Component {
                             been made, the user can sign in or out using this login information whenever they want.
                             Once logged in, a user has the ability to add and remove a college to their favorites
                             list directly from viewing that college's card and clicking on
-                            the  <b>Favorite</b>  or  <b>Delete</b>  button on the bottom of the card.
+                            the  <b>Favorite</b>  or  <b>Delete</b>  button on the bottom of the card. Additionally,
+                            upon logging out and back in, user's preferred tuition value is saved in the search sidebar
+                            on the <b>Find</b> page.
                         </p>
                     </section>
                 </div>
