@@ -83,14 +83,13 @@ p {
 
 #TeamH1 {
     color: var(--offwhite);
-    margin-bottom: 1.5em;
+    margin: .5em;
 }
 
 #team {
     width: 100%;
     height: auto;
-    padding-top: 1em;
-    padding-bottom: 5em;
+    padding: 1em;
     background-color: var(--darkgrey)
 }
 

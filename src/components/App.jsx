@@ -17,14 +17,13 @@ class App extends Component {
       schools: [],
       schoolName: '',
       user: '',
-      schoolTuition:'',
+      schoolTuition: 1000,
       schoolState:'',
       updatedSchools:'',
       displayFavorited: false
     };
 
-    this.handleUserInput = this.handleUserInput.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSchoolName = this.handleSchoolName.bind(this);
     this.handleSignOut = this.handleSignOut.bind(this)
     this.handleFilterInput =  this.handleFilterInput.bind(this)
     this.handleSchoolState = this.handleSchoolState.bind(this)
@@ -41,7 +40,9 @@ class App extends Component {
             user: firebaseUser
           }
         )
-
+          firebase.database().ref('users/' + firebaseUser.uid + '/filterValue').once('value').then((snapshot) => {
+              this.setState({schoolTuition: parseInt(snapshot.val().filterValue)})
+          });
       }
       else {
         this.setState({ user: null })
@@ -55,18 +56,20 @@ class App extends Component {
 
   handleSignUp = (name, email, password) => {
     this.setState({ errorMessage: null }); //clear any old errors
-
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then((userCredentials) => {
 
         let firebaseUser = userCredentials.user
+
+          firebase.database().ref('users/' + firebaseUser.uid + '/filterValue').set({
+              filterValue: this.state.schoolTuition
+          });
         let updatePromise = firebaseUser.updateProfile(
           {
-            name: name
-          })
+            displayName: name
+          });
         return updatePromise
       })
-
       .catch((err) => {
         this.setState(
           { errorMessage: err.message }
@@ -77,7 +80,6 @@ class App extends Component {
   //A callback function for logging in existing users
   handleSignIn = (email, password) => {
     this.setState({ errorMessage: null }); //clear any old errors
-
     firebase.auth().signInWithEmailAndPassword(email, password)
       .catch((err) => {
         this.setState(
@@ -107,7 +109,7 @@ class App extends Component {
   }
 
   /***************************** Form Stuff*/
-  handleUserInput(e) {
+  handleSchoolName(e) {
     this.setState({ schoolName: (e.target.value)}, () => {
       this.fetchData(this.state.schoolName);
     });
@@ -119,9 +121,16 @@ class App extends Component {
     });
   }
 
-  handleFilterInput(e){
+  handleFilterInput(FilterValue){
 
-    this.setState({ schoolTuition: (e.target.value)})
+    this.setState({ schoolTuition: FilterValue})
+
+      if(this.state.user) {
+          firebase.database().ref('users/' + this.state.user.uid + '/filterValue').set({
+              filterValue: this.state.schoolTuition
+          });
+      }
+
     let tutionOutofState=  Object.keys(this.state.schools).map(schools => {
     return this.state.schools[schools]
     })
@@ -131,17 +140,8 @@ class App extends Component {
      return school
       })
 
+    this.setState({updatedSchools})
 
-      console.log(updatedSchools);
-      // schools - all the schools
-      // updatedSchools - in here
-        this.setState({ updatedSchools : updatedSchools})
-
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    this.fetchData(this.state.input)
   }
 
   fetchData(SearchQuery) {
@@ -211,7 +211,6 @@ class App extends Component {
       schools = this.state.schools
 
      }
-
     return (
       <div>
         <Navigation currentUser={this.state.user}  handleSignOut={this.handleSignOut} />
@@ -219,14 +218,15 @@ class App extends Component {
           <Switch>
             <Route exact path='/' render={(routerProps) => {
               return <SearchPage {...routerProps}
-                      toggleFav={this.toggleFav} currentUser={this.state.user} schoolData={schools}
-
-                      handleUserInput={this.handleUserInput}
+                      toggleFav={this.toggleFav} 
+                      currentUser={this.state.user} 
+                      schoolData={schools}
+                      handleSchoolName={this.handleSchoolName}
                       handleSchoolState= {this.handleSchoolState}
-                      handleSubmit={this.handleSubmit}
                       handleFilterInput= {this.handleFilterInput}
                       UserFilterInput= {this.state.tuition}
                       displayFavorited={this.state.displayFavorited}
+                      filterValue={this.state.schoolTuition}
                       />
             }} />
             <Route path="/about" component={About} />
@@ -326,8 +326,8 @@ class Footer extends Component {
               <h6 className="text-uppercase font-weight-bold">Contact</h6>
               <hr className="line" />
               <p><i className="fa fa-home mr-3"></i> Seattle, WA 98027, US</p>
-              <p><i className="fa fa-envelope mr-3"></i> <a href="mailto: info@example.com">info@example.com</a></p>
-              <p><i className="fa fa-phone mr-3"></i> <a href="tel: 01 234 567 88">+ 01 234 567 88</a></p>
+              <p><i className="fa fa-envelope mr-3"></i> <a href="mailto: info@example.com">CollegeStudio@gmail.com</a></p>
+              <p><i className="fa fa-phone mr-3"></i> <a href="tel: 01 234 567 88">+ 01 234 888 88</a></p>
 
             </div>
           </div>

@@ -25,16 +25,16 @@ class SignUpForm extends Component {
   //handle signUp button
   handleSignUp = (event) => {
     event.preventDefault(); //don't submit
-    this.props.signUpCallback(this.state.email, this.state.password, this.state.name);
+    this.props.signUpCallback( this.state.name, this.state.email, this.state.password);
 
-    this.props.history.push("/")
+    this.props.history.push("/favorites")
   }
 
   //handle signIn button
   handleSignIn = (event) => {
     event.preventDefault(); //don't submit
     this.props.signInCallback(this.state.email, this.state.password);
-    this.props.history.push("/")
+    this.props.history.push("/favorites")
   }
 
   render() {

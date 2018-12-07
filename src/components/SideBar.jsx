@@ -1,13 +1,30 @@
 import React, { Component } from "react";
 import ToggleButton from 'react-toggle-button'
+import InputRange from 'react-input-range';
+import 'react-input-range/lib/css/index.css';
 
  class SideBar extends Component {
-    constructor(props) {
-        super(props)
+  constructor(props) {
+    super(props);
 
-    }
- 
+    this.state = {
+      value: 1000,
+        userName: null
+    };
+  }
+
+  componentDidMount() {
+      if(this.props.filterValue != null) {
+          this.setState({value: this.props.filterValue})
+      }
+      if(this.props.currentUser) {
+          this.setState({userName: this.props.currentUser.displayName})
+      }
+  }
+
+
     render() {
+      console.log(this.state.value)
         const borderRadiusStyle = { borderRadius: 2 }
         let toggle = null;
 
@@ -15,6 +32,7 @@ import ToggleButton from 'react-toggle-button'
             toggle = (
                 <div className="py-3">
                     <p className="text-white">Toggle showing your favorite schools on the map: </p>
+                    <br/>
                     <ToggleButton
                     value={this.props.displayFavorited}
                     thumbStyle={borderRadiusStyle}
@@ -23,106 +41,81 @@ import ToggleButton from 'react-toggle-button'
                 </div>
             );
         }
+        // { Search for the perfect school by entering the name of the university, community college,
+        //   or grad school. Results will update as partial or complete names.}
+        //<strong>{this.props.currentUser}</strong>//
         return (
-        <div >
-          <div className="input-group mb-3" id="form">
-              <p className="text-white">Welcome.</p>
-              {toggle}
-            <label htmlFor="searchQuery" className="mr-2" id="searchLabel">
-                Search for the perfect school by entering the name of the university, community college,
-                or grad school. Results will update as partial or complete names.
-  
-            </label>
-            <hr />
-            <input
-              type="text"
-              className="form-control"
-              id="searchQuery"
-              placeholder="School name.."
-              name="schoolName"
-              aria-label="School Name"
-              aria-describedby="basic-addon2"
-              onChange={this.props.handleUserInput}
-            />
-  
-            <div className="input-group-append">
-              <button
-                className="btn btn-outline-secondary"
-                id="searchButton"
-                type="button"
-                onClick={this.props.handleSubmit}>
-                Search
-              </button>
+        <div className ="container">
+        <p className="text-white">Welcome {this.state.userName ? this.state.userName : ""}</p>
+        {toggle}
+        <form>
+            <div className="form-group" id="form">
+              <label  id="searchLabel">
+                  Search by school name
+              </label>
+              <small  className="form-text text text-muted">Include the campus name for a specific college</small>
+              <hr />
+              <input
+                type="text"
+                className="form-control"
+                id="searchQuery"
+                placeholder="School name.."
+                name="schoolName"
+                aria-label="School Name"
+                aria-describedby="basic-addon2"
+                onChange={this.props.handleSchoolName}
+              />
             </div>
-          </div>
-  
-          <div className="input-group mb-3" id="form">
-            <label htmlFor="searchQuery" className="mr-2" id="searchLabel">
-              Otherwise, if you are unsure of what specific school too look at, then please enter
-              a state to get information on university and colleges within your selected area.
-              (ex. "WA")
-              <br />
-              <br />
-            </label>
-            <hr />
-  
-            <input
-              type="text"
-              className="form-control"
-              id="searchQueryDemo"
-              placeholder="School state.."
-              name="schoolState"
-              aria-label="State Name"
-              aria-describedby="basic-addon2"
-              onChange={this.props.handleSchoolState} />
-  
-            <div className="input-group-append">
-              <button
-                className="btn btn-outline-secondary"
-                id="searchButton2"
-                type="button"
-                onClick={this.props.handleSubmit}>
-                Search
-            </button>
-            </div>
+    
 
-          </div>
-          <div className="input-group mb-3" id="form">
-            <div className='col-12'>
-            <label htmlFor="searchQuery" className="mr-2" id="searchLabel">
-              Filter by Tuition
-            </label>
+            <div className="form-group" id="form">
+              <label  id="searchLabel">
+                Search by school state (ex. "WA")
+              </label>
+              <hr />
+    
+              <input
+                type="text"
+                className="form-control"
+                id="searchQueryDemo"
+                placeholder="School state.."
+                name="schoolState"
+                aria-label="State Name"
+                aria-describedby="basic-addon2"
+                onChange={this.props.handleSchoolState} />
             </div>
-            <hr></hr>
+          </form>
+
+          <div className="form-group" id="form">
+            
             <label htmlFor="searchQuery" className="mr-2" id="searchLabel">
-              $1000
-            </label>" "
-            <input
-              type="range"
-              className="form-control"
-              id="searchQueryDemo"
-              min="1000"
-              max="50000"
-              aria-label="school tuition"
-              aria-describedby="basic-addon2"
-              onChange={this.props.handleFilterInput} />
-              " "
-              <label htmlFor="searchQuery" className="mr-2" id="searchLabel">
-                     ${this.props.UserFilterInput}
-             </label>
-          </div>
-  
+              Filter results by Out-of-State tuition 
+            </label>
+            <br />
+            <hr />
+            <br />
+   
+               <InputRange
+                maxValue= {50000}
+                minValue={1000}
+                value={this.state.value}
+                onChange={value => this.setState({ value })}
+                onChangeComplete={value => this.props.handleFilterInput(value)} />
+                
+           </div>
+      
           <br />
           <hr />
-          <div className="container">
-            <a
-              href="https://www2.ed.gov/rschstat/landing.jhtml?src=pn"
-              className=" DataFrom badge "
-              target="_blank" rel="noopener noreferrer">
-              Data from U.S. Department of Education.
-            </a>
-          </div>
+            <div className="container">
+              <a
+                href="https://www2.ed.gov/rschstat/landing.jhtml?src=pn"
+                className=" DataFrom badge "
+                target="_blank" rel="noopener noreferrer">
+                Data from U.S. Department of Education.
+              </a>
+            </div>
         </div>
+      
       )
     }
   }
