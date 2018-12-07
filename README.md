@@ -5,7 +5,7 @@ This repository contains code for an interactive web app, created for the _Clien
 College studio is a college finding web app created by Mickey Lema, Kyra Bautista, Lauren Smith, and Tyler Van Brocklin.
 With this app, users can search potential schools based on school name or school state.
 
-#About the Project
+# About the Project
 
 Users can discover schools this way whether or not they have created an account.
 A user can create an account using the Sign In tab, where they can enter their
