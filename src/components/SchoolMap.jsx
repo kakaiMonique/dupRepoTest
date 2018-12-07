@@ -68,7 +68,7 @@ export default class SchoolMap extends Component {
            
             <Map className="MapContainer" center={UScenter} zoom={4} minZoom={4} >
                 <TileLayer
-                    url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.png" //apikey=b8036ea1bdd04e658ebdde4c8bb56da4
+                    url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.png" //apikey=b8036ea1bdd04e658ebdde4c8bb56da4
                 />
                 {
                     Object.keys(schoolData).map((key) => {

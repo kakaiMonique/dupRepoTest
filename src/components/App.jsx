@@ -119,9 +119,11 @@ class App extends Component {
     });
   }
 
-  handleFilterInput(e){
+  handleFilterInput(FilterValue){
+     // console.log(FilterValue);
+      
+    this.setState({ schoolTuition: FilterValue})
 
-    this.setState({ schoolTuition: (e.target.value)})
     let tutionOutofState=  Object.keys(this.state.schools).map(schools => {
     return this.state.schools[schools]
     })
@@ -130,12 +132,9 @@ class App extends Component {
      let school = eachschool.OutOfStateTuition <=  this.state.schoolTuition
      return school
       })
-
-
-      console.log(updatedSchools);
-      // schools - all the schools
-      // updatedSchools - in here
-        this.setState({ updatedSchools : updatedSchools})
+      //console.log(updatedSchools);
+    
+    this.setState({updatedSchools})
 
   }
 
@@ -314,8 +313,8 @@ class Footer extends Component {
               <h6 className="text-uppercase font-weight-bold">Contact</h6>
               <hr className="line" />
               <p><i className="fa fa-home mr-3"></i> Seattle, WA 98027, US</p>
-              <p><i className="fa fa-envelope mr-3"></i> <a href="mailto: info@example.com">info@example.com</a></p>
-              <p><i className="fa fa-phone mr-3"></i> <a href="tel: 01 234 567 88">+ 01 234 567 88</a></p>
+              <p><i className="fa fa-envelope mr-3"></i> <a href="mailto: info@example.com">CollegeStudio@gmail.com</a></p>
+              <p><i className="fa fa-phone mr-3"></i> <a href="tel: 01 234 567 88">+ 01 234 888 88</a></p>
 
             </div>
           </div>
