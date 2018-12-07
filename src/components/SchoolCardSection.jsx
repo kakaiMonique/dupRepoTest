@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import SchoolCard from "./SchoolCard"
-import firebase from "firebase/app"
 
  class SchoolCardSection extends Component {
 

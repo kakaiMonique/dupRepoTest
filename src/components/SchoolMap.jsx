@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from "leaflet";
 import firebase from "firebase";
-import SchoolCard from "./SchoolCard";
 
 export default class SchoolMap extends Component {
     constructor(props) {

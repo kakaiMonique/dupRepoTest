@@ -24,7 +24,6 @@ import 'react-input-range/lib/css/index.css';
 
 
     render() {
-      console.log(this.state.value)
         const borderRadiusStyle = { borderRadius: 2 }
         let toggle = null;
 

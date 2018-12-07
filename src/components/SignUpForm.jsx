@@ -90,7 +90,7 @@ class SignUpForm extends Component {
                 <div className="form-group">
                   <label htmlFor="email">Email</label>
                   <input className="form-control"
-                    id="email"
+                    id="emailSignUp"
                     type="email"
                     name="email"
                     onChange={this.handleChange}
@@ -101,7 +101,7 @@ class SignUpForm extends Component {
                 <div className="form-group">
                   <label htmlFor="password">Password</label>
                   <input className="form-control"
-                    id="password"
+                    id="passwordSignUp"
                     type="password"
                     name="password"
                     onChange={this.handleChange}
