@@ -169,12 +169,13 @@ class App extends Component {
         data => data.results.map(school => ({
             name: `${school["school.name"]}`,
             location: `${school["school.city"]},${school["school.state"]}`,
-            AcceptanceRate: `${parseFloat(school["latest.admissions.admission_rate.overall"]).toFixed(2)}`,
-            AverageSATScore: `${school["latest.admissions.sat_scores.average.overall"]}`,
-            OutOfStateTuition: `${school["latest.cost.tuition.out_of_state"]}`,
-            InStateTuition: `${school["latest.cost.tuition.in_state"]}`,
+            AcceptanceRate: this.unReported(`${parseFloat(school["latest.admissions.admission_rate.overall"])}`),
+            // AcceptanceRate: this.unReported(`${parseFloat(school["latest.admissions.admission_rate.overall"]).toFixed(2)}`, true),
+            AverageSATScore: this.unReported(`${school["latest.admissions.sat_scores.average.overall"]}`),//`${school["latest.admissions.sat_scores.average.overall"]}`,
+            OutOfStateTuition: this.unReported(`${school["latest.cost.tuition.out_of_state"]}`),
+            InStateTuition: this.unReported(`${school["latest.cost.tuition.in_state"]}`),
             StudentsWithAnyLoan: `${parseFloat(school["latest.aid.students_with_any_loan"]).toFixed(2)}`,
-            StudentsSize: `${school["latest.student.size"]}`,
+            StudentsSize: this.unReported(`${school["latest.student.size"]}`),
             SchoolWebsite: `${school["school.school_url"]}`,
             Lat: `${school['location.lat']}`,
             Long: `${school['location.lon']}`,
@@ -187,6 +188,17 @@ class App extends Component {
       .catch(error => {
         console.log(error);
       });
+  }
+
+  unReported(schoolStat) {
+
+  if (schoolStat === 'null' || isNaN(schoolStat)) {
+      console.log(schoolStat + " " + isNaN(schoolStat));
+      schoolStat = "null";
+      return "Unreported";
+    } else {
+      return schoolStat;
+    }
   }
 
   render() {
