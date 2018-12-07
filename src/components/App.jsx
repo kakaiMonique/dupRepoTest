@@ -23,8 +23,7 @@ class App extends Component {
       displayFavorited: false
     };
 
-    this.handleUserInput = this.handleUserInput.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSchoolName = this.handleSchoolName.bind(this);
     this.handleSignOut = this.handleSignOut.bind(this)
     this.handleFilterInput =  this.handleFilterInput.bind(this)
     this.handleSchoolState = this.handleSchoolState.bind(this)
@@ -107,7 +106,7 @@ class App extends Component {
   }
 
   /***************************** Form Stuff*/
-  handleUserInput(e) {
+  handleSchoolName(e) {
     this.setState({ schoolName: (e.target.value)}, () => {
       this.fetchData(this.state.schoolName);
     });
@@ -136,11 +135,6 @@ class App extends Component {
     
     this.setState({updatedSchools})
 
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    this.fetchData(this.state.input)
   }
 
   fetchData(SearchQuery) {
@@ -206,11 +200,11 @@ class App extends Component {
           <Switch>
             <Route exact path='/' render={(routerProps) => {
               return <SearchPage {...routerProps}
-                      toggleFav={this.toggleFav} currentUser={this.state.user} schoolData={schools}
-
-                      handleUserInput={this.handleUserInput}
+                      toggleFav={this.toggleFav} 
+                      currentUser={this.state.user} 
+                      schoolData={schools}
+                      handleSchoolName={this.handleSchoolName}
                       handleSchoolState= {this.handleSchoolState}
-                      handleSubmit={this.handleSubmit}
                       handleFilterInput= {this.handleFilterInput}
                       UserFilterInput= {this.state.tuition}
                       displayFavorited={this.state.displayFavorited}

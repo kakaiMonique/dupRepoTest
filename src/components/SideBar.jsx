@@ -31,17 +31,17 @@ import 'react-input-range/lib/css/index.css';
         }
         // { Search for the perfect school by entering the name of the university, community college,
         //   or grad school. Results will update as partial or complete names.}
-
+        //<strong>{this.props.currentUser}</strong>//
         return (
         <div className ="container">
-        <p className="text-white">Welcome</p>
+        <p className="text-white">Welcome </p>
         {toggle}
         <form>
             <div className="form-group" id="form">
               <label  id="searchLabel">
                   Search by school name
               </label>
-              <small  class="form-text text text-muted">Include the campus name for a specific college</small>
+              <small  className="form-text text text-muted">Include the campus name for a specific college</small>
               <hr />
               <input
                 type="text"
@@ -51,7 +51,7 @@ import 'react-input-range/lib/css/index.css';
                 name="schoolName"
                 aria-label="School Name"
                 aria-describedby="basic-addon2"
-                onChange={this.props.handleUserInput}
+                onChange={this.props.handleSchoolName}
               />
             </div>
     
@@ -77,7 +77,7 @@ import 'react-input-range/lib/css/index.css';
           <div className="form-group" id="form">
             
             <label htmlFor="searchQuery" className="mr-2" id="searchLabel">
-              Filter results by Out-of-Sate tuition 
+              Filter results by Out-of-State tuition 
             </label>
             <br />
             <hr />

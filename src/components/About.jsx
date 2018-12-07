@@ -10,7 +10,7 @@ class About extends Component {
                     <section id="SectionAbout">
                         <h2>About</h2>
                         <p className="lead">
-                            We know that there are many amazing colleges and universities in the united states. Although finding the
+                            We know that there are many amazing colleges and universities in the united states.Although finding the
                             right one might be tiring, we hope to be a support on this amazing journey. We use the College
                             Scorecard API collected by the US government to provide quick facts about specific colleges, such as...
                             <br />

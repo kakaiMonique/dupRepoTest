@@ -107,17 +107,17 @@ nav .NavLinkz {
 }
 
 #HomeLeft {
-    width: 45%;
-    height: 100vh;
-}
-
-#HomeRight {
     width: 55%;
     height: 100vh;
 }
 
+#HomeRight {
+    width: 45%;
+    height: 100vh;
+}
+
 #HRcontainer {
-    margin-top: 3em;
+    margin-top: 6em;
     padding: 3em;
 }
 

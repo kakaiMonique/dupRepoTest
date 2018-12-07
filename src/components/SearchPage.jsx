@@ -16,11 +16,13 @@ export class SearchPage extends Component {
           <div className="findWrapper ">
             <div className="leftWrapper">
               <div className="container-fluid">
-                <SideBar handleFilterInput={this.props.handleFilterInput}
+                <SideBar 
                   schoolData={this.props.schoolData}
-                  currentUser={this.props.currentUser} toggleFav={this.props.toggleFav} handleUserInput={this.props.handleUserInput} handleSchoolState={this.props.handleSchoolState}
-                  handleSubmit={this.props.handleSubmit}
-                  UserFilterInput={this.props.UserFilterInput}
+                  currentUser={this.props.currentUser} 
+                  toggleFav={this.props.toggleFav} 
+                  handleSchoolName={this.props.handleSchoolName} 
+                  handleSchoolState={this.props.handleSchoolState}
+                  handleFilterInput={this.props.handleFilterInput}
                   displayFavorited={this.props.displayFavorited}
                 />
               </div>
