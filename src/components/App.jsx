@@ -19,7 +19,8 @@ class App extends Component {
       user: '',
       schoolTuition:'',
       schoolState:'',
-      updatedSchools:''
+      updatedSchools:'',
+      displayFavorited: false
     };
 
     this.handleUserInput = this.handleUserInput.bind(this);
@@ -27,6 +28,7 @@ class App extends Component {
     this.handleSignOut = this.handleSignOut.bind(this)
     this.handleFilterInput =  this.handleFilterInput.bind(this)
     this.handleSchoolState = this.handleSchoolState.bind(this)
+    this.toggleFav = this.toggleFav.bind(this)
   }
 
   componentDidMount() {
@@ -50,7 +52,6 @@ class App extends Component {
   componentWillUnmount() {
     this.authUnSubFunction()
   }
-
 
   handleSignUp = (name, email, password) => {
     this.setState({ errorMessage: null }); //clear any old errors
@@ -98,7 +99,11 @@ class App extends Component {
   }
 
   toggleFav = () => {
-
+      if(this.state.displayFavorited === true) {
+          this.setState({displayFavorited: false})
+      } else {
+          this.setState({displayFavorited: true})
+      }
   }
 
   /***************************** Form Stuff*/
@@ -140,7 +145,6 @@ class App extends Component {
   }
 
   fetchData(SearchQuery) {
-
 
     let states = ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC",
       "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA",
@@ -210,6 +214,7 @@ class App extends Component {
                       handleSubmit={this.handleSubmit}
                       handleFilterInput= {this.handleFilterInput}
                       UserFilterInput= {this.state.tuition}
+                      displayFavorited={this.state.displayFavorited}
                       />
             }} />
             <Route path="/about" component={About} />

@@ -11,6 +11,7 @@ export default class SchoolMap extends Component {
         this.state = {
             favSchools: null
         }
+
         this.changeState = this.changeState.bind(this);
     }
 
@@ -28,13 +29,13 @@ export default class SchoolMap extends Component {
                 firebase.database().ref('users/' + user.uid + '/favorites/').on('value', (snapshot) => {
                     let values = snapshot.val();
                     let favorites = null;
-                    if(values != null) {
+                    if (values != null) {
                         favorites = (Object.keys(values).map(key => {
                             let schoolCenter = [values[key].Lat, values[key].Long]
 
-                            return(<Marker key={key} icon={goldIcon} position={schoolCenter}>
+                            return (<Marker key={key} icon={goldIcon} position={schoolCenter}>
                                 <Popup>
-                                    <b>{values[key].name}</b><br />{values[key].location}
+                                    <b>{values[key].name}</b><br/>{values[key].location}
                                 </Popup>
                             </Marker>)
                         }));
@@ -61,6 +62,8 @@ export default class SchoolMap extends Component {
             iconSize: [10, 10],
         });
 
+
+
         return (
            
             <Map className="MapContainer" center={UScenter} zoom={4} minZoom={4} >
@@ -79,7 +82,7 @@ export default class SchoolMap extends Component {
                     })
                 }
                 {
-                    this.state.favSchools
+                    this.props.displayFavorited ? this.state.favSchools : null
                 }
             </Map>
          

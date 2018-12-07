@@ -5,20 +5,6 @@ import ToggleButton from 'react-toggle-button'
     constructor(props) {
         super(props)
 
-        this.state = {
-            toggle: false
-        }
-
-        this.toggleFavorites = this.toggleFavorites.bind(this)
-    }
-
-    toggleFavorites() {
-        if(this.state.toggle === false) {
-            this.props.toggleFav()
-            this.setState({toggle: true})
-        } else {
-            this.setState({toggle: false})
-        }
     }
  
     render() {
@@ -30,10 +16,10 @@ import ToggleButton from 'react-toggle-button'
                 <div className="py-3">
                     <p className="text-white">Toggle showing your favorite schools on the map: </p>
                     <ToggleButton
-                    value={this.state.toggle}
+                    value={this.props.displayFavorited}
                     thumbStyle={borderRadiusStyle}
                     trackStyle={borderRadiusStyle}
-                    onToggle={this.toggleFavorites} />
+                    onToggle={this.props.toggleFav} />
                 </div>
             );
         }
