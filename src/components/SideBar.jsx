@@ -41,7 +41,7 @@ import 'react-input-range/lib/css/index.css';
               <label  id="searchLabel">
                   Search by school name
               </label>
-              <small  class="form-text text text-muted">Include the campus name for a specific college</small>
+              <small  className="form-text text text-muted">Include the campus name for a specific college</small>
               <hr />
               <input
                 type="text"

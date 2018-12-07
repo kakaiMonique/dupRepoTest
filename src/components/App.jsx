@@ -55,7 +55,6 @@ class App extends Component {
 
   handleSignUp = (name, email, password) => {
     this.setState({ errorMessage: null }); //clear any old errors
-
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then((userCredentials) => {
 
@@ -66,7 +65,6 @@ class App extends Component {
           })
         return updatePromise
       })
-
       .catch((err) => {
         this.setState(
           { errorMessage: err.message }
@@ -77,7 +75,6 @@ class App extends Component {
   //A callback function for logging in existing users
   handleSignIn = (email, password) => {
     this.setState({ errorMessage: null }); //clear any old errors
-
     firebase.auth().signInWithEmailAndPassword(email, password)
       .catch((err) => {
         this.setState(
