@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import firebase from 'firebase/app';
-import Favorites from "./Favorites";
 
 class SchoolCard extends Component {
   constructor() {
