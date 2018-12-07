@@ -42,50 +42,80 @@ class SignUpForm extends Component {
       <div className="container">
         <div className="container">
           <div className="row px-3 headerRow">
-            <h3>Sign In / Sign Up</h3>
+            <div className="col-md">
+              <h3 className="pb-2">Sign In</h3>
+              <form aria-label="Log in for existing users">
+                    {/* email */}
+                    <div className="form-group">
+                        <label htmlFor="email">Email</label>
+                        <input className="form-control"
+                               id="email"
+                               type="email"
+                               name="email"
+                               onChange={this.handleChange}
+                        />
+                    </div>
+
+                    {/* password */}
+                    <div className="form-group">
+                        <label htmlFor="password">Password</label>
+                        <input className="form-control"
+                               id="password"
+                               type="password"
+                               name="password"
+                               onChange={this.handleChange}
+                        />
+                    </div>
+
+                    {/* buttons */}
+                    <div className="form-group">
+                        <button className="btn btn-dark" onClick={this.handleSignIn}>Sign-in</button>
+                    </div>
+                </form>
+            </div>
+            <div className="col-md">
+              <h3 className="pb-2">Sign Up</h3>
+              <form aria-label="sign up for new users">
+                {/* name */}
+                <div className="form-group">
+                  <label htmlFor="name">Name</label>
+                  <input className="form-control"
+                    id="name"
+                    name="name"
+                    onChange={this.handleChange}
+                  />
+                </div>
+
+                {/* email */}
+                <div className="form-group">
+                  <label htmlFor="email">Email</label>
+                  <input className="form-control"
+                    id="email"
+                    type="email"
+                    name="email"
+                    onChange={this.handleChange}
+                  />
+                </div>
+
+                {/* password */}
+                <div className="form-group">
+                  <label htmlFor="password">Password</label>
+                  <input className="form-control"
+                    id="password"
+                    type="password"
+                    name="password"
+                    onChange={this.handleChange}
+                  />
+                </div>
+
+                {/* buttons */}
+                <div className="form-group">
+                  <button className="btn btn-dark mr-2" onClick={this.handleSignUp}>Sign-up</button>
+                </div>
+              </form>
+            </div>
           </div>
-          
-            <form>
-              {/* name */}
-              <div className="form-group">
-                <label htmlFor="name">Name</label>
-                <input className="form-control"
-                  id="name"
-                  name="name"
-                  onChange={this.handleChange}
-                />
-              </div>
-
-              {/* email */}
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input className="form-control"
-                  id="email"
-                  type="email"
-                  name="email"
-                  onChange={this.handleChange}
-                />
-              </div>
-
-              {/* password */}
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <input className="form-control"
-                  id="password"
-                  type="password"
-                  name="password"
-                  onChange={this.handleChange}
-                />
-              </div>
-
-              {/* buttons */}
-              <div className="form-group">
-                <button className="btn btn-dark mr-2" onClick={this.handleSignUp}>Sign-up</button>
-                <button className="btn btn-dark" onClick={this.handleSignIn}>Sign-in</button>
-              </div>
-            </form>
-          </div>
-        
+        </div>
       </div>
     )
   }

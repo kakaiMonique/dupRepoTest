@@ -20,11 +20,12 @@ export class SearchPage extends Component {
                          currentUser={this.props.currentUser} toggleFav={this.props.toggleFav} handleUserInput={this.props.handleUserInput} handleSchoolState= {this.props.handleSchoolState}
                          handleSubmit={this.props.handleSubmit}
                          UserFilterInput ={this.props.UserFilterInput}
+                         displayFavorited={this.props.displayFavorited}
                          />
               </div>
             </div>
             <div className="rightWrapper">
-            <SchoolMap currentUser={this.props.currentUser} schoolData={this.props.schoolData} />
+            <SchoolMap currentUser={this.props.currentUser} schoolData={this.props.schoolData} displayFavorited={this.props.displayFavorited}/>
               <SchoolCardSection currentUser={this.props.currentUser} schoolData={this.props.schoolData} />
             </div>
           </div>
