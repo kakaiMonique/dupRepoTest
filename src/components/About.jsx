@@ -50,8 +50,8 @@ class About extends Component {
                                 <div className="card-body">
                                     <h5 className="card-title">Mikias Lema</h5>
                                     <p className="card-text">
-                                    Mickey is a Junior studying Informatics at UW and specializing in HIC. 
-                                    He was born in Addis Ababa, Ethiopia and enjoys the watching and playing soccer.
+                                    Mickey is a Junior studying Informatics at UW and specializing in HCI. 
+                                    He was born in Addis Ababa, Ethiopia and enjoys watching and playing soccer.
                                     </p>
                                 </div>
                             </div>
