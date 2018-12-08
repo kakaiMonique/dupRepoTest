@@ -13,3 +13,6 @@ Once logged in, a user has the ability to add and remove a college to their favo
 list directly from viewing that college's card and clicking on the Favorite or Delete
 button on the bottom of the card. Additionally, upon logging out and back in, user's
 preferred tuition value is saved in the search sidebar on the Find page.
+
+
+Bootstrapped with Create React App.
