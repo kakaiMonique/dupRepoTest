@@ -1,7 +1,7 @@
 {
   "main.css": "/CollegeStudio/static/css/main.869f3b80.chunk.css",
-  "main.js": "/CollegeStudio/static/js/main.2a51715c.chunk.js",
-  "main.js.map": "/CollegeStudio/static/js/main.2a51715c.chunk.js.map",
+  "main.js": "/CollegeStudio/static/js/main.5f1b2e84.chunk.js",
+  "main.js.map": "/CollegeStudio/static/js/main.5f1b2e84.chunk.js.map",
   "static/css/1.544dc8f4.chunk.css": "/CollegeStudio/static/css/1.544dc8f4.chunk.css",
   "static/js/1.c5a280b3.chunk.js": "/CollegeStudio/static/js/1.c5a280b3.chunk.js",
   "static/js/1.c5a280b3.chunk.js.map": "/CollegeStudio/static/js/1.c5a280b3.chunk.js.map",
@@ -12,9 +12,9 @@
   "static/media/kyra.jpg": "/CollegeStudio/static/media/kyra.74783e5a.jpg",
   "static/media/tyler.jpg": "/CollegeStudio/static/media/tyler.3354f821.jpg",
   "static/media/lauren.jpg": "/CollegeStudio/static/media/lauren.1fe37b36.jpg",
-  "static/css/1.544dc8f4.chunk.css.map": "/CollegeStudio/static/css/1.544dc8f4.chunk.css.map",
   "static/css/main.869f3b80.chunk.css.map": "/CollegeStudio/static/css/main.869f3b80.chunk.css.map",
+  "static/css/1.544dc8f4.chunk.css.map": "/CollegeStudio/static/css/1.544dc8f4.chunk.css.map",
   "index.html": "/CollegeStudio/index.html",
-  "precache-manifest.d38d1462074931dbae6bbe57b17fc3af.js": "/CollegeStudio/precache-manifest.d38d1462074931dbae6bbe57b17fc3af.js",
+  "precache-manifest.b89d11f46c38822b0819af016146d7fc.js": "/CollegeStudio/precache-manifest.b89d11f46c38822b0819af016146d7fc.js",
   "service-worker.js": "/CollegeStudio/service-worker.js"
 }

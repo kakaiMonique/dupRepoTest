@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/CollegeStudio/static/media/homebgResponsive.2090f3fb.svg"
   },
   {
-    "revision": "2a51715cd618a55bf841",
+    "revision": "5f1b2e848eb1cf8cd88a",
     "url": "/CollegeStudio/static/css/main.869f3b80.chunk.css"
   },
   {
@@ -24,8 +24,8 @@ self.__precacheManifest = [
     "url": "/CollegeStudio/static/media/HamMenu.1624c7a4.svg"
   },
   {
-    "revision": "2a51715cd618a55bf841",
-    "url": "/CollegeStudio/static/js/main.2a51715c.chunk.js"
+    "revision": "5f1b2e848eb1cf8cd88a",
+    "url": "/CollegeStudio/static/js/main.5f1b2e84.chunk.js"
   },
   {
     "revision": "921e840a2e322f059e9d515b296dd643",
@@ -44,7 +44,7 @@ self.__precacheManifest = [
     "url": "/CollegeStudio/static/css/1.544dc8f4.chunk.css"
   },
   {
-    "revision": "e3685db90f3d87b7e6bcfb5a87e0fcb4",
+    "revision": "04df2f6a7cb67e862641e97f33b5f89e",
     "url": "/CollegeStudio/index.html"
   }
 ];
