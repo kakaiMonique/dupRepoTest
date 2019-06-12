@@ -144,6 +144,7 @@ class App extends Component {
 
   }
 
+  // this method is fetching api and formats the returned data
   fetchData(SearchQuery) {
 
     let states = ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC",
@@ -154,10 +155,18 @@ class App extends Component {
     let fetchThis;
 
     if (states.indexOf(SearchQuery) > -1) {
-      fetchThis = `https://api.data.gov/ed/collegescorecard/v1/schools?school.state=${SearchQuery}&_per_page=50&_fields=school.name,school.city,school.state,school.school_url,location.lat,location.lon,latest.admissions.admission_rate.overall,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state,latest.cost.tuition.in_state,latest.aid.students_with_any_loan,latest.student.size&api_key=kSIC8EZipZTx5YinVli2GJWtCxRRs5NKvtmQwmvg`;
+      fetchThis = `https://api.data.gov/ed/collegescorecard/v1/schools?school.state=${SearchQuery}
+      &_per_page=50&_fields=school.name,school.city,school.state,school.school_url,
+      location.lat,location.lon,latest.admissions.admission_rate.overall,latest.admissions.sat_scores.average.overall,
+      latest.cost.tuition.out_of_state,latest.cost.tuition.in_state,latest.aid.students_with_any_loan,latest.student.size
+      &api_key=kSIC8EZipZTx5YinVli2GJWtCxRRs5NKvtmQwmvg`;
     }
     else {
-      fetchThis = `https://api.data.gov/ed/collegescorecard/v1/schools?school.name=${SearchQuery}&_per_page=50&_fields=school.name,school.city,school.state,school.school_url,location.lat,location.lon,latest.admissions.admission_rate.overall,latest.admissions.sat_scores.average.overall,latest.cost.tuition.out_of_state,latest.cost.tuition.in_state,latest.aid.students_with_any_loan,latest.student.size&api_key=kSIC8EZipZTx5YinVli2GJWtCxRRs5NKvtmQwmvg`
+      fetchThis = `https://api.data.gov/ed/collegescorecard/v1/schools?school.name=${SearchQuery}
+      &_per_page=50&_fields=school.name,school.city,school.state,school.school_url,
+      location.lat,location.lon,latest.admissions.admission_rate.overall,latest.admissions.sat_scores.average.overall,
+      latest.cost.tuition.out_of_state,latest.cost.tuition.in_state,latest.aid.students_with_any_loan,latest.student.size
+      &api_key=kSIC8EZipZTx5YinVli2GJWtCxRRs5NKvtmQwmvg`
     }
 
 
@@ -217,7 +226,9 @@ class App extends Component {
         <main>
           <Switch>
             <Route exact path='/' render={(routerProps) => {
-              return <SearchPage {...routerProps}
+              return <SearchPage {...routerProps} 
+              // this component imports  all other components, 
+              //so we pass all data needed for this component and all other components it imports
                       toggleFav={this.toggleFav} 
                       currentUser={this.state.user} 
                       schoolData={schools}
@@ -251,7 +262,7 @@ class App extends Component {
   }
 }
 
-
+// one nav component
 class Navigation extends Component {
   render() {
     let loginLink = null;
@@ -304,6 +315,7 @@ class Navigation extends Component {
   }
 }
 
+//one footer component 
 class Footer extends Component {
   render() {
     return (
