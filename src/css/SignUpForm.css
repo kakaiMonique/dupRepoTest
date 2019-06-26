@@ -1,3 +1,50 @@
 .headerRow {
- margin-top: 5em;
+    margin-top: 5em;
+    margin-bottom: 5em;
+ 
+}
+.form-control{
+    background-color: #333333;
+    border: #121212;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+}
+label {
+    color: #A1A1A1;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+}
+h3 {
+  
+    color: var(--offwhite);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+}
+.signforms{
+    margin-left: 2em;
+    margin-bottom: 2em;
+    border-right-style: solid;
+    border-right-color: #141414;
+}
+.favWrapperCS{
+    margin-bottom: 40em;
+}
+.favcontainerBKG{
+    background: #1c1c1c;
+}
+#signinoutBtn{
+    margin-top: 2em;
+    background: #141414;
+    color:white;
+    border: black;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    
+}
+.containerWrap {
+    background: #1c1c1c;
+    padding: 4em;
 }

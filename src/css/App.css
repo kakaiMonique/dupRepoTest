@@ -2,7 +2,7 @@
 
 :root {
     --darkred: #7D1F1D;
-    --darkgrey: #141414;
+    --darkgrey: #121212;
     --offwhite: #f7f7f7;
     --puregrey: #c5c5c5;
 }
@@ -36,7 +36,21 @@ body {
 /* SideNav *************************************/
 
 .navbar {
-    background-color: black;
+    padding-left: 0;
+    padding-right: 0;
+   
+    
+    /* background-image: url('../imgs/stripes.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain; */
+}
+
+.navbarWrapper_SVG{
+    background: linear-gradient(190deg, #4014D3 0%, #292929 100%);
+    padding-left: 140px;
+    padding-right: 140px;
+    
 }
 
 .navbar-toggler-icon {
@@ -45,7 +59,6 @@ body {
 }
 
 .navbar-brand .navBrand {
-    margin-left: 20px;
     color: var(--offwhite);
     font-size: 24px;
     font-weight: 700;
@@ -55,8 +68,9 @@ nav .navbar-nav li a {
     text-transform: none;
     text-decoration: none;
     color: var(--offwhite);
-    font-size: 18px;
-    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
     margin-left: 1em;
 }
 
@@ -64,9 +78,9 @@ nav .navbar-nav li a::after {
     content: '';
     display: block;
     width: 0;
-    height: 2px;
-    background: var(--offwhite);
-    transition: width .3s;
+    height: 0.5px;
+    background: #5706F0;
+    transition: width .2s;
 }
 
 /* .navbar-nav>li.nav-item.active>a.nav-link {
@@ -82,6 +96,7 @@ nav .NavLinkz {
     width: 100%;
 }
 
+
 .navDivider {
     height: 18px;
     text-align: center;
@@ -96,19 +111,25 @@ nav .NavLinkz {
 .Home {
     width: 100%;
     height: 100vh;
-    padding-left: 1em;
-    padding-right: 1em;
-    background-color: var(--offwhite);
+    background: #1f1f1f;
+   
 }
 
 .HomeContainer {
     display: flex;
     flex-direction: row;
+    padding-left: 140px;
+    padding-right: 140px;
+    
+    
 }
 
 #HomeLeft {
     width: 55%;
     height: 100vh;
+    align-content: center;
+    /* border: 4px solid #fff; */
+
 }
 
 #HomeRight {
@@ -117,11 +138,23 @@ nav .NavLinkz {
 }
 
 #HRcontainer {
-    margin-top: 6em;
-    padding: 3em;
+    margin-top: 13em;
+    padding-left: 0;
+    padding-right: 0;
+}
+.HomeWrapper{
+   
+    width: 100%;
+    height: 100%;
+    background-image: url('../imgs/homebkgsvg.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+
 }
 
 #HomeILL {
+    text-align: center;
     width: 85%;
     height: 85%;
     margin: auto;
@@ -132,32 +165,41 @@ nav .NavLinkz {
 }
 
 .HomeH1 {
-    color: var(--darkgrey);
+    color: var(--offwhite);
     font-weight: 700;
     font-size: 60px;
-    margin: 0;
+    margin-bottom: 1em;
 }
 
 .HomeH2 {
-    color: var(--darkgrey);
+    color: var(--offwhite);
     font-weight: 300;
     font-size: 50px;
     margin: 0;
 }
 
 .HomeP {
-    margin-top: 1em;
-    color: var(--darkgrey);
-    font-weight: 300;
-    font-size: 18px;
+    margin-bottom: 4em;
+    color:#A1A1A1;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
     line-height: 30px;
 }
 
 .HomeBtn {
-    width: 110px;
+    text-align: center;
+    color: var(--offwhite);
+    font-size: 18px;
+    font-weight: 500;
+    width: 140px;
     height: 40px;
-    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.40);
+    border: none;
+    background: #5614d3 ;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.522);
 }
+
+
 
 /*Body Elements********************************/
 
@@ -167,25 +209,52 @@ nav .NavLinkz {
     display: flex;
     overflow: hidden;
 }
-
 .leftWrapper {
+   position: relative;
     order: 1;
     width: 23%;
     height: auto;
-    background: linear-gradient(135deg, #434343, #000000);
+    background: #1c1c1c;
 }
 
 .rightWrapper {
     order: 2;
     width: 100%;
     height: auto;
-    background-color: white;
+    background-color: #121212;
 }
 .MapContainer{
-    box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.15);
+    font-size: 8px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.522);
     border-radius: 10px;
 
 }
+
+
+.sidebarHeader{
+    margin-top:80px;
+    color: var(--offwhite);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+    
+}
+.sidebarSubHeaders{
+    color: var(--offwhite);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    
+}
+#searchQueryDemo ,#searchQuery{
+    color: #A1A1A1;
+    background-color: #333333;
+    border: #121212;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+}
+
 #form {
     align-items: center;
     margin-top: 3em;
@@ -210,28 +279,80 @@ nav .NavLinkz {
     flex-wrap: wrap;
     justify-content: center;
 }
+.featuredDivider{
+    border-top-style: solid;
+    border-top-color: #1c1c1c;
+}
 
 .searchTextPH {
+    margin-top: 40px;
     font-weight: 600;
-    color: var(--darkgrey);
+    color: var(--offwhite);
     text-align: center;
     flex: 0 0 100%;
 }
 
 #card-header-blue {
+    border: none;
     color: #FFFFFF;
-    background: linear-gradient(135deg, #434343, #000000);
+    background: #1c1c1c;
+}
+.card-subtitle {
+    margin-top: 3px;
+        color:grey;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        font-size: 12px;
+       
+}
+.card-body{
+    border: none;
+    background: #121212;
+}
+.card-text {
+    color:#A1A1A1;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+.card-text strong{
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+.card-body a{
+    background: #1c1c1c;
+    color:white;
+    border: black;
+}
+.card-body a:hover{
+    background:#5614d3;
+    
+}
+#favBtn{
+    background: #1c1c1c;
+    color:white;
+    border: black;
+    
+}
+#favBtn:hover{
+    background: #B51818;
 }
 
 .card {
     margin: 2em;
     transition: all 0.2s ease;
-    box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.522);
+    border: none;
 }
 
 .card:hover {
+    border: none;
     transform: scale(0.99);
 }
+
+
 
 svg {
     margin: 2em;
@@ -239,20 +360,31 @@ svg {
 
 footer {
     background-color: black;
-    padding: 1em;
+    padding: 0.5em;
 }
 
 footer h6 {
-    color: white
+    color: var(--offwhite);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
 }
 
 footer .line {
-    border-color: white
+    border-color: white;
 }
 
 footer p,a {
-    text-decoration: none;
-    color: var(--puregrey)
+    color:#A1A1A1;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 30px;
+}
+.footerCS {
+    margin-top:0;
+    padding:3;
+
 }
 
 /*Responsive***********************/

@@ -57,8 +57,8 @@ export default class SchoolMap extends Component {
         const UScenter = [39.8283, -98.5795] // center of continental US
 
         const regIcon = new L.Icon({
-            iconUrl: require('../imgs/bluedot.png'),
-            iconSize: [10, 10],
+            iconUrl: require('../imgs/map-pin.svg'),
+            iconSize: [20, 20],
         });
 
 
@@ -67,7 +67,7 @@ export default class SchoolMap extends Component {
            
             <Map className="MapContainer" center={UScenter} zoom={4} minZoom={4} >
                 <TileLayer
-                    url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.png" //apikey=b8036ea1bdd04e658ebdde4c8bb56da4
+                    url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" //apikey=b8036ea1bdd04e658ebdde4c8bb56da4
                 />
                 {
                     Object.keys(schoolData).map((key) => {

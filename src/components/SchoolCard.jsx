@@ -52,7 +52,7 @@ class SchoolCard extends Component {
     let cardDeleteButton = null;
 
     if (this.state.favorited === false) {
-      cardDeleteButton = <button onClick={this.saveSchool} className="btn btn-dark btn btn-md ml-2">Favorite</button>;
+      cardDeleteButton = <button onClick={this.saveSchool} className="btn btn-dark btn btn-md ml-2 favBtn" id="favBtn">Favorite</button>;
     } else {
       cardDeleteButton = <button onClick={this.saveSchool} className="btn btn-dark btn btn-md ml-2">Delete</button>;
     }
@@ -65,13 +65,13 @@ class SchoolCard extends Component {
                         <div className="card-header" id="card-header-blue">
                             <strong>{Schooldetails.name}</strong>
                             <br/>
-                            <br/>
-                            <h6 className="card-subtitle mb-6 text-muted ">{Schooldetails.location}</h6>
+                          
+                            <h6 className="card-subtitle mb-6 " >{Schooldetails.location}</h6>
                         </div>
                         <div className="card-body">
                             <p className="card-text">Acceptance
                                 Rate: <strong>{Schooldetails.AcceptanceRate * 100 + '%'}</strong></p>
-                            <p className="card-text">Average SAT Score: <strong>{Schooldetails.AverageSATScore}</strong>
+                            <p className="card-text">Average SAT Score: <strong className="cardStrong">{Schooldetails.AverageSATScore}</strong>
                             </p>
                             <p className="card-text">Out of state
                                 tuition: <strong>{Schooldetails.OutOfStateTuition}</strong></p>

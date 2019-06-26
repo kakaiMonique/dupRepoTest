@@ -16,12 +16,12 @@ export class SearchPage extends Component {
           <div className="findWrapper ">
             <div className="leftWrapper">
               <div className="container-fluid">
-                <SideBar 
+                <SideBar
                   schoolData={this.props.schoolData}
-                  currentUser={this.props.currentUser} 
+                  currentUser={this.props.currentUser}
                   toggleFav={this.props.toggleFav}
                   filterValue={this.props.filterValue}
-                  handleSchoolName={this.props.handleSchoolName} 
+                  handleSchoolName={this.props.handleSchoolName}
                   handleSchoolState={this.props.handleSchoolState}
                   handleFilterInput={this.props.handleFilterInput}
                   displayFavorited={this.props.displayFavorited}
@@ -33,9 +33,12 @@ export class SearchPage extends Component {
               <SchoolCardSection currentUser={this.props.currentUser} schoolData={this.props.schoolData} />
             </div>
           </div>
-
         </section>
+
+      
+
       </div>
+
     );
   }
 }

@@ -40,10 +40,10 @@ class SignUpForm extends Component {
   render() {
     return (
       <div className="container">
-        <div className="container">
+        <div className="containerWrap">
           <div className="row px-3 headerRow">
-            <div className="col-md">
-              <h3 className="pb-2">Sign In</h3>
+            <div className="col-md signforms">
+              <h3 className="pb-2">Current User</h3>
               <form aria-label="Log in for existing users">
                     {/* email */}
                     <div className="form-group">
@@ -52,6 +52,7 @@ class SignUpForm extends Component {
                                id="email"
                                type="email"
                                name="email"
+                               placeholder="your email"
                                onChange={this.handleChange}
                         />
                     </div>
@@ -63,18 +64,19 @@ class SignUpForm extends Component {
                                id="password"
                                type="password"
                                name="password"
+                               placeholder="your password"
                                onChange={this.handleChange}
                         />
                     </div>
 
                     {/* buttons */}
                     <div className="form-group">
-                        <button className="btn btn-dark" onClick={this.handleSignIn}>Sign-in</button>
+                        <button className="btn btn-dark" id= "signinoutBtn" onClick={this.handleSignIn}>SIGN IN</button>
                     </div>
                 </form>
             </div>
-            <div className="col-md">
-              <h3 className="pb-2">Sign Up</h3>
+            <div className="col-md signforms">
+              <h3 className="pb-2">New User</h3>
               <form aria-label="sign up for new users">
                 {/* name */}
                 <div className="form-group">
@@ -82,6 +84,7 @@ class SignUpForm extends Component {
                   <input className="form-control"
                     id="name"
                     name="name"
+                    placeholder="your new user name"
                     onChange={this.handleChange}
                   />
                 </div>
@@ -93,6 +96,7 @@ class SignUpForm extends Component {
                     id="emailSignUp"
                     type="email"
                     name="email"
+                    placeholder="your new email"
                     onChange={this.handleChange}
                   />
                 </div>
@@ -104,13 +108,14 @@ class SignUpForm extends Component {
                     id="passwordSignUp"
                     type="password"
                     name="password"
+                    placeholder="your new password"
                     onChange={this.handleChange}
                   />
                 </div>
 
                 {/* buttons */}
                 <div className="form-group">
-                  <button className="btn btn-dark mr-2" onClick={this.handleSignUp}>Sign-up</button>
+                  <button className="btn btn-dark mr-2" id= "signinoutBtn" onClick={this.handleSignUp}>SIGN UP</button>
                 </div>
               </form>
             </div>

@@ -41,11 +41,11 @@ import 'react-input-range/lib/css/index.css';
         }
         return (
         <div className ="container">
-        <p className="text-white">Welcome <strong>{this.state.userName ? this.state.userName : ""}</strong></p>
+        <p className="sidebarHeader">Welcome <strong>{this.state.userName ? this.state.userName : ""}</strong></p>
         {toggle}
         <form>
             <div className="form-group" id="form">
-              <label  id="searchLabel">
+              <label className="sidebarSubHeaders" id="searchLabel">
                   Search by school name
               </label>
               <small  className="form-text text text-muted">Include the campus name for a specific college</small>
@@ -64,14 +64,14 @@ import 'react-input-range/lib/css/index.css';
     
 
             <div className="form-group" id="form">
-              <label  id="searchLabel">
+              <label className="sidebarSubHeaders"  id="searchLabel">
                 Search by school state (ex. "WA")
               </label>
               <hr />
     
               <input
                 type="text"
-                className="form-control"
+                className="form-control formFeild"
                 id="searchQueryDemo"
                 placeholder="School state.."
                 name="schoolState"
@@ -83,7 +83,7 @@ import 'react-input-range/lib/css/index.css';
 
           <div className="form-group" id="form">
             
-            <label htmlFor="searchQuery" className="mr-2" id="searchLabel">
+            <label htmlFor="searchQuery" className="mr-2 sidebarSubHeaders" id="searchLabel">
               Filter results by Out-of-State tuition 
             </label>
             <br />

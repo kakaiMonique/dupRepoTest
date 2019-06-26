@@ -1,26 +1,28 @@
 import React, { Component } from "react";
 import SchoolCard from "./SchoolCard"
 
- class SchoolCardSection extends Component {
+class SchoolCardSection extends Component {
 
-    render() {
-      const { schoolData } = this.props;
-    
+  render() {
+    const { schoolData } = this.props;
 
-      let featuredCards = (
-        <div className="row searchResultsWrap2" id="searchResultsWrap">
-          {
-            Object.keys(schoolData).map(key => (
-              <SchoolCard key={key} Schooldetails={schoolData[key]} currentUser={this.props.currentUser} />
-            ))
-          }
+
+    let featuredCards = (
+      <div className="row searchResultsWrap2" id="searchResultsWrap">
+        {
+          Object.keys(schoolData).map(key => (
+            <SchoolCard key={key} Schooldetails={schoolData[key]} currentUser={this.props.currentUser} />
+          ))
+        }
+        <div className ="searchResultsWrap2 featuredDivider">
           <h2 className="searchTextPH">Featured schools</h2>
+
           <div className='cards' style={{ width: 26 + 'em' }}>
             <div className="card mb-4">
               <div className="card-header" id="card-header-blue">University of Washington-Seattle Campus
                 <br />
-                <br />
-                <h6 className="card-subtitle mb-6 text-muted ">Seattle, WA</h6>
+
+                <h6 className="card-subtitle mb-6">Seattle, WA</h6>
               </div>
               <div className="card-body">
                 <p className="card-text">Acceptance Rate: <strong>45%</strong></p>
@@ -34,13 +36,13 @@ import SchoolCard from "./SchoolCard"
               </div>
             </div>
           </div>
-  
+
           <div className='cards' style={{ width: 26 + 'em' }}>
             <div className="card mb-4">
               <div className="card-header" id="card-header-blue">Yale University
                 <br />
-                <br />
-                <h6 className="card-subtitle mb-6 text-muted ">New Haven, CT</h6>
+
+                <h6 className="card-subtitle mb-6 ">New Haven, CT</h6>
               </div>
               <div className="card-body">
                 <p className="card-text">Acceptance Rate: <strong>6%</strong></p>
@@ -54,13 +56,13 @@ import SchoolCard from "./SchoolCard"
               </div>
             </div>
           </div>
-  
+
           <div className='cards' style={{ width: 26 + 'em' }}>
             <div className="card mb-4">
               <div className="card-header" id="card-header-blue">Seattle Central College
                 <br />
-                <br />
-                <h6 className="card-subtitle mb-6 text-muted ">Seattle, WA</h6>
+
+                <h6 className="card-subtitle mb-6 ">Seattle, WA</h6>
               </div>
               <div className="card-body">
                 <p className="card-text">Acceptance Rate: <strong>Unreported</strong></p>
@@ -75,14 +77,15 @@ import SchoolCard from "./SchoolCard"
             </div>
           </div>
         </div>
-      );
+      </div>
+    );
 
-      return (
-        <React.Fragment>
-          {featuredCards}
-        </React.Fragment>
-      )
-    }
+    return (
+      <React.Fragment>
+        {featuredCards}
+      </React.Fragment>
+    )
   }
+}
 
 export default SchoolCardSection

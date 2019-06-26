@@ -14,7 +14,8 @@
     "react-router-dom": "^4.3.1",
     "react-router-hash-link": "^1.2.1",
     "react-scripts": "2.1.1",
-    "react-toggle-button": "^2.2.0"
+    "react-toggle-button": "^2.2.0",
+    "sticky-sidebar": "^3.3.1"
   },
   "scripts": {
     "predeploy": "npm run build",
