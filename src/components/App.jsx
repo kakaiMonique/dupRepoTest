@@ -288,7 +288,7 @@ class Navigation extends Component {
               </ul>
               <ul className="nav navbar-nav NavLinkz">
                 <li className="nav-item ">
-                  <Link to="#Home" className="nav-link">HOME</Link>
+                  <Link to="/#Home" className="nav-link">HOME</Link>
                 </li>
                 <li className="nav-item ">
                   <Link to="/#SideBar" className="nav-link">SEARCH</Link>

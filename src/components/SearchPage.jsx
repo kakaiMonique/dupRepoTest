@@ -10,7 +10,7 @@ export class SearchPage extends Component {
     return (
       <div>
         <section>
-          <Home />
+          <Home/>
         </section>
         <section id="SideBar">
           <div className="findWrapper ">
