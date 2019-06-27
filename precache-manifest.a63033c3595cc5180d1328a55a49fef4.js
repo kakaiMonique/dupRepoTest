@@ -20,15 +20,15 @@ self.__precacheManifest = [
     "url": "/CollegeStudio/static/js/runtime~main.b739c84d.js"
   },
   {
-    "revision": "9a8718542c07973cd506",
-    "url": "/CollegeStudio/static/js/main.9a871854.chunk.js"
+    "revision": "453e82697e5c56f1ca47",
+    "url": "/CollegeStudio/static/js/main.453e8269.chunk.js"
   },
   {
     "revision": "1841161a52aa59b479c8",
     "url": "/CollegeStudio/static/js/1.1841161a.chunk.js"
   },
   {
-    "revision": "9a8718542c07973cd506",
+    "revision": "453e82697e5c56f1ca47",
     "url": "/CollegeStudio/static/css/main.12ddfe8c.chunk.css"
   },
   {
@@ -36,7 +36,7 @@ self.__precacheManifest = [
     "url": "/CollegeStudio/static/css/1.0fa90d19.chunk.css"
   },
   {
-    "revision": "a14b69566df77ca9a24d2a4c2c5b04a5",
+    "revision": "ce2433af7eb37f3d83712c5fee7d0817",
     "url": "/CollegeStudio/index.html"
   }
 ];
