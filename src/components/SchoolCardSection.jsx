@@ -9,6 +9,7 @@ class SchoolCardSection extends Component {
 
     let featuredCards = (
       <div className="row searchResultsWrap2" id="searchResultsWrap">
+        <h2 className="searchTextPH">search results...</h2>
         {
           Object.keys(schoolData).map(key => (
             <SchoolCard key={key} Schooldetails={schoolData[key]} currentUser={this.props.currentUser} />

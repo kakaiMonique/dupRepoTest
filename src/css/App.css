@@ -47,7 +47,7 @@ body {
 }
 
 .navbarWrapper_SVG{
-    background: linear-gradient(190deg, #4014D3 0%, #292929 100%);
+    background: linear-gradient(190deg, #4014D3 0%, #3850D6 100%);
     padding-left: 140px;
     padding-right: 140px;
     
@@ -79,7 +79,7 @@ nav .navbar-nav li a::after {
     display: block;
     width: 0;
     height: 0.5px;
-    background: #5706F0;
+    background: #3850D6;
     transition: width .2s;
 }
 
@@ -191,12 +191,16 @@ nav .NavLinkz {
     text-align: center;
     color: var(--offwhite);
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 400;
     width: 140px;
     height: 40px;
     border: none;
-    background: #5614d3 ;
+    border-radius: 0;
+    background: #3850D6 ;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.522);
+}
+.HomeBtn :hover{
+    color: var(--offwhite);
 }
 
 
@@ -286,7 +290,7 @@ nav .NavLinkz {
 
 .searchTextPH {
     margin-top: 40px;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--offwhite);
     text-align: center;
     flex: 0 0 100%;
@@ -327,7 +331,7 @@ nav .NavLinkz {
     border: black;
 }
 .card-body a:hover{
-    background:#5614d3;
+    background:#3850D6;
     
 }
 #favBtn{
@@ -359,7 +363,7 @@ svg {
 }
 
 footer {
-    background-color: black;
+    background:#141414;
     padding: 0.5em;
 }
 
