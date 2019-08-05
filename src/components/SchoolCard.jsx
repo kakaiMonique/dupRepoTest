@@ -82,7 +82,7 @@ class SchoolCard extends Component {
                             <p className="card-text">Students Size: <strong>{Schooldetails.StudentsSize}</strong></p>
                             <hr/>
                             <a href={"https://" + Schooldetails.SchoolWebsite} target="_blank" rel="noopener noreferrer"
-                               className="btn btn-dark btn btn-md">Website</a>
+                               className="btn btn-dark btn btn-md ">Website</a>
                             {cardDeleteButton}
                         </div>
                     </div>

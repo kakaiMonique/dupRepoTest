@@ -54,6 +54,7 @@ export default class SchoolMap extends Component {
 
     render() {
         const { schoolData } = this.props;
+    
         const UScenter = [39.8283, -98.5795] // center of continental US
 
         const regIcon = new L.Icon({
@@ -66,9 +67,7 @@ export default class SchoolMap extends Component {
         return (
            
             <Map className="MapContainer" center={UScenter} zoom={4} minZoom={4} >
-                <TileLayer
-                    url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" //apikey=b8036ea1bdd04e658ebdde4c8bb56da4
-                />
+                <TileLayer url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.png"/>
                 {
                     Object.keys(schoolData).map((key) => {
                         let schoolCenter = [schoolData[key].Lat, schoolData[key].Long]

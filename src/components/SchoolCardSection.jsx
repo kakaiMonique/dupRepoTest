@@ -5,17 +5,18 @@ class SchoolCardSection extends Component {
 
   render() {
     const { schoolData } = this.props;
-
+    
 
     let featuredCards = (
       <div className="row searchResultsWrap2" id="searchResultsWrap">
-        <h2 className="searchTextPH">search results...</h2>
+        
         {
           Object.keys(schoolData).map(key => (
             <SchoolCard key={key} Schooldetails={schoolData[key]} currentUser={this.props.currentUser} />
           ))
         }
-        <div className ="searchResultsWrap2 featuredDivider">
+        {/* <div className ="searchResultsWrap2 featuredDivider">
+          <br/>
           <h2 className="searchTextPH">Featured schools</h2>
 
           <div className='cards' style={{ width: 26 + 'em' }}>
@@ -77,7 +78,7 @@ class SchoolCardSection extends Component {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     );
 

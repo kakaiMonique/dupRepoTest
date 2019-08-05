@@ -2,6 +2,7 @@ import React, { Component } from "react";
 class Home extends Component {
   render() {
     return (
+      <div >
       <section className="Home" id="Home">
         <div className="HomeWrapper">
           <div className="HomeContainer">
@@ -13,22 +14,20 @@ class Home extends Component {
 
                 <p className="HomeP">We created this ultimate guide to the
                 college search because we know finding a school that fits
-                you—truly fits you—is the secret to college success. When
-                you find the right college match, everything else tends to
-                fall into place: your chances of being accepted, your
-                financial aid, your happiness.Head over to the find tab
+                you—truly fits you—is the secret to college success. Head over to the search tab
                 to search and visualze.</p>
                 <br />
 
-                <a href="#SideBar" className=" btn HomeBtn">SEARCH</a>
+                <a href="/search" className=" btn-lg HomeBtn">Find Schools</a>
               </div>
             </div>
-            <div id="HomeLeft">
+            {/* <div id="HomeLeft">
               <div id="HomeILL"></div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
+      </div>
     );
   }
 }

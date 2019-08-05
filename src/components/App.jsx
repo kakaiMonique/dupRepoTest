@@ -1,14 +1,19 @@
 import React, { Component } from "react";
 import "../css/App.css";
 import About from "./About";
-import SearchPage from "./SearchPage"
+
 import SignUpForm from "./SignUpForm.jsx"
 import firebase from 'firebase/app'
+
+
 
 
 import { Route, Switch } from 'react-router-dom';
 import { HashLink as Link } from 'react-router-hash-link';
 import Favorites from "./Favorites";
+import Home from "./Home";
+import Search from "./Search";
+
 
 
 class App extends Component {
@@ -190,6 +195,8 @@ class App extends Component {
       .catch(error => {
         console.log(error);
       });
+
+
   }
 
   unReported(schoolStat) {
@@ -217,41 +224,54 @@ class App extends Component {
       <div>
         <Navigation currentUser={this.state.user} handleSignOut={this.handleSignOut} />
         <main>
-          <Switch>
-            <Route exact path='/' render={(routerProps) => {
-              return <SearchPage {...routerProps}
-                // this component imports  all other components, 
-                //so we pass all data needed for this component and all other components it imports
-                toggleFav={this.toggleFav}
-                currentUser={this.state.user}
-                schoolData={schools}
-                handleSchoolName={this.handleSchoolName}
-                handleSchoolState={this.handleSchoolState}
-                handleFilterInput={this.handleFilterInput}
-                UserFilterInput={this.state.tuition}
-                displayFavorited={this.state.displayFavorited}
-                filterValue={this.state.schoolTuition}
-              />
-              
-            }} />
-           
-            <Route path="/about" component={About} />
-            <Route path='/favorites' render={(routerProps) => {
-              return <Favorites {...routerProps} currentUser={this.state.user} />
-            }} />
-            <Route path='/SignUpForm' render={(routerProps) => {
-              return <SignUpForm {...routerProps} signUpCallback={this.handleSignUp} signInCallback={this.handleSignIn} />
-            }} />
-          </Switch>
+                <Switch>
+                  <Route exact path='/' render={(routerProps) => {
+                    return <Home {...routerProps}
+                      // this component imports  all other components, 
+                      //so we pass all data needed for this component and all other components it imports
+                      toggleFav={this.toggleFav}
+                      currentUser={this.state.user}
+                      schoolData={schools}
+                      handleSchoolName={this.handleSchoolName}
+                      handleSchoolState={this.handleSchoolState}
+                      handleFilterInput={this.handleFilterInput}
+                      UserFilterInput={this.state.tuition}
+                      displayFavorited={this.state.displayFavorited}
+                      filterValue={this.state.schoolTuition}
+                    />
 
+                  }} />
+
+                  <Route path='/search' render={(routerProps) => {
+                    return <Search {...routerProps}
+                      // this component imports  all other components, 
+                      //so we pass all data needed for this component and all other components it imports
+                      toggleFav={this.toggleFav}
+                      currentUser={this.state.user}
+                      schoolData={schools}
+                      handleSchoolName={this.handleSchoolName}
+                      handleSchoolState={this.handleSchoolState}
+                      handleFilterInput={this.handleFilterInput}
+                      UserFilterInput={this.state.tuition}
+                      displayFavorited={this.state.displayFavorited}
+                      filterValue={this.state.schoolTuition}
+                    />
+                  }} />
+
+                  <Route path="/about" component={About} />
+                  <Route path='/favorites' render={(routerProps) => {
+                    return <Favorites {...routerProps} currentUser={this.state.user} />
+                  }} />
+                  <Route path='/SignUpForm' render={(routerProps) => {
+                    return <SignUpForm {...routerProps} signUpCallback={this.handleSignUp} signInCallback={this.handleSignIn} />
+                  }} />
+                </Switch>
+             
+         
           <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js" />
           <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.1.1/es6-promise.auto.js" />
 
         </main>
-
-        <footer className="page-footer font-small sticky-bottom">
-          <Footer />
-        </footer>
       </div>
     );
   }
@@ -263,16 +283,16 @@ class Navigation extends Component {
     let loginLink = null;
 
     if (this.props.currentUser) {
-      loginLink = <Link onClick={this.props.handleSignOut} to="/#Home" className="nav-link">SIGN OUT</Link>
+      loginLink = <Link onClick={this.props.handleSignOut} to="/SignUpForm" className="nav-link">Sign Out</Link>
     } else {
-      loginLink = <Link to="/SignUpForm" className="nav-link">SIGN IN</Link>
+      loginLink = <Link to="/SignUpForm" className="nav-link">Sign In</Link>
     }
 
     return (
       <header>
-        <div className = "navbarWrapper_SVG">
+        <div className="navbarcontainer">
           <nav className="navbar fixed-top navbar-expand-lg navbarWrapper_SVG">
-            <Link className="navbar-brand" to="/#Home"><h3 className="navBrand">CollegeStudio</h3></Link>
+            <Link className="navbar-brand" to="/"><h3 className="navBrand">College Studio</h3></Link>
             <button
               className="navbar-toggler collapsed"
               type="button" data-toggle="collapse"
@@ -288,20 +308,21 @@ class Navigation extends Component {
               </ul>
               <ul className="nav navbar-nav NavLinkz">
                 <li className="nav-item ">
-                  <Link to="/#Home" className="nav-link">HOME</Link>
+                  <Link to="/" className="nav-link">Home</Link>
                 </li>
                 <li className="nav-item ">
-                  <Link to="/#SideBar" className="nav-link">SEARCH</Link>
+                  <Link to="/search" className="nav-link">Search</Link>
                 </li>
+
                 <li className="nav-item">
-                  <Link to="/about" className="nav-link">USAGE</Link>
+                  <Link to="/about" className="nav-link">Usage</Link>
                 </li>
                 <li className="navDivider"></li>
                 <li className="nav-item">
                   {loginLink}
                 </li>
                 <li className="nav-item">
-                  <Link to="/favorites" className="nav-link">FAVORITES</Link>
+                  <Link to="/favorites" className="nav-link">Favorites</Link>
                 </li>
               </ul>
             </div>
@@ -312,38 +333,6 @@ class Navigation extends Component {
   }
 }
 
-//one footer component 
-class Footer extends Component {
-  render() {
-    return (
-      <div>
-        <div className="container text-center text-md-left mt-5 footerCS">
-          <div className="row mt-3 footerCS">
-            <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-              <h6 className="text-uppercase font-weight-bold">CollegeStudio</h6>
-              <hr className="line" />
-              <p>Home for your future school.This is how you find the perfect college—or colleges—for you.</p>
-            </div>
-            <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-              <h6 className="text-uppercase font-weight-bold">Sources</h6>
-              <hr className="line" />
-              <p>
-                <a href="https://collegescorecard.ed.gov/data/documentation/">API</a>
-              </p>
-            </div>
-            <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-              <h6 className="text-uppercase font-weight-bold">Contact</h6>
-              <hr className="line" />
-              <p><i className="fa fa-home mr-3"></i> Seattle, WA 98027, US</p>
-              <p><i className="fa fa-envelope mr-3"></i> <a href="mailto: info@example.com">CollegeStudio@uw.edu</a></p>
 
-            </div>
-          </div>
-        </div>
-      
-      </div>
-    );
-  }
-}
 
 export default App
