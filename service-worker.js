@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/CollegeStudio/precache-manifest.a63033c3595cc5180d1328a55a49fef4.js"
+  "/CollegeStudio/precache-manifest.5acdce62a5e3921d4c7205d1abe33191.js"
 );
 
 workbox.clientsClaim();
