@@ -8,7 +8,7 @@ import firebase from 'firebase/app'
 
 
 
-import { Route, Switch } from 'react-router-dom';
+import { HashRouter,Route, Switch } from 'react-router-dom';
 import { HashLink as Link } from 'react-router-hash-link';
 import Favorites from "./Favorites";
 import Home from "./Home";
@@ -221,6 +221,7 @@ class App extends Component {
 
     }
     return (
+      <HashRouter basename='/'>
       <div>
         <Navigation currentUser={this.state.user} handleSignOut={this.handleSignOut} />
         <main>
@@ -273,6 +274,7 @@ class App extends Component {
 
         </main>
       </div>
+      </HashRouter>
     );
   }
 }

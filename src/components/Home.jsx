@@ -18,7 +18,7 @@ class Home extends Component {
                 to search and visualze.</p>
                 <br />
 
-                <a href="/search" className=" btn-lg HomeBtn">Find Schools</a>
+                <a href="#/search" className=" btn-lg HomeBtn">Find Schools</a>
               </div>
             </div>
             {/* <div id="HomeLeft">

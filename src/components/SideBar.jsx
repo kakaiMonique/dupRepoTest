@@ -25,10 +25,12 @@ class SideBar extends Component {
   render() {
     const borderRadiusStyle = { borderRadius: 2 }
     let toggle = null;
+    let welcome = null;
 
     if (this.props.currentUser) {
       toggle = (
-        <div className="py-3">          
+        <div className="py-3">
+          <p className="sidebarSubHeaders">Hello, {this.state.userName ? this.state.userName : ""}</p>          
           <ToggleButton
             value={this.props.displayFavorited}
             thumbStyle={borderRadiusStyle}
@@ -39,9 +41,12 @@ class SideBar extends Component {
         </div>
       );
     }
+    if(!this.props.currentUser){
+      welcome = (<h1 className="welcome">Welcome</h1>);
+    }
     return (
       <div className="container sideBarWrapper">
-        <p className="sidebarSubHeaders">{this.state.userName ? this.state.userName : ""}</p>
+        {welcome}
         {toggle}
         <form>
           <div className="form-group" id="form" >

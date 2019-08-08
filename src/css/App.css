@@ -253,13 +253,13 @@ nav .nav-link::after {
     padding-bottom: 2em;
 }
 
-.sidebarHeader {
-    margin-top: 1em;
+.welcome {
+
     color: black;
-    opacity: 0.87;
+    opacity: 0.28;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-    font-size: 30px;
+    font-size: 40px;
 }
 
 .searchResultsCounter {
